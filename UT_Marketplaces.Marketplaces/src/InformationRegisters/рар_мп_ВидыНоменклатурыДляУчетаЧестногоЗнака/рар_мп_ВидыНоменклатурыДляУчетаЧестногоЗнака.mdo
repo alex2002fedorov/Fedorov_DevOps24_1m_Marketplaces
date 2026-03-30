@@ -12,7 +12,7 @@
   <name>рар_мп_ВидыНоменклатурыДляУчетаЧестногоЗнака</name>
   <synonym>
     <key>ru</key>
-    <value>Виды номенклатуры для учета честного знака (1С-Рарус)</value>
+    <value>Виды номенклатуры для учета честного знака</value>
   </synonym>
   <useStandardCommands>true</useStandardCommands>
   <editType>InDialog</editType>

@@ -10,7 +10,7 @@
   <name>рар_мп_ПодготовкаФайловПоставки</name>
   <synonym>
     <key>ru</key>
-    <value>Подготовка файлов поставки (1С-Рарус)</value>
+    <value>Подготовка файлов поставки</value>
   </synonym>
   <useStandardCommands>true</useStandardCommands>
   <inputByString>Document.рар_мп_ПодготовкаФайловПоставки.StandardAttribute.Number</inputByString>
@@ -61,11 +61,11 @@
   <fullTextSearch>Use</fullTextSearch>
   <objectPresentation>
     <key>ru</key>
-    <value>Подготовка файлов поставки (1С-Рарус)</value>
+    <value>Подготовка файлов поставки</value>
   </objectPresentation>
   <listPresentation>
     <key>ru</key>
-    <value>Подготовка файлов поставки (1С-Рарус)</value>
+    <value>Подготовка файлов поставки</value>
   </listPresentation>
   <numberType>String</numberType>
   <numberLength>9</numberLength>

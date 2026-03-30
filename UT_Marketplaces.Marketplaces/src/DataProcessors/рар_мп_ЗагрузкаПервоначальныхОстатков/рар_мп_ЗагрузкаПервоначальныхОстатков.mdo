@@ -7,7 +7,7 @@
   <name>рар_мп_ЗагрузкаПервоначальныхОстатков</name>
   <synonym>
     <key>ru</key>
-    <value>Загрузка первоначальных остатков (1С-Рарус)</value>
+    <value>Загрузка первоначальных остатков</value>
   </synonym>
   <useStandardCommands>true</useStandardCommands>
   <defaultForm>DataProcessor.рар_мп_ЗагрузкаПервоначальныхОстатков.Form.Форма</defaultForm>

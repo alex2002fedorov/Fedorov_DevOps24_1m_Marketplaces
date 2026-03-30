@@ -7,7 +7,7 @@
   <name>рар_мп_Механизмы</name>
   <synonym>
     <key>ru</key>
-    <value>Механизмы по работе с маркетплейсами (1С-Рарус)</value>
+    <value>Механизмы по работе с маркетплейсами</value>
   </synonym>
   <useStandardCommands>true</useStandardCommands>
   <defaultForm>DataProcessor.рар_мп_Механизмы.Form.Форма</defaultForm>

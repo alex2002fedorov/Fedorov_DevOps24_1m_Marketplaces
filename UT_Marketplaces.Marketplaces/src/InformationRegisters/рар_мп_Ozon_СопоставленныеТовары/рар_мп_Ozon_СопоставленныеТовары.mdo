@@ -12,7 +12,7 @@
   <name>рар_мп_Ozon_СопоставленныеТовары</name>
   <synonym>
     <key>ru</key>
-    <value>Сопоставленные товары Ozon (1С-Рарус)</value>
+    <value>Сопоставленные товары Ozon</value>
   </synonym>
   <useStandardCommands>true</useStandardCommands>
   <editType>InDialog</editType>

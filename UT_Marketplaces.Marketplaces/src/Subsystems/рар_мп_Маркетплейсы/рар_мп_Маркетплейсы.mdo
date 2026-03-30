@@ -3,7 +3,7 @@
   <name>рар_мп_Маркетплейсы</name>
   <synonym>
     <key>ru</key>
-    <value>Маркетплейсы (1С-Рарус)</value>
+    <value>Маркетплейсы</value>
   </synonym>
   <includeHelpInContents>true</includeHelpInContents>
   <includeInCommandInterface>true</includeInCommandInterface>
@@ -29,7 +29,5 @@
   <content>Document.рар_мп_ПодготовкаФайловПоставки</content>
   <content>DataProcessor.РегистрацияИзмененийДляОбменаДаннымиТСД</content>
   <content>Constant.ЗагружатьВсюНоменклатуруВТСД</content>
-  <content>CommonForm.НастройкаПодключенияТСД</content>
-  <content>CommonForm.НастройкаРаботыСТСД</content>
   <content>InformationRegister.рар_мп_ВидыНоменклатурыДляУчетаЧестногоЗнака</content>
 </mdclass:Subsystem>

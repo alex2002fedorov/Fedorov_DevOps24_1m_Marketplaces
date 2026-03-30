@@ -180,8 +180,6 @@
       <commands>DataProcessor.рар_мп_ЗагрузкаОтчетаКомиссионера.StandardCommand.Open</commands>
       <commands>DataProcessor.РегистрацияИзмененийДляОбменаДаннымиТСД.StandardCommand.Open</commands>
       <commands>Constant.ЗагружатьВсюНоменклатуруВТСД.StandardCommand.Open</commands>
-      <commands>CommonForm.НастройкаПодключенияТСД.StandardCommand.Open</commands>
-      <commands>CommonForm.НастройкаРаботыСТСД.StandardCommand.Open</commands>
     </orderFragments>
   </commandsOrder>
 </cmi:CommandInterface>

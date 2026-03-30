@@ -7,7 +7,7 @@
   <name>рар_мп_СозданиеНоменклатуры</name>
   <synonym>
     <key>ru</key>
-    <value>Создание номенклатуры (1С-Рарус)</value>
+    <value>Создание номенклатуры</value>
   </synonym>
   <useStandardCommands>true</useStandardCommands>
   <defaultForm>DataProcessor.рар_мп_СозданиеНоменклатуры.Form.Форма</defaultForm>

@@ -10,7 +10,7 @@
   <name>рар_мп_РеестрЗаказов</name>
   <synonym>
     <key>ru</key>
-    <value>Реестр заказов (1С-Рарус)</value>
+    <value>Реестр заказов</value>
   </synonym>
   <useStandardCommands>true</useStandardCommands>
   <inputByString>Document.рар_мп_РеестрЗаказов.StandardAttribute.Number</inputByString>
@@ -20,11 +20,11 @@
   <fullTextSearch>Use</fullTextSearch>
   <objectPresentation>
     <key>ru</key>
-    <value>Реестр заказов (1С-Рарус)</value>
+    <value>Реестр заказов</value>
   </objectPresentation>
   <listPresentation>
     <key>ru</key>
-    <value>Реестр заказов (1С-Рарус)</value>
+    <value>Реестр заказов</value>
   </listPresentation>
   <numberType>String</numberType>
   <numberLength>9</numberLength>

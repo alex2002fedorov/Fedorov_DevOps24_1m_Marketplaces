@@ -3,7 +3,7 @@
   <name>НастройкаПодключенияТСД</name>
   <synonym>
     <key>ru</key>
-    <value>Настройка подключения ТСД (1С-Рарус)</value>
+    <value>Настройка подключения ТСД</value>
   </synonym>
   <usePurposes>PersonalComputer</usePurposes>
   <usePurposes>MobileDevice</usePurposes>

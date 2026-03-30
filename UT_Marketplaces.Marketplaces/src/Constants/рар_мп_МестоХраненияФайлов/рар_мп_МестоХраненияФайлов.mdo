@@ -8,7 +8,7 @@
   <name>рар_мп_МестоХраненияФайлов</name>
   <synonym>
     <key>ru</key>
-    <value>Место хранения файлов (1С-Рарус)</value>
+    <value>Место хранения файлов</value>
   </synonym>
   <type>
     <types>String</types>

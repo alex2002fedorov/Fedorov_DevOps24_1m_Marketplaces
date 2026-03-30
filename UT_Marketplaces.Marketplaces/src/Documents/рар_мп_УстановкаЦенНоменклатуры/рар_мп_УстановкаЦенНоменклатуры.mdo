@@ -10,7 +10,7 @@
   <name>рар_мп_УстановкаЦенНоменклатуры</name>
   <synonym>
     <key>ru</key>
-    <value>Установка цен номенклатуры для Маркетплейсов (1С-Рарус)</value>
+    <value>Установка цен номенклатуры для Маркетплейсов</value>
   </synonym>
   <useStandardCommands>true</useStandardCommands>
   <inputByString>Document.рар_мп_УстановкаЦенНоменклатуры.StandardAttribute.Number</inputByString>
@@ -20,11 +20,11 @@
   <fullTextSearch>Use</fullTextSearch>
   <objectPresentation>
     <key>ru</key>
-    <value>Установка цен номенклатуры для Маркетплейсов (1С-Рарус)</value>
+    <value>Установка цен номенклатуры для Маркетплейсов</value>
   </objectPresentation>
   <listPresentation>
     <key>ru</key>
-    <value>Установка цен номенклатуры для Маркетплейсов (1С-Рарус)</value>
+    <value>Установка цен номенклатуры для Маркетплейсов</value>
   </listPresentation>
   <explanation>
     <key>ru</key>

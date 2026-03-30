@@ -7,7 +7,7 @@
   <name>рар_мп_СопоставлениеСкладов</name>
   <synonym>
     <key>ru</key>
-    <value>Сопоставление складов (1С-Рарус)</value>
+    <value>Сопоставление складов</value>
   </synonym>
   <useStandardCommands>true</useStandardCommands>
   <defaultForm>DataProcessor.рар_мп_СопоставлениеСкладов.Form.Форма</defaultForm>

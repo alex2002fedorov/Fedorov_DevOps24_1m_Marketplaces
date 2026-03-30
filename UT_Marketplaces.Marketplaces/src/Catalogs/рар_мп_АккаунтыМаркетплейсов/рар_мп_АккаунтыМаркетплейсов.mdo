@@ -10,7 +10,7 @@
   <name>рар_мп_АккаунтыМаркетплейсов</name>
   <synonym>
     <key>ru</key>
-    <value>Аккаунты маркетплейсов (1С-Рарус)</value>
+    <value>Аккаунты маркетплейсов</value>
   </synonym>
   <useStandardCommands>true</useStandardCommands>
   <inputByString>Catalog.рар_мп_АккаунтыМаркетплейсов.StandardAttribute.Description</inputByString>

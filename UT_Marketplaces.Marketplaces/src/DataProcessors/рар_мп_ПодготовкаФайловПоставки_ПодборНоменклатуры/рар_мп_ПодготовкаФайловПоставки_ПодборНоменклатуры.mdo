@@ -7,7 +7,7 @@
   <name>рар_мп_ПодготовкаФайловПоставки_ПодборНоменклатуры</name>
   <synonym>
     <key>ru</key>
-    <value>Excel-файл товаров поставки (1С-Рарус)</value>
+    <value>Подбор номенклатуры для Excel-файл товаров поставки</value>
   </synonym>
   <useStandardCommands>true</useStandardCommands>
   <defaultForm>DataProcessor.рар_мп_ПодготовкаФайловПоставки_ПодборНоменклатуры.Form.ФормаПодбора</defaultForm>

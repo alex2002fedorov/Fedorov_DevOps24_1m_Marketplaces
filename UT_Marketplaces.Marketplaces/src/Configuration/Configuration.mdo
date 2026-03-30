@@ -111,7 +111,6 @@
   <commonModules>CommonModule.рар_мп_ОбновлениеЦен</commonModules>
   <commonModules>CommonModule.рар_мп_ОбработкаЗаказов</commonModules>
   <commonModules>CommonModule.рар_мп_ОтчетКомиссионера</commonModules>
-  <commonModules>CommonModule.рар_мп_РаботаССогласиемВызовСервера</commonModules>
   <commonModules>CommonModule.рар_мп_СозданиеНоменклатуры</commonModules>
   <commonModules>CommonModule.рар_мп_СопоставлениеСкладов</commonModules>
   <commonModules>CommonModule.рар_мп_СопоставлениеТоваров</commonModules>
@@ -142,14 +141,11 @@
   <constants>Constant.ЗагружатьВсюНоменклатуруВТСД</constants>
   <constants>Constant.ЛогинДляСервисов</constants>
   <constants>Constant.ПарольДляСервисов</constants>
-  <constants>Constant.рар_мп_ВерсияРасширения</constants>
   <constants>Constant.рар_мп_МестоХраненияФайлов</constants>
-  <constants>Constant.рар_мп_Согласие</constants>
   <commonForms>CommonForm.ЗарегистрироватьЛицензированиеТСД</commonForms>
   <commonForms>CommonForm.НастройкаПодключенияТСД</commonForms>
   <commonForms>CommonForm.НастройкаРаботыСТСД</commonForms>
   <commonForms>CommonForm.рар_мп_МестоХраненияФайлов</commonForms>
-  <commonForms>CommonForm.рар_мп_ПользовательскоеЛицензионноеСоглашение</commonForms>
   <commonForms>CommonForm.рар_мп_ФормаВыбораСопоставленныхСкладов</commonForms>
   <catalogs>Catalog.IDТСД</catalogs>
   <catalogs>Catalog.Валюты</catalogs>

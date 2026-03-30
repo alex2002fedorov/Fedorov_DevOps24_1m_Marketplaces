@@ -12,7 +12,7 @@
   <name>рар_мп_Wildberries_СопоставленныеТовары</name>
   <synonym>
     <key>ru</key>
-    <value>Сопоставленные товары Wildberries (1С-Рарус)</value>
+    <value>Сопоставленные товары Wildberries</value>
   </synonym>
   <useStandardCommands>true</useStandardCommands>
   <editType>InDialog</editType>

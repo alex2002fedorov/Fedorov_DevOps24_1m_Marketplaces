@@ -12,7 +12,7 @@
   <name>рар_мп_РегламентныеЗаданияРасширения</name>
   <synonym>
     <key>ru</key>
-    <value>Регламентные задания расширения (1С-Рарус)</value>
+    <value>Регламентные задания расширения</value>
   </synonym>
   <useStandardCommands>true</useStandardCommands>
   <editType>InDialog</editType>
