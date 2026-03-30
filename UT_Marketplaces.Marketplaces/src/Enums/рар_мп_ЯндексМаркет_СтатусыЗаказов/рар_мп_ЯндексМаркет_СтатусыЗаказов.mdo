@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Enum xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="d6e2dba9-40da-4a83-bda6-c4686094b80d">
+  <producedTypes>
+    <refType typeId="5988de22-dc9f-4bd7-962c-4a32c814fc4a" valueTypeId="5446914f-c438-4ce7-ae8c-c3c141830b84"/>
+    <listType typeId="c94c3985-6358-4e3f-8cdc-a7866de15c0a" valueTypeId="0ab2e617-21e6-4c0d-b383-90b917ce53d9"/>
+    <managerType typeId="ebc33541-cec9-484f-90fb-72ae6a53ab02" valueTypeId="4364548f-652c-416b-836e-09589b9dbb6e"/>
+  </producedTypes>
+  <name>рар_мп_ЯндексМаркет_СтатусыЗаказов</name>
+  <synonym>
+    <key>ru</key>
+    <value>Статусы заказов в Яндекс Маркете (1С-Рарус)</value>
+  </synonym>
+  <standardAttributes>
+    <dataHistory>Use</dataHistory>
+    <name>Order</name>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </standardAttributes>
+  <standardAttributes>
+    <dataHistory>Use</dataHistory>
+    <name>Ref</name>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </standardAttributes>
+  <quickChoice>true</quickChoice>
+  <choiceMode>BothWays</choiceMode>
+  <enumValues uuid="4f4f3bdb-a102-4577-862f-c0cbef3f3964">
+    <name>CANCELLED</name>
+    <synonym>
+      <key>ru</key>
+      <value>Отменён</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="e4ff2591-fdca-4dac-99e7-c8d4f6b9e4cc">
+    <name>DELIVERED</name>
+    <synonym>
+      <key>ru</key>
+      <value>Доставлен</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="66a1fbf9-d552-46fa-8afb-19cb7a7b31cb">
+    <name>DELIVERY</name>
+    <synonym>
+      <key>ru</key>
+      <value>Доставляется</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="86cc29df-57d7-4d69-97aa-e807b760cad3">
+    <name>PICKUP</name>
+    <synonym>
+      <key>ru</key>
+      <value>Доставлен в пункт выдачи</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="b8a06cd4-24f7-4b20-a859-828683a44206">
+    <name>PROCESSING</name>
+    <synonym>
+      <key>ru</key>
+      <value>Обрабатывается</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="e23bba1e-3b2c-4f2b-aa9e-fb02ff717fa5">
+    <name>UNPAID</name>
+    <synonym>
+      <key>ru</key>
+      <value>Ожидает оплаты</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="74581480-c87b-4945-be5c-a9908549a917">
+    <name>UNKNOWN</name>
+    <synonym>
+      <key>ru</key>
+      <value>Неизвестен</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="3e711dd2-928f-4167-bcb5-8bdf50f031b2">
+    <name>PENDING</name>
+    <synonym>
+      <key>ru</key>
+      <value>Ожидает подтверждения</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="aac5b97b-6602-4e30-b785-4f6fd9d134d7">
+    <name>RESERVED</name>
+    <synonym>
+      <key>ru</key>
+      <value>Товары зарезервированы</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="d58b5687-ca27-4338-bba5-9af9d35e0196">
+    <name>PLACING</name>
+    <synonym>
+      <key>ru</key>
+      <value>Покупатель начал оформление</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="67dbd265-b401-4a52-bf37-70207426fe63">
+    <name>PARTIALLY_RETURNED</name>
+    <synonym>
+      <key>ru</key>
+      <value>Заказ частично возвращен покупателем</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="43682b29-bbfc-4715-8c66-1ee040e61630">
+    <name>RETURNED</name>
+    <synonym>
+      <key>ru</key>
+      <value>Заказ полностью возвращен покупателем</value>
+    </synonym>
+  </enumValues>
+</mdclass:Enum>

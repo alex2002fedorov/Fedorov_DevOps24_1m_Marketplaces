@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Enum xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" xmlns:mdclassExtension="http://g5.1c.ru/v8/dt/metadata/mdclass/extension" uuid="2a67ae89-1c49-4f61-9c41-3e08c0f91f7b" extendedConfigurationObject="3fbae61b-24f4-476c-9f39-61919e9ac86f">
+  <producedTypes>
+    <refType typeId="87a11a26-72dd-45a0-b433-598c35bbef04" valueTypeId="e67d7980-aa6b-459b-a030-94b3e04dad94"/>
+    <listType typeId="50ea5aa8-c7ce-4106-973a-2547abba6551" valueTypeId="fb9212d0-0e94-4847-b108-db15fca52938"/>
+    <managerType typeId="4fc3dd7a-f2e2-4d14-a7a0-1e3cb05504ea" valueTypeId="e4a90b6b-26bc-456c-bf02-4672be3eb9cd"/>
+  </producedTypes>
+  <name>ВариантыРаспределенияРасходов</name>
+  <objectBelonging>Adopted</objectBelonging>
+  <extension xsi:type="mdclassExtension:EnumExtension">
+    <extendedConfigurationObject>Checked</extendedConfigurationObject>
+  </extension>
+  <enumValues uuid="0f46e9f6-280f-422d-968c-241197badfef" extendedConfigurationObject="805eda2b-2e89-43f7-a430-445dc577611a">
+    <name>НаНаправленияДеятельности</name>
+    <objectBelonging>Adopted</objectBelonging>
+    <extension xsi:type="mdclassExtension:MdObjectExtension">
+      <extendedConfigurationObject>Checked</extendedConfigurationObject>
+    </extension>
+  </enumValues>
+  <enumValues uuid="de64ebd3-801c-41c1-a0c4-9bd589b2d077" extendedConfigurationObject="9d67ea4b-b2b4-41a4-8388-3fbdaaeba330">
+    <name>НаСебестоимостьПродаж</name>
+    <objectBelonging>Adopted</objectBelonging>
+    <extension xsi:type="mdclassExtension:MdObjectExtension">
+      <extendedConfigurationObject>Checked</extendedConfigurationObject>
+    </extension>
+  </enumValues>
+</mdclass:Enum>

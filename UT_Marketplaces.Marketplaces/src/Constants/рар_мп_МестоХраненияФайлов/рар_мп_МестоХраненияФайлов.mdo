@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Constant xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="8f3c710a-b3cd-45f2-b835-c9a8ee7b42e4">
+  <producedTypes>
+    <managerType typeId="35bcb574-4c9f-4bb1-82f6-9137d0b44c43" valueTypeId="6b2a48cc-74ed-4878-9ea4-cb714bcf6b8d"/>
+    <valueManagerType typeId="72207922-843a-49da-9799-ee9be91296dd" valueTypeId="13aa7ecf-7cb3-4a90-b4a0-ad2d0968d233"/>
+    <valueKeyType typeId="99d3a84b-bbb5-4694-a2fc-3545667ed930" valueTypeId="d9594304-812b-43d0-8da6-beead34025bb"/>
+  </producedTypes>
+  <name>рар_мп_МестоХраненияФайлов</name>
+  <synonym>
+    <key>ru</key>
+    <value>Место хранения файлов (1С-Рарус)</value>
+  </synonym>
+  <type>
+    <types>String</types>
+    <stringQualifiers>
+      <length>500</length>
+    </stringQualifiers>
+  </type>
+  <useStandardCommands>true</useStandardCommands>
+  <defaultForm>CommonForm.рар_мп_МестоХраненияФайлов</defaultForm>
+  <minValue xsi:type="core:UndefinedValue"/>
+  <maxValue xsi:type="core:UndefinedValue"/>
+  <dataLockControlMode>Managed</dataLockControlMode>
+</mdclass:Constant>

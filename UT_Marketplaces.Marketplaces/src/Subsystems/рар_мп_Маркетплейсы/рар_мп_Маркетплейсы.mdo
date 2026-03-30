@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Subsystem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="9b5a014e-de43-4262-aa41-dbfa582c0ee6">
+  <name>рар_мп_Маркетплейсы</name>
+  <synonym>
+    <key>ru</key>
+    <value>Маркетплейсы (1С-Рарус)</value>
+  </synonym>
+  <includeHelpInContents>true</includeHelpInContents>
+  <includeInCommandInterface>true</includeInCommandInterface>
+  <picture xsi:type="core:PictureRef">
+    <picture>CommonPicture.рар_мп_МаркетплесыИконка</picture>
+  </picture>
+  <content>Catalog.рар_мп_АккаунтыМаркетплейсов</content>
+  <content>InformationRegister.рар_мп_СопоставленныеСклады</content>
+  <content>CommonPicture.рар_мп_МаркетплесыИконка</content>
+  <content>DataProcessor.рар_мп_СопоставлениеСкладов</content>
+  <content>InformationRegister.рар_мп_ЯндексМаркет_СопоставленныеТовары</content>
+  <content>InformationRegister.рар_мп_Ozon_СопоставленныеТовары</content>
+  <content>InformationRegister.рар_мп_Wildberries_СопоставленныеТовары</content>
+  <content>DataProcessor.рар_мп_СопоставлениеТоваров</content>
+  <content>Document.рар_мп_РеестрЗаказов</content>
+  <content>Constant.рар_мп_МестоХраненияФайлов</content>
+  <content>InformationRegister.рар_мп_РегламентныеЗаданияРасширения</content>
+  <content>Document.рар_мп_УстановкаЦенНоменклатуры</content>
+  <content>DataProcessor.рар_мп_Механизмы</content>
+  <content>DataProcessor.рар_мп_СозданиеНоменклатуры</content>
+  <content>DataProcessor.рар_мп_ЗагрузкаОтчетаКомиссионера</content>
+  <content>DataProcessor.рар_мп_ЗагрузкаПервоначальныхОстатков</content>
+  <content>Document.рар_мп_ПодготовкаФайловПоставки</content>
+  <content>DataProcessor.РегистрацияИзмененийДляОбменаДаннымиТСД</content>
+  <content>Constant.ЗагружатьВсюНоменклатуруВТСД</content>
+  <content>CommonForm.НастройкаПодключенияТСД</content>
+  <content>CommonForm.НастройкаРаботыСТСД</content>
+  <content>InformationRegister.рар_мп_ВидыНоменклатурыДляУчетаЧестногоЗнака</content>
+</mdclass:Subsystem>

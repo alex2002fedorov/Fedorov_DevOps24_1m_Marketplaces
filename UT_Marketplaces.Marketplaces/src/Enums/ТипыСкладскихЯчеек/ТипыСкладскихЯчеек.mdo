@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Enum xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" xmlns:mdclassExtension="http://g5.1c.ru/v8/dt/metadata/mdclass/extension" uuid="6617d82f-5958-439d-994f-33ac197be5d3" extendedConfigurationObject="ced20a30-7d1b-431b-8276-e247307df415">
+  <producedTypes>
+    <refType typeId="f3dddbbf-7a33-4d0b-bc9b-df1ecf69ed15" valueTypeId="3e68e4b2-c7c5-46e2-ace2-ef12647deb7d"/>
+    <listType typeId="ade0064a-527a-4342-8435-7e9d3c6affc6" valueTypeId="2eeb9e5f-ddcc-4f77-ab14-a7f470ea1320"/>
+    <managerType typeId="eee44cfe-3294-4cc9-b734-391662565947" valueTypeId="b93a51fb-9401-4f56-9714-43a3be899945"/>
+  </producedTypes>
+  <name>ТипыСкладскихЯчеек</name>
+  <objectBelonging>Adopted</objectBelonging>
+  <extension xsi:type="mdclassExtension:EnumExtension">
+    <extendedConfigurationObject>Checked</extendedConfigurationObject>
+  </extension>
+  <enumValues uuid="71b4d87e-640d-4f58-9a83-328566293c67" extendedConfigurationObject="cf81110b-4c80-447e-9456-a2b84197b1df">
+    <name>Приемка</name>
+    <objectBelonging>Adopted</objectBelonging>
+    <extension xsi:type="mdclassExtension:MdObjectExtension">
+      <extendedConfigurationObject>Checked</extendedConfigurationObject>
+    </extension>
+  </enumValues>
+</mdclass:Enum>

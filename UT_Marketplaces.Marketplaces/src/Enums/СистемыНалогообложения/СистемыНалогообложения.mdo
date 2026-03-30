@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Enum xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" xmlns:mdclassExtension="http://g5.1c.ru/v8/dt/metadata/mdclass/extension" uuid="58404c59-d80b-47b3-a65c-45e61cff715c" extendedConfigurationObject="89c3c225-6452-47bf-bc47-e4896b800c53">
+  <producedTypes>
+    <refType typeId="8dfc7746-b168-4654-890c-35a30fca9d8c" valueTypeId="6497462a-7e2a-4148-87a1-15d16702549d"/>
+    <listType typeId="c7707260-ad1a-4f50-bac3-29eb39cf9779" valueTypeId="8e60a119-a917-4cb5-a123-c41382042a9a"/>
+    <managerType typeId="bf558aba-e141-4f70-9226-49796986f369" valueTypeId="b31061b0-83c5-4b6a-8be3-86d3b0b11876"/>
+  </producedTypes>
+  <name>СистемыНалогообложения</name>
+  <objectBelonging>Adopted</objectBelonging>
+  <extension xsi:type="mdclassExtension:EnumExtension">
+    <extendedConfigurationObject>Checked</extendedConfigurationObject>
+  </extension>
+  <enumValues uuid="7bc4c229-8803-4329-bdf6-3b3b6c876700" extendedConfigurationObject="dd4329a2-18e7-4963-afc8-862868f583ff">
+    <name>Общая</name>
+    <objectBelonging>Adopted</objectBelonging>
+    <extension xsi:type="mdclassExtension:MdObjectExtension">
+      <extendedConfigurationObject>Checked</extendedConfigurationObject>
+    </extension>
+  </enumValues>
+  <enumValues uuid="696d3c9b-e1a5-40fe-8a4b-7f54850c0359" extendedConfigurationObject="223e730f-4f2a-4f41-ab2f-9fa9a5b3f485">
+    <name>Упрощенная</name>
+    <objectBelonging>Adopted</objectBelonging>
+    <extension xsi:type="mdclassExtension:MdObjectExtension">
+      <extendedConfigurationObject>Checked</extendedConfigurationObject>
+    </extension>
+  </enumValues>
+</mdclass:Enum>

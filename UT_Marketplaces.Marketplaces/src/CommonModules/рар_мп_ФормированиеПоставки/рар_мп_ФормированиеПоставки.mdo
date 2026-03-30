@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="1f606c89-51c3-4d6d-9d53-449844605369">
+  <name>рар_мп_ФормированиеПоставки</name>
+  <synonym>
+    <key>ru</key>
+    <value>Рар мп формирование поставки</value>
+  </synonym>
+  <server>true</server>
+  <serverCall>true</serverCall>
+</mdclass:CommonModule>

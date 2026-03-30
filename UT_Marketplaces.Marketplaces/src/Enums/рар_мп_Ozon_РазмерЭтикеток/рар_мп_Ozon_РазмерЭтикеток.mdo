@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Enum xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="ec0dc108-d7a0-4dd0-ab88-739e107cf242">
+  <producedTypes>
+    <refType typeId="56898b15-ba17-4c50-801c-1044dbe835cc" valueTypeId="38e27041-d87d-41ca-9b4d-ff6571649e97"/>
+    <listType typeId="ff7302e2-0ff3-47d1-b3dc-1643f24d3e57" valueTypeId="0d171689-b59d-4fdc-af16-ec1ec38d174f"/>
+    <managerType typeId="a2df0a09-620a-4d4b-ae26-b35391754cfe" valueTypeId="2db80030-3f13-4ae7-922a-d5af871a368a"/>
+  </producedTypes>
+  <name>рар_мп_Ozon_РазмерЭтикеток</name>
+  <synonym>
+    <key>ru</key>
+    <value>Размер этикеток в Ozon (1С-Рарус)</value>
+  </synonym>
+  <quickChoice>true</quickChoice>
+  <choiceMode>BothWays</choiceMode>
+  <enumValues uuid="c9bccade-e3e7-412f-b079-c22672684546">
+    <name>big_label</name>
+    <synonym>
+      <key>ru</key>
+      <value>Большая этикетка</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="c1f28d87-5a5f-4027-85e6-1c2441983905">
+    <name>small_label</name>
+    <synonym>
+      <key>ru</key>
+      <value>Маленькая этикетка</value>
+    </synonym>
+  </enumValues>
+</mdclass:Enum>

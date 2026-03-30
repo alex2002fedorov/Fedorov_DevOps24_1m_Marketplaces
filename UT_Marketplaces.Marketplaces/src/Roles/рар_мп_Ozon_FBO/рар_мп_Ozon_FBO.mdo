@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Role xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="bf19a306-3c37-4b21-8565-513aa4c549c4">
+  <name>рар_мп_Ozon_FBO</name>
+  <synonym>
+    <key>ru</key>
+    <value>Роль для работы с FBO в Ozon (1C-Рарус) </value>
+  </synonym>
+</mdclass:Role>

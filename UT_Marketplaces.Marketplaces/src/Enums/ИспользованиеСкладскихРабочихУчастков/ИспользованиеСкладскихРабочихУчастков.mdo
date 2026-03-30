@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Enum xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" xmlns:mdclassExtension="http://g5.1c.ru/v8/dt/metadata/mdclass/extension" uuid="fb95c094-f1d2-4349-95a9-69dd0a9baed9" extendedConfigurationObject="99acb177-461e-4f89-aea3-0fffd1ca2f23">
+  <producedTypes>
+    <refType typeId="bdb8a539-3805-4e94-8e58-5a3d2db3c1ce" valueTypeId="e27dfe4e-f625-49fe-9bf5-34446f19aedb"/>
+    <listType typeId="1d2f7c15-71b7-44b8-b7bb-e6262fd2fc2e" valueTypeId="5b5161d2-12a6-4b86-b9d5-8bdfa376125b"/>
+    <managerType typeId="cd6d5cd2-134c-47b9-862b-89e47ad44170" valueTypeId="6e17f974-3f7a-4e74-87bf-398e4866a9dd"/>
+  </producedTypes>
+  <name>ИспользованиеСкладскихРабочихУчастков</name>
+  <objectBelonging>Adopted</objectBelonging>
+  <extension xsi:type="mdclassExtension:EnumExtension">
+    <extendedConfigurationObject>Checked</extendedConfigurationObject>
+  </extension>
+  <enumValues uuid="fe6ff39e-08a5-4099-becf-0d33b08b3297" extendedConfigurationObject="f459e67e-cf42-4daf-9244-741825d76ad5">
+    <name>Использовать</name>
+    <objectBelonging>Adopted</objectBelonging>
+    <extension xsi:type="mdclassExtension:MdObjectExtension">
+      <extendedConfigurationObject>Checked</extendedConfigurationObject>
+    </extension>
+  </enumValues>
+</mdclass:Enum>

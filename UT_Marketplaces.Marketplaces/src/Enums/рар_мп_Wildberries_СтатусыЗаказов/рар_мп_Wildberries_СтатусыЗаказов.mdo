@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Enum xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="4e7a0339-3da6-489b-8b5a-5eb69a9783eb">
+  <producedTypes>
+    <refType typeId="d967ef17-4454-4023-8669-5e8a2290f034" valueTypeId="968874aa-bc8e-4f42-98da-b8dbef8c7c15"/>
+    <listType typeId="a455a962-3bab-4728-9e99-473fddbceaa0" valueTypeId="5f253444-a356-4c50-98af-0d78df544c59"/>
+    <managerType typeId="ce523437-96cc-47ab-a365-0f3d5d6cf287" valueTypeId="a6144970-0394-4fd5-b2af-08fc1bff81f6"/>
+  </producedTypes>
+  <name>рар_мп_Wildberries_СтатусыЗаказов</name>
+  <synonym>
+    <key>ru</key>
+    <value>Статусы заказов в Wildberries (1С-Рарус)</value>
+  </synonym>
+  <quickChoice>true</quickChoice>
+  <choiceMode>BothWays</choiceMode>
+  <enumValues uuid="879527bc-4b50-46db-8781-c7464fc0bb8a">
+    <name>waiting</name>
+    <synonym>
+      <key>ru</key>
+      <value>Сборочное задание в работе</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="69290896-d843-4382-9c87-7a60a42f88da">
+    <name>sorted</name>
+    <synonym>
+      <key>ru</key>
+      <value>Сборочное задание отсортировано</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="14c48677-063a-433c-b500-1e6ddd483b48">
+    <name>sold</name>
+    <synonym>
+      <key>ru</key>
+      <value>Сборочное задание получено покупателем</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="2c1c02a8-a0f8-4fe9-b2b0-30e3916535f2">
+    <name>canceled</name>
+    <synonym>
+      <key>ru</key>
+      <value>Отмена сборочного задания</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="e2ca01b1-80ce-4c1b-8a34-bed86c32130f">
+    <name>canceled_by_client</name>
+    <synonym>
+      <key>ru</key>
+      <value>Покупатель отменил заказ при получении</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="56023faf-c9a5-4800-86f9-2cf39b203d17">
+    <name>declined_by_client</name>
+    <synonym>
+      <key>ru</key>
+      <value>Покупатель отменил заказ</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="a31630ac-a4a3-4d2c-8815-2cb7df260509">
+    <name>defect</name>
+    <synonym>
+      <key>ru</key>
+      <value>Отмена сборочного задания по причине брака</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="1fe3872a-65be-4351-9174-379f609e99bb">
+    <name>ready_for_pickup</name>
+    <synonym>
+      <key>ru</key>
+      <value>Сборочное задание прибыло на пункт выдачи заказов (ПВЗ)</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="22a3e917-05d8-406f-a45b-4e7c2bb02e3e">
+    <name>canceled_by_missed_call</name>
+    <synonym>
+      <key>ru</key>
+      <value>Отмена заказа по причине недозвона</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="38255292-d851-48fe-b86d-207dd98210cf">
+    <name>postponed_delivery</name>
+    <synonym>
+      <key>ru</key>
+      <value>Курьерская доставка отложена</value>
+    </synonym>
+  </enumValues>
+</mdclass:Enum>

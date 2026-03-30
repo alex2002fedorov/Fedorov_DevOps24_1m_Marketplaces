@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Role xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="22b54692-2dc5-4edc-a354-06b9e68b4d79">
+  <name>рар_мп_Ozon</name>
+  <synonym>
+    <key>ru</key>
+    <value>Роль для работы с Ozon (1C-Рарус)</value>
+  </synonym>
+</mdclass:Role>

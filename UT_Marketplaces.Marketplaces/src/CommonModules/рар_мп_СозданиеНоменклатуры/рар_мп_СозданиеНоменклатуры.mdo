@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="1e4cafa0-878e-4ccd-b03d-1f5682b91dcb">
+  <name>рар_мп_СозданиеНоменклатуры</name>
+  <synonym>
+    <key>ru</key>
+    <value>Рар мп создание номенклатуры</value>
+  </synonym>
+  <server>true</server>
+</mdclass:CommonModule>

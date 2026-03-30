@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:EventSubscription xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="816caac0-96e4-41eb-bab4-fb932ada03b6">
+  <name>РегистрацияКОбменуСТСД</name>
+  <synonym>
+    <key>ru</key>
+    <value>Регистрация к обмену с ТСД</value>
+  </synonym>
+  <source>
+    <types>CatalogObject.Номенклатура</types>
+    <types>CatalogObject.ХарактеристикиНоменклатуры</types>
+    <types>CatalogObject.УпаковкиЕдиницыИзмерения</types>
+    <types>CatalogObject.ШтрихкодыУпаковокТоваров</types>
+  </source>
+  <event>BeforeWrite</event>
+  <handler>CommonModule.Обмен.РегистрацияКОбменуСТСДПередЗаписью</handler>
+</mdclass:EventSubscription>

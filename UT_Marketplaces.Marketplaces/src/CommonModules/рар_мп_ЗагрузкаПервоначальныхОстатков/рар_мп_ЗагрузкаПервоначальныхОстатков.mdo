@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="d758a856-c4c6-45c9-b07e-5a96b4697d22">
+  <name>рар_мп_ЗагрузкаПервоначальныхОстатков</name>
+  <synonym>
+    <key>ru</key>
+    <value>Загрузка первоначальных остатков</value>
+  </synonym>
+  <server>true</server>
+</mdclass:CommonModule>

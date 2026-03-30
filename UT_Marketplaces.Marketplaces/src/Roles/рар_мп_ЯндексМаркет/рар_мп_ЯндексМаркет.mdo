@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Role xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="57c1e0f1-b08b-47b6-a7ab-cb692959614e">
+  <name>рар_мп_ЯндексМаркет</name>
+  <synonym>
+    <key>ru</key>
+    <value>Роль для работы с Яндекс Маркет (1C-Рарус)</value>
+  </synonym>
+</mdclass:Role>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Enum xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="e494af3e-fec6-42a5-bf82-e3ea253bd2a0">
+  <producedTypes>
+    <refType typeId="7773901b-9676-4d32-8064-5c61e7989429" valueTypeId="c83cd1df-075a-4117-a7ba-f2598ca9df89"/>
+    <listType typeId="253d696a-be29-40b9-a2a8-bc15b2052b81" valueTypeId="32bba5d0-41b7-4f6f-bfbf-86540163b8d9"/>
+    <managerType typeId="92d920e0-23be-47fc-8382-21ff402fcd59" valueTypeId="d50f5065-75c2-4cfa-aacf-507510d9a2c1"/>
+  </producedTypes>
+  <name>рар_мп_ТипДокументаОтчетаКомиссионера</name>
+  <synonym>
+    <key>ru</key>
+    <value>Тип документа отчет комиссионера (1С-Рарус)</value>
+  </synonym>
+  <quickChoice>true</quickChoice>
+  <choiceMode>BothWays</choiceMode>
+  <enumValues uuid="75d5f372-9938-4377-8f62-baa73675f440">
+    <name>Продажа</name>
+    <synonym>
+      <key>ru</key>
+      <value>Продажа</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="b3411c97-54d6-4356-8678-7025d49449bb">
+    <name>Возврат</name>
+    <synonym>
+      <key>ru</key>
+      <value>Возврат</value>
+    </synonym>
+  </enumValues>
+</mdclass:Enum>

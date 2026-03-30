@@ -1,0 +1,815 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Enum xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="dde839c2-e3cb-487f-b68a-cad883bb2f85">
+  <producedTypes>
+    <refType typeId="41224387-a945-43d5-9b2a-9438eac3b5c8" valueTypeId="a3d4d1d1-3ef0-4125-905c-4a20b4df653f"/>
+    <listType typeId="00e3d01c-04cc-4744-a04c-b19859fdefa0" valueTypeId="9503155a-38ad-414e-8635-c5fdd19dd34f"/>
+    <managerType typeId="fb7203be-cca2-4ab9-9dde-f50a22ce9ec6" valueTypeId="b2aeae39-a411-478c-a4c5-bdbfcb326abb"/>
+  </producedTypes>
+  <name>рар_мп_ЯндексМаркет_ПодстатусыЗаказов</name>
+  <synonym>
+    <key>ru</key>
+    <value>Подстатусы заказов в Яндекс Маркете (1С-Рарус)</value>
+  </synonym>
+  <standardAttributes>
+    <dataHistory>Use</dataHistory>
+    <name>Order</name>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </standardAttributes>
+  <standardAttributes>
+    <dataHistory>Use</dataHistory>
+    <name>Ref</name>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </standardAttributes>
+  <quickChoice>true</quickChoice>
+  <choiceMode>BothWays</choiceMode>
+  <enumValues uuid="25c9793a-97b4-4fae-8896-8dcc21708c0e">
+    <name>STARTED</name>
+    <synonym>
+      <key>ru</key>
+      <value>Заказ подтвержден, его можно начать обрабатывать.</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="7030680d-023d-4118-bd63-3266683a1d73">
+    <name>READY_TO_SHIP</name>
+    <synonym>
+      <key>ru</key>
+      <value>Заказ собран и готов к отправке.</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="2d7cca58-b934-4d7b-a221-6581f0a312fa">
+    <name>REPLACING_ORDER</name>
+    <synonym>
+      <key>ru</key>
+      <value>Покупатель решил заменить товар другим по собственной инициативе.</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="37adf6ac-462f-4218-81c9-038f386bd9a8">
+    <name>RESERVATION_EXPIRED</name>
+    <synonym>
+      <key>ru</key>
+      <value>Покупатель не завершил оформление зарезервированного заказа в течение 10 минут.</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="70fe5e9f-9dc5-4f77-a3e3-729f415bf281">
+    <name>SHOP_FAILED</name>
+    <synonym>
+      <key>ru</key>
+      <value>Магазин не может выполнить заказ.</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="b48b87fc-4093-4c64-923b-66014e4b6ca6">
+    <name>USER_CHANGED_MIND</name>
+    <synonym>
+      <key>ru</key>
+      <value>Покупатель отменил заказ по личным причинам.</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="20708ee1-ecab-405b-a77c-b1553f6548e2">
+    <name>USER_NOT_PAID</name>
+    <synonym>
+      <key>ru</key>
+      <value>Покупатель не оплатил заказ (для типа оплаты PREPAID) в течение 30 минут.</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="c001eb44-6311-4bea-bdba-5f7ea47e7150">
+    <name>USER_REFUSED_DELIVERY</name>
+    <synonym>
+      <key>ru</key>
+      <value>Покупателя не устроили условия доставки.</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="508d9e14-2855-4df1-8779-d733ab77a262">
+    <name>USER_REFUSED_PRODUCT</name>
+    <synonym>
+      <key>ru</key>
+      <value>Покупателю не подошел товар.</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="a3c090bf-3297-48b4-9f5c-4aa5d5399998">
+    <name>USER_REFUSED_QUALITY</name>
+    <synonym>
+      <key>ru</key>
+      <value>Покупателя не устроило качество товара.</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="8d6d640d-341d-4762-ac8e-049c6c03bc1d">
+    <name>USER_UNREACHABLE</name>
+    <synonym>
+      <key>ru</key>
+      <value>Не удалось связаться с покупателем.</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="f8bf65c5-2192-41c6-9f7f-96e168e4a3bc">
+    <name>PENDING_EXPIRED</name>
+    <synonym>
+      <key>ru</key>
+      <value>Срок ожидания истек</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="664d68bf-8e0b-4c98-b57f-cfebf55df5b7">
+    <name>SHOP_PENDING_CANCELLED</name>
+    <synonym>
+      <key>ru</key>
+      <value>Ожидающий заказ отменен</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="1abc9ea8-80ff-4c8c-b76e-e4af1b44afd1">
+    <name>PENDING_CANCELLED</name>
+    <synonym>
+      <key>ru</key>
+      <value>Отложенный заказ отменен</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="45d9c304-426a-40dc-b663-8bddd057963a">
+    <name>USER_FRAUD</name>
+    <synonym>
+      <key>ru</key>
+      <value>Мошенничество с пользователями</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="2ff446d3-6830-4839-8c6c-35349d198cf3">
+    <name>RESERVATION_FAILED</name>
+    <synonym>
+      <key>ru</key>
+      <value>Ошибка резервирования</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="38f3815c-6172-43e7-8481-9ba9f003a9c6">
+    <name>USER_PLACED_OTHER_ORDER</name>
+    <synonym>
+      <key>ru</key>
+      <value>Пользователь сделал другой заказ</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="fecfebdc-9dc5-42b0-9490-50b7b8c33919">
+    <name>USER_BOUGHT_CHEAPER</name>
+    <synonym>
+      <key>ru</key>
+      <value>Пользователь купил дешевле</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="1fcdda4a-69e7-4bc1-9a21-2c5f18bb7b8f">
+    <name>MISSING_ITEM</name>
+    <synonym>
+      <key>ru</key>
+      <value>Пропавший товар</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="cecc52fc-bba4-4f04-97f9-1877794630fb">
+    <name>BROKEN_ITEM</name>
+    <synonym>
+      <key>ru</key>
+      <value>Сломанный товар</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="c1ed3185-d634-41d5-ab99-95f966d774c1">
+    <name>WRONG_ITEM</name>
+    <synonym>
+      <key>ru</key>
+      <value>Неправильный товар</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="ea8e12cc-4026-4a67-95c2-4d92a6dd0eb8">
+    <name>PICKUP_EXPIRED</name>
+    <synonym>
+      <key>ru</key>
+      <value>Срок доставки истек</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="f29d6b39-445f-48a7-95de-50033ff63b1c">
+    <name>DELIVERY_PROBLEMS</name>
+    <synonym>
+      <key>ru</key>
+      <value>Проблемы с доставкой</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="c9dd37bb-1e2b-4623-9e5c-c56c18142833">
+    <name>LATE_CONTACT</name>
+    <synonym>
+      <key>ru</key>
+      <value>Поздний контакт</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="95f3b2b4-ff93-490c-9e1d-1eab2462b033">
+    <name>CUSTOM</name>
+    <synonym>
+      <key>ru</key>
+      <value>Индивидуальный заказ</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="1a2d7c7c-c41f-46f7-86a8-1255f343dd43">
+    <name>DELIVERY_SERVICE_FAILED</name>
+    <synonym>
+      <key>ru</key>
+      <value>Сбой в работе службы доставки</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="80d75626-64d2-49f8-999e-f6a2b82498ff">
+    <name>WAREHOUSE_FAILED_TO_SHIP</name>
+    <synonym>
+      <key>ru</key>
+      <value>Склад не смог отгрузить товар</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="44ee4cf4-aaa2-4aa4-8a8a-de1f2996ed70">
+    <name>DELIVERY_SERIVCE_UNDELIVERED</name>
+    <synonym>
+      <key>ru</key>
+      <value>Служба доставки не доставила заказ</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="73878a65-a4c5-41a4-aa6c-9a6dfe97490d">
+    <name>PREORDER</name>
+    <synonym>
+      <key>ru</key>
+      <value>Оформлен предварительный заказ</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="2662805b-f94a-45fd-9807-9c64bbaf3d8e">
+    <name>AWAIT_CONFIRMATION</name>
+    <synonym>
+      <key>ru</key>
+      <value>Ожидание подтверждения</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="56555f7b-26c4-488c-a66c-1af6ff6ac6a7">
+    <name>PACKAGING</name>
+    <synonym>
+      <key>ru</key>
+      <value>Упаковывается</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="e4ab0f4b-d6c9-4046-8228-66659a3c456f">
+    <name>SHIPPED</name>
+    <synonym>
+      <key>ru</key>
+      <value>Отгруженный</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="61d0133d-72fd-47ed-a825-a1cfad2c1470">
+    <name>ASYNC_PROCESSING</name>
+    <synonym>
+      <key>ru</key>
+      <value>Асинхронная обработка</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="21e22a22-8af0-4522-8daf-41f3eeab552c">
+    <name>USER_REFUSED_TO_PROVIDE_PERSONAL_DATA</name>
+    <synonym>
+      <key>ru</key>
+      <value>Пользователь отказался предоставить персональные данные</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="a08f11af-ec63-49ce-9250-7eba390709cf">
+    <name>WAITING_USER_INPUT</name>
+    <synonym>
+      <key>ru</key>
+      <value>Ожидание ввода данных пользователем</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="9420832a-add1-4d60-a3e7-706dc7891709">
+    <name>WAITING_BANK_DECISION</name>
+    <synonym>
+      <key>ru</key>
+      <value>Ожидание решения банка</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="d538afdc-bef0-498a-a0a7-17026f2168c8">
+    <name>BANK_REJECT_CREDIT_OFFER</name>
+    <synonym>
+      <key>ru</key>
+      <value>Банк отклонил кредитное предложение</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="72c55749-1b44-4b1b-9adb-771afc1b30d6">
+    <name>CUSTOMER_REJECT_CREDIT_OFFER</name>
+    <synonym>
+      <key>ru</key>
+      <value>Клиент отклонил кредитное предложение</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="af2f7ed1-3109-4fed-b2c9-d450ea47ac52">
+    <name>CREDIT_OFFER_FAILED</name>
+    <synonym>
+      <key>ru</key>
+      <value>Кредитное предложение отклонено</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="7db232f9-7828-4916-aff8-78d68fa8db9f">
+    <name>AWAIT_DELIVERY_DATES_CONFIRMATION</name>
+    <synonym>
+      <key>ru</key>
+      <value>Ожидание подтверждения даты поставки</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="e5853a52-9374-4e0d-b1f3-20dd92d9aa8a">
+    <name>SERVICE_FAULT</name>
+    <synonym>
+      <key>ru</key>
+      <value>Неисправность в обслуживании</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="92dfc109-c0a2-42ca-847b-cbd98553b897">
+    <name>DELIVERY_SERVICE_RECEIVED</name>
+    <synonym>
+      <key>ru</key>
+      <value>Служба достаки получила заказы</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="cf90ee5e-5f10-496e-8c70-8a2d3599ed37">
+    <name>USER_RECEIVED</name>
+    <synonym>
+      <key>ru</key>
+      <value>Покупатель получил</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="deb6ffb7-2637-4f38-b5e8-a161f3b95708">
+    <name>WAITING_FOR_STOCKS</name>
+    <synonym>
+      <key>ru</key>
+      <value>Ожидание акций</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="e258ff5f-fc82-40cd-a45c-3c54924d5586">
+    <name>AS_PART_OF_MULTI_ORDER</name>
+    <synonym>
+      <key>ru</key>
+      <value>Часть многозадачного заказа</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="2c6d9e82-9a67-4346-92fd-cebb194eb329">
+    <name>READY_FOR_LAST_MILE</name>
+    <synonym>
+      <key>ru</key>
+      <value>Готовы к последнему шагу</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="724f8a0e-3b15-4df3-9998-33d9a225fcf7">
+    <name>LAST_MILE_STARTED</name>
+    <synonym>
+      <key>ru</key>
+      <value>Последний шаг начался</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="46977a3d-32e2-4e68-927e-132eaa27cdfc">
+    <name>ANTIFRAUD</name>
+    <synonym>
+      <key>ru</key>
+      <value>Защита от мошенничества</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="9a0f77ec-ad77-4a01-9433-8d01aac49685">
+    <name>DELIVERY_USER_NOT_RECEIVED</name>
+    <synonym>
+      <key>ru</key>
+      <value>Пользователь не получил доставку</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="1886d0ce-7e42-4e01-a827-15ff8fe10bb5">
+    <name>DELIVERY_SERVICE_DELIVERED</name>
+    <synonym>
+      <key>ru</key>
+      <value>Служба доставки доставила заказы</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="6e2c60a6-9702-4c39-84a0-15fd48891bc7">
+    <name>DELIVERED_USER_NOT_RECEIVED</name>
+    <synonym>
+      <key>ru</key>
+      <value>Доставленный заказ не получен пользователем</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="039e6445-2bd7-47b9-9e7f-519fb6dcd0e0">
+    <name>USER_WANTED_ANOTHER_PAYMENT_METHOD</name>
+    <synonym>
+      <key>ru</key>
+      <value>Пользователь использовал другой способ оплаты</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="19bcbb70-3820-45b6-8b2f-c10b5a8e56d5">
+    <name>USER_RECEIVED_TECHNICAL_ERROR</name>
+    <synonym>
+      <key>ru</key>
+      <value>Пользователь получил техническую ошибку</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="381231da-c576-41f0-a1c2-64cfc7186b10">
+    <name>USER_FORGOT_TO_USE_BONUS</name>
+    <synonym>
+      <key>ru</key>
+      <value>Пользователь забыл вопользоваться бонусом</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="7115340a-9aa5-4747-a053-54b0024149c4">
+    <name>RECEIVED_ON_DISTRIBUTION_CENTER</name>
+    <synonym>
+      <key>ru</key>
+      <value>Заказы получены в распределительном центре</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="ffb1bdc2-1983-426e-8d98-ea425588896c">
+    <name>DELIVERY_SERVICE_NOT_RECEIVED</name>
+    <synonym>
+      <key>ru</key>
+      <value>Служба доставки не получила заказ</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="5eea7203-31c9-4948-9967-49a05c7a4b3d">
+    <name>DELIVERY_SERVICE_LOST</name>
+    <synonym>
+      <key>ru</key>
+      <value>Служба доставки потеряла заказ</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="c0b637d3-321a-4b2e-8ad8-387a867b5fe7">
+    <name>SHIPPED_TO_WRONG_DELIVERY_SERVICE</name>
+    <synonym>
+      <key>ru</key>
+      <value>Отправлено не в ту службу доставки</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="59520f5d-9431-4121-8a82-5c827792a0a7">
+    <name>DELIVERED_USER_RECEIVED</name>
+    <synonym>
+      <key>ru</key>
+      <value>Доставленный заказ получен пользователем</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="bb9a37fc-9aca-4244-89d7-c9fae78f642a">
+    <name>WAITING_TINKOFF_DECISION</name>
+    <synonym>
+      <key>ru</key>
+      <value>Ожидание решения Тинькофф</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="dff091b7-64e3-447d-acb5-2adb6f6816a1">
+    <name>COURIER_SEARCH</name>
+    <synonym>
+      <key>ru</key>
+      <value>Поиск курьера</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="616fe3f7-52a0-4f1b-84e9-01454c3d9650">
+    <name>COURIER_FOUND</name>
+    <synonym>
+      <key>ru</key>
+      <value>Курьер найден</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="d04cbd1a-1627-4bc7-8cd4-1335a44fcc91">
+    <name>COURIER_IN_TRANSIT_TO_SENDER</name>
+    <synonym>
+      <key>ru</key>
+      <value>Курьер в пути к отправителю</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="78fb2251-b616-4e3e-b2c7-19741df5e97d">
+    <name>COURIER_ARRIVED_TO_SENDER</name>
+    <synonym>
+      <key>ru</key>
+      <value>Курьер прибыл к отправителю</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="c0814505-07ab-4aa5-b1d2-34c136586264">
+    <name>COURIER_RECEIVED</name>
+    <synonym>
+      <key>ru</key>
+      <value>Получен курьером</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="da7a5af5-b0b1-4673-9cbd-a06fd378d552">
+    <name>COURIER_NOT_FOUND</name>
+    <synonym>
+      <key>ru</key>
+      <value>Курьер не найден</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="b756edac-a7ed-4f29-9f3a-501fa6668c10">
+    <name>COURIER_NOT_DELIVER_ORDER</name>
+    <synonym>
+      <key>ru</key>
+      <value>Курьер не доставил заказ</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="49500d89-9e18-448c-9de3-6d9f88bf9c67">
+    <name>COURIER_RETURNS_ORDER</name>
+    <synonym>
+      <key>ru</key>
+      <value>Курьер возвращает заказ</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="a96c70cd-3086-4975-8b61-44097ef79655">
+    <name>COURIER_RETURNED_ORDER</name>
+    <synonym>
+      <key>ru</key>
+      <value>Курьер вернул заказ</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="a2d483ca-9c57-4603-b3c1-7ee8aa8d07e2">
+    <name>WAITING_USER_DELIVERY_INPUT</name>
+    <synonym>
+      <key>ru</key>
+      <value>Ожидание ввода пользовательской доставки</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="c7af249a-90e2-4b18-be9c-8ce309cec081">
+    <name>PICKUP_SERVICE_RECEIVED</name>
+    <synonym>
+      <key>ru</key>
+      <value>Получена услуга самовывоза</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="ef3bf5e7-9f84-4ea2-9604-1da84531fa60">
+    <name>PICKUP_USER_RECEIVED</name>
+    <synonym>
+      <key>ru</key>
+      <value>Пользователь самовывоза получил заказ</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="e8d155c4-dbd1-4aad-88a8-efa46bb0ec0e">
+    <name>CANCELLED_COURIER_NOT_FOUND</name>
+    <synonym>
+      <key>ru</key>
+      <value>Отмененный курьер не найден</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="9a39c96f-5fe9-4314-9e3e-6ea8a3ed6417">
+    <name>COURIER_NOT_COME_FOR_ORDER</name>
+    <synonym>
+      <key>ru</key>
+      <value>Курьер не пришел за заказом</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="b29629ca-c555-469b-8ccc-2dfb44c831fb">
+    <name>DELIVERY_NOT_MANAGED_REGION</name>
+    <synonym>
+      <key>ru</key>
+      <value>Доставка в неуправляемый регион</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="f1feedf9-42cb-4b5b-ae7c-5209398ff34d">
+    <name>INCOMPLETE_CONTACT_INFORMATION</name>
+    <synonym>
+      <key>ru</key>
+      <value>Не полная контактная информация</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="1966d4ca-b280-47c0-b97f-fd6b4baa47d3">
+    <name>INCOMPLETE_MULTI_ORDER</name>
+    <synonym>
+      <key>ru</key>
+      <value>Неполный многозадачный заказ</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="54931ec9-c33c-4d04-b0ce-8cfd30013079">
+    <name>INAPPROPRIATE_WEIGHT_SIZE</name>
+    <synonym>
+      <key>ru</key>
+      <value>Неподходящий вес и размер</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="89c1d644-b953-4dce-907c-51ca942801c1">
+    <name>TECHNICAL_ERROR</name>
+    <synonym>
+      <key>ru</key>
+      <value>Техническая ошибка</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="612479e5-4541-4eae-8ba3-6f307e57cc32">
+    <name>SORTING_CENTER_LOST</name>
+    <synonym>
+      <key>ru</key>
+      <value>Утерян в сортировочном центре</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="c852901d-d9dd-42d2-ba9d-0b3df37a9e4c">
+    <name>COURIER_SEARCH_NOT_STARTED</name>
+    <synonym>
+      <key>ru</key>
+      <value>Поиск курьера не начат</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="ffd67102-5ae3-450f-85d1-51e4e34fa094">
+    <name>LOST</name>
+    <synonym>
+      <key>ru</key>
+      <value>Потерян</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="566d0d1a-a31f-4a15-98c7-49687d9d6f07">
+    <name>AWAIT_PAYMENT</name>
+    <synonym>
+      <key>ru</key>
+      <value>Ожидание оплаты</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="86d72743-2ff4-48d6-ab20-eca7d88afcd1">
+    <name>AWAIT_LAVKA_RESERVATION</name>
+    <synonym>
+      <key>ru</key>
+      <value>Ожидание бронирования в лавке</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="df805cda-82c1-4595-9ed3-f87d67e7a606">
+    <name>USER_WANTS_TO_CHANGE_ADDRESS</name>
+    <synonym>
+      <key>ru</key>
+      <value>Пользователь хочет изменить адрес</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="51b5bb2d-7a99-498a-a887-d8d896f12bcb">
+    <name>FULL_NOT_RANSOM</name>
+    <synonym>
+      <key>ru</key>
+      <value>Полный отказ от передачи</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="43d22eb1-a2a2-4ee5-9350-31ac02f739e5">
+    <name>PRESCRIPTION_MISMATCH</name>
+    <synonym>
+      <key>ru</key>
+      <value>Несоответствие рецептуры</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="fad75d9f-bac6-4a07-8b54-c8e51a2089f8">
+    <name>DROPOFF_LOST</name>
+    <synonym>
+      <key>ru</key>
+      <value>Высадка потеряна</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="ba83fa25-5e78-4466-8599-40f0033c188f">
+    <name>DROPOFF_CLOSED</name>
+    <synonym>
+      <key>ru</key>
+      <value>Высадка закрыта</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="16961281-3893-4daf-822a-7b2f74bd004f">
+    <name>DELIVERY_TO_STORE_STARTED</name>
+    <synonym>
+      <key>ru</key>
+      <value>Началась поставка в магазин</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="7e5a4e32-0db4-4fe5-a324-ddbcac4ac085">
+    <name>USER_WANTS_TO_CHANGE_DELIVERY_DATE</name>
+    <synonym>
+      <key>ru</key>
+      <value>Пользватель хочет изменить дату доставки</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="64524481-3c7c-46bd-9713-d7df3712d36d">
+    <name>WRONG_ITEM_DELIVERED</name>
+    <synonym>
+      <key>ru</key>
+      <value>Доставлен не правильный товар</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="dcca6a89-e13a-4a06-ab56-3c68434fd08e">
+    <name>DAMAGED_BOX</name>
+    <synonym>
+      <key>ru</key>
+      <value>Повреждена коробка</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="feedf44f-5b98-4a94-9923-e0d140c0e205">
+    <name>AWAIT_DELIVERY_DATES</name>
+    <synonym>
+      <key>ru</key>
+      <value>Ожидание даты поставки</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="1b0cf6dd-3ddf-4ea0-9c48-2d991c450b09">
+    <name>LAST_MILE_COURIER_SEARCH</name>
+    <synonym>
+      <key>ru</key>
+      <value>Поиск курьера на последнем этапе</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="ff06db70-e0ac-4709-814c-c820f1591d80">
+    <name>PICKUP_POINT_CLOSED</name>
+    <synonym>
+      <key>ru</key>
+      <value>Пункт самовывоза закрыт</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="9e33f03f-645f-4682-bd5c-ec473428dcdf">
+    <name>LEGAL_INFO_CHANGED</name>
+    <synonym>
+      <key>ru</key>
+      <value>Изменена юридическая информация</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="4ea054d6-1e0e-4fd4-aa8d-649ff363410a">
+    <name>USER_HAS_NO_TIME_TO_PICKUP_ORDER</name>
+    <synonym>
+      <key>ru</key>
+      <value>У пользователя нет времени забрать заказ</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="8317b092-752d-4577-811f-3d1dec777787">
+    <name>DELIVERY_CUSTOMS_ARRIVED</name>
+    <synonym>
+      <key>ru</key>
+      <value>Прибыла пользовательская доставка</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="e7086cb7-5829-462b-bc40-f12e1c6e1501">
+    <name>DELIVERY_CUSTOMS_CLEARED</name>
+    <synonym>
+      <key>ru</key>
+      <value>Доставка проходит пользовательскую очистку</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="c5f91079-5cfd-414d-937d-b94c043fc17e">
+    <name>FIRST_MILE_DELIVERY_SERVICE_RECEIVED</name>
+    <synonym>
+      <key>ru</key>
+      <value>Служба доставки получичила заказ</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="9f0583a3-5b39-4d4d-8f7c-c1c76d3beea1">
+    <name>AWAIT_AUTO_DELIVERY_DATES</name>
+    <synonym>
+      <key>ru</key>
+      <value>Ожидание автоматической даты доставки</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="466927ed-f28f-40d7-906e-3f42ba426cdd">
+    <name>AWAIT_USER_PERSONAL_DATA</name>
+    <synonym>
+      <key>ru</key>
+      <value>Ожидание получения персональных данных пользователя</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="e1092462-c73d-46a4-b3f8-2d1486f3b4d7">
+    <name>NO_PERSONAL_DATA_EXPIRED</name>
+    <synonym>
+      <key>ru</key>
+      <value>Срок действия персональных данных не истек</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="f76378c4-13c3-4463-b849-e54ddfa52bee">
+    <name>CUSTOMS_PROBLEMS</name>
+    <synonym>
+      <key>ru</key>
+      <value>Пользовательские проблемы</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="995e1bb6-55de-4c47-ad49-b9d443367d46">
+    <name>AWAIT_CASHIER</name>
+    <synonym>
+      <key>ru</key>
+      <value>Ожидание кассира</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="a247fb03-90f1-4337-873b-56e064716a2b">
+    <name>WAITING_POSTPAID_BUDGET_RESERVATION</name>
+    <synonym>
+      <key>ru</key>
+      <value>Ожидание постоплатного бюджетного резервирования</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="68c84397-22a6-4541-af7a-28a7ffe350c0">
+    <name>AWAIT_SERVICEABLE_CONFIRMATION</name>
+    <synonym>
+      <key>ru</key>
+      <value>Ожидание подтверждения работоспособности</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="4a388b11-c1f9-4df4-9f9c-1c791a2eeb4d">
+    <name>POSTPAID_BUDGET_RESERVATION_FAILED</name>
+    <synonym>
+      <key>ru</key>
+      <value>Не удалось зарезервировать постоплатный бюджет</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="ceb3c22d-0cc4-4c12-a9b7-c3881aa96199">
+    <name>AWAIT_CUSTOM_PRICE_CONFIRMATION</name>
+    <synonym>
+      <key>ru</key>
+      <value>Ожидание подтверждения индивидульной цены</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="eb4aba26-db5a-4f1f-ba90-6eccc93ccc44">
+    <name>UNKNOWN</name>
+    <synonym>
+      <key>ru</key>
+      <value>Неизвестно</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="26bc22ee-0306-4926-9815-e297c641b01c">
+    <name>DELIVERY_SERVICE_UNDELIVERED</name>
+    <synonym>
+      <key>ru</key>
+      <value>Служба доставки не смогла доставить заказ</value>
+    </synonym>
+  </enumValues>
+</mdclass:Enum>

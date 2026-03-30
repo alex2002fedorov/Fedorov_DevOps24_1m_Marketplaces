@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Enum xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="91c45cc6-555c-4d51-bfcb-01a48e4c411a">
+  <producedTypes>
+    <refType typeId="eef68b17-071e-472e-8954-967e612f26c8" valueTypeId="7db2c86c-0a4c-4579-aa0f-a4b4a666763e"/>
+    <listType typeId="8d3efbb9-f4ff-478f-aac4-81c121dcd65a" valueTypeId="3ada8418-cb96-41b4-a187-4b371a4b1fe1"/>
+    <managerType typeId="b3f33c7f-027b-409b-9c86-6044b65ff8b5" valueTypeId="0f460d0a-50d3-4ea9-bcf3-aeb13eaeec5d"/>
+  </producedTypes>
+  <name>рар_мп_Маркетплейсы</name>
+  <synonym>
+    <key>ru</key>
+    <value>Маркетплейсы (1С-Рарус)</value>
+  </synonym>
+  <quickChoice>true</quickChoice>
+  <choiceMode>BothWays</choiceMode>
+  <enumValues uuid="47461dfe-e05c-44bb-b286-7dabd2e4b648">
+    <name>OZON</name>
+    <synonym>
+      <key>ru</key>
+      <value>OZON</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="dc255151-a54f-4e1d-9f95-f1b426c7f878">
+    <name>ЯндексМаркет</name>
+    <synonym>
+      <key>ru</key>
+      <value>Яндекс Маркет</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="f9d5675c-470c-405b-9356-b1e3fc6ea63b">
+    <name>Wildberries</name>
+    <synonym>
+      <key>ru</key>
+      <value>Wildberries</value>
+    </synonym>
+  </enumValues>
+</mdclass:Enum>

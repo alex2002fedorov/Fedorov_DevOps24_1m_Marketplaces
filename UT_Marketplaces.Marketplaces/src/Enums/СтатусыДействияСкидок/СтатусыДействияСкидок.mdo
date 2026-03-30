@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Enum xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" xmlns:mdclassExtension="http://g5.1c.ru/v8/dt/metadata/mdclass/extension" uuid="9c2a7d52-d655-4146-b600-c7cc34858f88" extendedConfigurationObject="4f2797d5-08be-4cf3-9245-16605886fa45">
+  <producedTypes>
+    <refType typeId="5fcf2057-81ee-46cd-9b90-445930a26c26" valueTypeId="8acd9bfd-3e54-4047-abbb-0786c3265534"/>
+    <listType typeId="ff7c1381-db43-42bf-9472-8f69502e7786" valueTypeId="4b9a84fe-9b83-4caa-8903-4bee27e091b0"/>
+    <managerType typeId="38de6351-bae4-43bf-a67c-f68a717d5607" valueTypeId="4b9b8b50-5482-468c-94f6-be02525064c8"/>
+  </producedTypes>
+  <name>СтатусыДействияСкидок</name>
+  <objectBelonging>Adopted</objectBelonging>
+  <extension xsi:type="mdclassExtension:EnumExtension">
+    <extendedConfigurationObject>Checked</extendedConfigurationObject>
+  </extension>
+</mdclass:Enum>

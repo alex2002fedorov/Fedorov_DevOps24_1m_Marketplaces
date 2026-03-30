@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Enum xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="782efbf1-beba-4960-9300-bcb297357737">
+  <producedTypes>
+    <refType typeId="ca5574a9-9749-4012-9cc0-891796551656" valueTypeId="b49895da-e9f5-4478-b684-d377d359d188"/>
+    <listType typeId="17192e75-e521-40c4-ad14-e43be5f0593c" valueTypeId="e26d87a8-acde-451c-ad64-1f9eb12d2a59"/>
+    <managerType typeId="68217bef-e72e-494c-bac4-296f6ad721c0" valueTypeId="33486f3f-a83b-4ebf-948c-91f463921b5a"/>
+  </producedTypes>
+  <name>рар_мп_Wildberries_СтатусыОбработкиЗаказов</name>
+  <synonym>
+    <key>ru</key>
+    <value>Статусы обработки заказов в Wildberries (1С-Рарус)</value>
+  </synonym>
+  <quickChoice>true</quickChoice>
+  <choiceMode>BothWays</choiceMode>
+  <enumValues uuid="bb94cdef-1e39-4095-aa31-a3f1c25a6f4a">
+    <name>new</name>
+    <synonym>
+      <key>ru</key>
+      <value>Новое сборочное задание</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="123c71f8-98f8-44ba-9642-385f3edbf360">
+    <name>confirm</name>
+    <synonym>
+      <key>ru</key>
+      <value>На сборке</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="7430ec99-67e2-4df6-a6fd-956a57f1a80c">
+    <name>complete</name>
+    <synonym>
+      <key>ru</key>
+      <value>В доставке</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="228ae421-a13d-415a-a051-d2923eb6de37">
+    <name>cancel</name>
+    <synonym>
+      <key>ru</key>
+      <value>Отменено продавцом</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="31323aa6-4240-4ae0-afa9-6d961ea457a4">
+    <name>cancel_missed_call</name>
+    <synonym>
+      <key>ru</key>
+      <value>Отмена заказа по причине недозвона</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="34869664-3583-4eac-8218-02464cef78d9">
+    <name>deliver</name>
+    <synonym>
+      <key>ru</key>
+      <value>В доставке</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="57131764-ff4e-4242-80aa-5708c2fc36ca">
+    <name>receive</name>
+    <synonym>
+      <key>ru</key>
+      <value>Получено клиентом</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="2c224389-d94d-454a-9730-2484e26c7c1c">
+    <name>reject</name>
+    <synonym>
+      <key>ru</key>
+      <value>Отказ клиента при получении</value>
+    </synonym>
+  </enumValues>
+</mdclass:Enum>

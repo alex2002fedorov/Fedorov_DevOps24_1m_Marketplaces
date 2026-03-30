@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Enum xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" xmlns:mdclassExtension="http://g5.1c.ru/v8/dt/metadata/mdclass/extension" uuid="971d0e10-8e40-4246-b582-7040097a740d" extendedConfigurationObject="51a2d5a3-f7a8-4026-9ca7-a523f52bd682">
+  <producedTypes>
+    <refType typeId="7b262d91-d6f9-4cfe-a008-d5f756f5094a" valueTypeId="9c8a24b6-2793-4e35-a4dd-6be4c9063ef8"/>
+    <listType typeId="47de777a-7683-4cdc-bdcb-d1a40c88278c" valueTypeId="fceb4dee-7709-48b4-be4d-86cf9769e99d"/>
+    <managerType typeId="d78a072a-c937-435d-a082-477ee4aae91b" valueTypeId="8ae713fd-38e6-41c8-be71-f1eb46e3258d"/>
+  </producedTypes>
+  <name>ВариантыРаздельногоУчетаНДС</name>
+  <objectBelonging>Adopted</objectBelonging>
+  <extension xsi:type="mdclassExtension:EnumExtension">
+    <extendedConfigurationObject>Checked</extendedConfigurationObject>
+  </extension>
+  <enumValues uuid="5fd49551-dcf7-4cec-9cdb-47eaa4d71a34" extendedConfigurationObject="933eba16-6e2a-435b-a5c1-ad9b7a99b6c4">
+    <name>ИзДокумента</name>
+    <objectBelonging>Adopted</objectBelonging>
+    <extension xsi:type="mdclassExtension:MdObjectExtension">
+      <extendedConfigurationObject>Checked</extendedConfigurationObject>
+    </extension>
+  </enumValues>
+</mdclass:Enum>

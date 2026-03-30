@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:SessionParameter xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="647c8c98-f7b9-44f6-8dea-cc8bf8892db2">
+  <name>ТекущийУзелТСД</name>
+  <synonym>
+    <key>ru</key>
+    <value>Текущий узел ТСД</value>
+  </synonym>
+  <type>
+    <types>ExchangePlanRef.ОбменДаннымиМобильноеПриложение</types>
+  </type>
+</mdclass:SessionParameter>

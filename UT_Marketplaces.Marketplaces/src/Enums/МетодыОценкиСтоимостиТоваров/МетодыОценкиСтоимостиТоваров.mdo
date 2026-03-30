@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Enum xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" xmlns:mdclassExtension="http://g5.1c.ru/v8/dt/metadata/mdclass/extension" uuid="3f690d2d-499b-4b95-bb12-f3b06424290a" extendedConfigurationObject="7c3bd563-cd82-4681-ac6a-9837b806dcf9">
+  <producedTypes>
+    <refType typeId="09e33ae0-9bae-44d4-b624-5d205ba726fa" valueTypeId="25443d8b-375a-4af4-a213-55ac718e5c4a"/>
+    <listType typeId="7d5c21b4-db97-4b3d-bd94-afb59795e9ce" valueTypeId="f42b13c6-abfe-413d-b248-003a4b579a49"/>
+    <managerType typeId="070c67e5-5ccd-4ee5-8219-4570fd92b356" valueTypeId="db6063ed-cab0-4b99-89ad-c354f4ae2043"/>
+  </producedTypes>
+  <name>МетодыОценкиСтоимостиТоваров</name>
+  <objectBelonging>Adopted</objectBelonging>
+  <extension xsi:type="mdclassExtension:EnumExtension">
+    <extendedConfigurationObject>Checked</extendedConfigurationObject>
+  </extension>
+  <enumValues uuid="ab0de01b-0ee3-4ed4-af92-683ce01a5502" extendedConfigurationObject="a86a3183-7b62-4435-a3b3-c0f9685aa7ab">
+    <name>СредняяЗаМесяц</name>
+    <objectBelonging>Adopted</objectBelonging>
+    <extension xsi:type="mdclassExtension:MdObjectExtension">
+      <extendedConfigurationObject>Checked</extendedConfigurationObject>
+    </extension>
+  </enumValues>
+  <enumValues uuid="52efb430-914c-46c8-bdc4-7f0359d7bd92" extendedConfigurationObject="357beecd-4241-4857-a6ee-86a81d043875">
+    <name>ФИФОВзвешеннаяОценка</name>
+    <objectBelonging>Adopted</objectBelonging>
+    <extension xsi:type="mdclassExtension:MdObjectExtension">
+      <extendedConfigurationObject>Checked</extendedConfigurationObject>
+    </extension>
+  </enumValues>
+  <enumValues uuid="1e27ebdb-9d57-464d-a7ea-21d8c3210327" extendedConfigurationObject="96bb45fa-a724-48ee-b5d8-311831f9ee1b">
+    <name>ФИФОСкользящаяОценка</name>
+    <objectBelonging>Adopted</objectBelonging>
+    <extension xsi:type="mdclassExtension:MdObjectExtension">
+      <extendedConfigurationObject>Checked</extendedConfigurationObject>
+    </extension>
+  </enumValues>
+</mdclass:Enum>

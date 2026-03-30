@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" xmlns:mdclassExtension="http://g5.1c.ru/v8/dt/metadata/mdclass/extension" uuid="6d5fa628-8744-4d06-be8c-ad69c93331f1" extendedConfigurationObject="319b18a1-cc82-48d9-8160-65a0c64d1318">
+  <producedTypes>
+    <objectType typeId="7d54ef0a-43e3-4c90-b02b-e53ba8e79c2f" valueTypeId="cb419645-8451-4689-8192-882ce7fe9301"/>
+    <refType typeId="420d9735-c822-4c1f-8a7a-326f6c30e01c" valueTypeId="dc76d182-c61e-49c5-9936-963b619a927e"/>
+    <selectionType typeId="cde3525f-2f1a-4b46-ae89-85f275241001" valueTypeId="7a55f141-3b03-4b29-971b-a366e8d43707"/>
+    <listType typeId="6f8c3474-ccc9-48a3-be7c-4c0dec879e49" valueTypeId="a034d72a-d932-402d-9c01-4d19a791aaff"/>
+    <managerType typeId="e6982b53-9fbe-4d69-bb37-a78a4ffdb8ba" valueTypeId="4a82d400-9750-4acb-90ce-5ca766ffa377"/>
+  </producedTypes>
+  <name>ОтчетКомиссионера</name>
+  <objectBelonging>Adopted</objectBelonging>
+  <extension xsi:type="mdclassExtension:DocumentExtension">
+    <extendedConfigurationObject>Checked</extendedConfigurationObject>
+  </extension>
+  <attributes uuid="6900f8a2-7cb3-41f4-a63d-eba9832b39d9">
+    <name>рар_мп_СозданоОбработкой</name>
+    <synonym>
+      <key>ru</key>
+      <value>Создано из маркетплейса</value>
+    </synonym>
+    <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+      <synonym>Extended</synonym>
+      <choiceForm>Extended</choiceForm>
+    </extension>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="73519784-3182-4108-a90c-05f4c4e48702">
+    <name>рар_мп_АккаунтМаркетплейса</name>
+    <synonym>
+      <key>ru</key>
+      <value>Аккаунт маркетплейса</value>
+    </synonym>
+    <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+      <synonym>Extended</synonym>
+      <choiceForm>Extended</choiceForm>
+    </extension>
+    <type>
+      <types>CatalogRef.рар_мп_АккаунтыМаркетплейсов</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <forms uuid="2fb5b329-aa29-4c9b-b79d-b059fb939b89" extendedConfigurationObject="2ff49026-9530-4bfa-9651-6b54d59be40e">
+    <name>ФормаДокумента</name>
+    <objectBelonging>Adopted</objectBelonging>
+    <extension xsi:type="mdclassExtension:BasicFormExtension">
+      <extendedConfigurationObject>Checked</extendedConfigurationObject>
+      <form>Extended</form>
+    </extension>
+  </forms>
+</mdclass:Document>

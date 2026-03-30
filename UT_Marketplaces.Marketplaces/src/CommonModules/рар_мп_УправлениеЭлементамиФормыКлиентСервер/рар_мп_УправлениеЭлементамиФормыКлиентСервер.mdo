@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="9cda36da-044c-4dda-bd83-92a880fa8fb0">
+  <name>рар_мп_УправлениеЭлементамиФормыКлиентСервер</name>
+  <synonym>
+    <key>ru</key>
+    <value>Рар мп управление элементами формы клиент сервер</value>
+  </synonym>
+  <server>true</server>
+  <serverCall>true</serverCall>
+</mdclass:CommonModule>

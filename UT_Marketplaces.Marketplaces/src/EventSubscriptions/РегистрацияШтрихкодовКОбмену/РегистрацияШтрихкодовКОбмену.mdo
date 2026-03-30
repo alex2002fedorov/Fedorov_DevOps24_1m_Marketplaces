@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:EventSubscription xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="7fe453e4-ebcb-4197-ab45-8292caa5a31d">
+  <name>РегистрацияШтрихкодовКОбмену</name>
+  <synonym>
+    <key>ru</key>
+    <value>Регистрация штрихкодов к обмену</value>
+  </synonym>
+  <source>
+    <types>InformationRegisterRecordSet.ШтрихкодыНоменклатуры</types>
+  </source>
+  <event>OnWrite</event>
+  <handler>CommonModule.Обмен.РегистрацияШтрихкодовКОбменуПриЗаписи</handler>
+</mdclass:EventSubscription>

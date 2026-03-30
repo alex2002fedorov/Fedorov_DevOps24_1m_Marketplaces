@@ -1,0 +1,530 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" xmlns:mdclassExtension="http://g5.1c.ru/v8/dt/metadata/mdclass/extension" uuid="80ad464b-84b1-4c3b-befc-3b04e013bff1" extendedConfigurationObject="1ceef4a2-6b58-45a0-8a75-bb6e3004590f">
+  <producedTypes>
+    <objectType typeId="d102e018-26c2-4187-98b1-bfb7b4bc4c8f" valueTypeId="b5ad4c36-4252-4886-a212-d659d2858e78"/>
+    <refType typeId="6a03ad3a-f7e0-4d04-a7fb-df816709bfed" valueTypeId="9561472a-68fc-44c6-aeb8-28ffd33232eb"/>
+    <selectionType typeId="a652103e-047b-44fb-9ec1-e79cb4dc479f" valueTypeId="b074d016-f5cc-4a58-9cba-de2e0c3e560a"/>
+    <listType typeId="eb9235b0-66dc-4b44-bcc2-c016bc80230d" valueTypeId="ed2c92db-3be1-47bf-b2e9-1bca632dceb0"/>
+    <managerType typeId="0413d00f-f85a-457d-a672-e5a0a39100e5" valueTypeId="3e884ea1-3f02-439b-ac7f-9d510848561d"/>
+  </producedTypes>
+  <name>ЗаказКлиента</name>
+  <objectBelonging>Adopted</objectBelonging>
+  <extension xsi:type="mdclassExtension:DocumentExtension">
+    <extendedConfigurationObject>Checked</extendedConfigurationObject>
+    <objectModule>Extended</objectModule>
+  </extension>
+  <attributes uuid="4605bb6e-8be1-4cc4-8281-aa4041ff7970">
+    <name>рар_мп_АккаунтМаркетплейса</name>
+    <synonym>
+      <key>ru</key>
+      <value>Аккаунт маркетплейса</value>
+    </synonym>
+    <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+      <synonym>Extended</synonym>
+      <choiceForm>Extended</choiceForm>
+    </extension>
+    <type>
+      <types>CatalogRef.рар_мп_АккаунтыМаркетплейсов</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="ec45c25d-0cb6-4241-9586-4d32f0b048dd" extendedConfigurationObject="872dcece-786c-416e-bfa4-4ce98df56dd6">
+    <name>НомерПоДаннымКлиента</name>
+    <objectBelonging>Adopted</objectBelonging>
+    <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+      <extendedConfigurationObject>Checked</extendedConfigurationObject>
+      <typeExtension>
+        <types>
+          <state>Extended</state>
+          <type>String</type>
+        </types>
+        <stringQualifiers>
+          <length>30</length>
+        </stringQualifiers>
+      </typeExtension>
+    </extension>
+  </attributes>
+  <attributes uuid="1598b780-1dd2-4ff9-869b-49718953dbf0">
+    <name>рар_мп_ЯндексМаркет_СтатусЗаказа</name>
+    <synonym>
+      <key>ru</key>
+      <value>Статус заказа (Яндекс Маркет)</value>
+    </synonym>
+    <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+      <synonym>Extended</synonym>
+      <choiceForm>Extended</choiceForm>
+    </extension>
+    <type>
+      <types>EnumRef.рар_мп_ЯндексМаркет_СтатусыЗаказов</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="91be6eb2-6ae0-46f0-965c-d1a25eeeac25">
+    <name>рар_мп_ЯндексМаркет_ПодстатусЗаказа</name>
+    <synonym>
+      <key>ru</key>
+      <value>Подстатус заказа (Яндекс Маркет)</value>
+    </synonym>
+    <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+      <synonym>Extended</synonym>
+      <choiceForm>Extended</choiceForm>
+    </extension>
+    <type>
+      <types>EnumRef.рар_мп_ЯндексМаркет_ПодстатусыЗаказов</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="fb7bd6fe-49a5-4fcc-8e76-14b0341dbf16">
+    <name>рар_мп_УникальныйИдентификаторСклада</name>
+    <synonym>
+      <key>ru</key>
+      <value>Уникальный идентификатор склада маркетплейса</value>
+    </synonym>
+    <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+      <synonym>Extended</synonym>
+      <choiceForm>Extended</choiceForm>
+    </extension>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>200</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="15c40ec7-6f91-4a54-a057-f90956e51b99">
+    <name>рар_мп_Wildberries_СтатусЗаказа</name>
+    <synonym>
+      <key>ru</key>
+      <value>Статус заказа (Wildberries)</value>
+    </synonym>
+    <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+      <synonym>Extended</synonym>
+      <choiceForm>Extended</choiceForm>
+    </extension>
+    <type>
+      <types>EnumRef.рар_мп_Wildberries_СтатусыЗаказов</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="2f481feb-55d6-44e9-8587-c6c4c04f4f29">
+    <name>рар_мп_Wildberries_СтатусОбработкиЗаказа</name>
+    <synonym>
+      <key>ru</key>
+      <value>Статус обработки заказа (Wildberries)</value>
+    </synonym>
+    <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+      <synonym>Extended</synonym>
+      <choiceForm>Extended</choiceForm>
+    </extension>
+    <type>
+      <types>EnumRef.рар_мп_Wildberries_СтатусыОбработкиЗаказов</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="d108907e-1a2a-42e0-995b-bf9b3c037739">
+    <name>рар_мп_Ozon_СтатусЗаказа</name>
+    <synonym>
+      <key>ru</key>
+      <value>Статус заказа (Ozon)</value>
+    </synonym>
+    <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+      <synonym>Extended</synonym>
+      <choiceForm>Extended</choiceForm>
+    </extension>
+    <type>
+      <types>EnumRef.рар_мп_Ozon_СтатусыЗаказов</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="0957b5f2-c4f0-46a4-bdd8-4a7b4f0a93bd">
+    <name>рар_мп_Ozon_ПодстатусЗаказа</name>
+    <synonym>
+      <key>ru</key>
+      <value>Подстатус заказа (Ozon)</value>
+    </synonym>
+    <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+      <synonym>Extended</synonym>
+      <choiceForm>Extended</choiceForm>
+    </extension>
+    <type>
+      <types>EnumRef.рар_мп_Ozon_ПодстатусыЗаказов</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="dd3667e9-8de3-4f27-b9fa-0358b2db41c7" extendedConfigurationObject="d462888a-fa46-4e10-842a-8647c5c2ab42">
+    <name>ДатаОтгрузки</name>
+    <objectBelonging>Adopted</objectBelonging>
+    <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+      <extendedConfigurationObject>Checked</extendedConfigurationObject>
+      <typeExtension>
+        <types>
+          <state>Checked</state>
+          <type>Date</type>
+        </types>
+        <dateQualifiers>
+          <dateFractions>Date</dateFractions>
+        </dateQualifiers>
+      </typeExtension>
+    </extension>
+  </attributes>
+  <attributes uuid="9a50ce79-95c3-4f1f-827b-f9b94bf1a394" extendedConfigurationObject="21767e3f-5e9d-43d3-803c-eaf6279e10db">
+    <name>Склад</name>
+    <objectBelonging>Adopted</objectBelonging>
+    <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+      <extendedConfigurationObject>Checked</extendedConfigurationObject>
+      <typeExtension>
+        <types>
+          <state>Checked</state>
+          <type>CatalogRef.Склады</type>
+        </types>
+      </typeExtension>
+    </extension>
+  </attributes>
+  <attributes uuid="5d4f5137-41da-42ae-ab96-23531cf4f507">
+    <name>рар_мп_СтатусДокументаВТСД</name>
+    <synonym>
+      <key>ru</key>
+      <value>Статус документа в ТСД</value>
+    </synonym>
+    <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+      <synonym>Extended</synonym>
+      <choiceForm>Extended</choiceForm>
+    </extension>
+    <type>
+      <types>EnumRef.рар_мп_СтатусыДокументовВТСД</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="a23266ee-add3-495e-8060-821c122e2ba5">
+    <name>рар_мп_ПользовательТСД</name>
+    <synonym>
+      <key>ru</key>
+      <value>Пользователь взявший в работу в ТСД</value>
+    </synonym>
+    <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+      <synonym>Extended</synonym>
+      <choiceForm>Extended</choiceForm>
+    </extension>
+    <type>
+      <types>CatalogRef.Пользователи</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <forms uuid="8bbeb628-a62e-4070-98ff-6ad1b96d72ed" extendedConfigurationObject="be5457cf-0707-477b-bd1d-257c85cd70d5">
+    <name>ФормаДокумента</name>
+    <objectBelonging>Adopted</objectBelonging>
+    <extension xsi:type="mdclassExtension:BasicFormExtension">
+      <extendedConfigurationObject>Checked</extendedConfigurationObject>
+      <form>Extended</form>
+    </extension>
+  </forms>
+  <forms uuid="4ba0b609-6248-4aab-93ca-f4d10cb22a73" extendedConfigurationObject="4ec9fc24-0398-4c29-8c3f-2e527e72156d">
+    <name>ФормаСписка</name>
+    <objectBelonging>Adopted</objectBelonging>
+    <extension xsi:type="mdclassExtension:BasicFormExtension">
+      <extendedConfigurationObject>Checked</extendedConfigurationObject>
+      <form>Extended</form>
+    </extension>
+  </forms>
+  <forms uuid="122cf2a5-fab5-4045-9fa9-0973205592ee" extendedConfigurationObject="3c9db1a6-b0aa-457d-9163-f4960ad9d6f2">
+    <name>ФормаВыбора</name>
+    <objectBelonging>Adopted</objectBelonging>
+    <extension xsi:type="mdclassExtension:BasicFormExtension">
+      <extendedConfigurationObject>Checked</extendedConfigurationObject>
+      <form>Extended</form>
+    </extension>
+  </forms>
+  <tabularSections uuid="6d35f4c3-57ed-47b0-abc5-7963d5b0a78b">
+    <producedTypes>
+      <objectType typeId="9a3808ea-ef29-4339-9435-f814f117cd35" valueTypeId="57f83984-379e-4e2d-bfa7-cb2f57980eb6"/>
+      <rowType typeId="7506c3e4-826b-4f9b-8823-710e4ae0cb94" valueTypeId="447e29e1-936e-43e9-9677-589089718feb"/>
+    </producedTypes>
+    <name>рар_мп_ТоварыДляМаркировки</name>
+    <synonym>
+      <key>ru</key>
+      <value>Список для указания маркировки (Яндекс Маркет)</value>
+    </synonym>
+    <extension xsi:type="mdclassExtension:MdObjectExtension">
+      <synonym>Extended</synonym>
+    </extension>
+    <attributes uuid="8dc44b2f-edb7-45bf-8c47-4f65a199ed30">
+      <name>рар_мп_СтрокаИзТЧТовары</name>
+      <synonym>
+        <key>ru</key>
+        <value>Строка из табличной части Товары</value>
+      </synonym>
+      <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+        <synonym>Extended</synonym>
+        <choiceForm>Extended</choiceForm>
+      </extension>
+      <type>
+        <types>Number</types>
+        <numberQualifiers>
+          <precision>10</precision>
+        </numberQualifiers>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="6a269090-94aa-458d-a027-9023c262ab97">
+      <name>рар_мп_Номенклатура</name>
+      <synonym>
+        <key>ru</key>
+        <value>Номенклатура</value>
+      </synonym>
+      <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+        <synonym>Extended</synonym>
+        <choiceForm>Extended</choiceForm>
+      </extension>
+      <type>
+        <types>CatalogRef.Номенклатура</types>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="b3bbcc5e-4098-4e27-b920-8bcf11c957d3">
+      <name>рар_мп_Характеристика</name>
+      <synonym>
+        <key>ru</key>
+        <value>Характеристика</value>
+      </synonym>
+      <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+        <synonym>Extended</synonym>
+        <choiceForm>Extended</choiceForm>
+      </extension>
+      <type>
+        <types>CatalogRef.ХарактеристикиНоменклатуры</types>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="1d38c1dd-1a55-4251-a9b5-5fbcbf67d9af">
+      <name>рар_мп_IDТовара</name>
+      <synonym>
+        <key>ru</key>
+        <value>ID Товара</value>
+      </synonym>
+      <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+        <synonym>Extended</synonym>
+        <choiceForm>Extended</choiceForm>
+      </extension>
+      <type>
+        <types>String</types>
+        <stringQualifiers>
+          <length>30</length>
+        </stringQualifiers>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="85832b9c-c4c5-4bdd-9a60-5090cf593751">
+      <name>рар_мп_ЗаполнениеМаркировки</name>
+      <synonym>
+        <key>ru</key>
+        <value>Заполнение маркировки</value>
+      </synonym>
+      <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+        <synonym>Extended</synonym>
+        <choiceForm>Extended</choiceForm>
+      </extension>
+      <type>
+        <types>Boolean</types>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="99c5e41e-1c26-4731-9074-fe0785f2e677">
+      <name>рар_мп_Exemplar_Id</name>
+      <synonym>
+        <key>ru</key>
+        <value>Exemplar id</value>
+      </synonym>
+      <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+        <synonym>Extended</synonym>
+        <format>Extended</format>
+        <editFormat>Extended</editFormat>
+        <choiceForm>Extended</choiceForm>
+      </extension>
+      <type>
+        <types>Number</types>
+        <numberQualifiers>
+          <precision>14</precision>
+        </numberQualifiers>
+      </type>
+      <format>
+        <key>ru</key>
+        <value>ЧГ=0</value>
+      </format>
+      <editFormat>
+        <key>ru</key>
+        <value>ЧГ=0</value>
+      </editFormat>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="7b76eae7-0d9e-4a68-881e-17f86f9bb33d">
+      <name>рар_мп_ЧестныйЗнак</name>
+      <synonym>
+        <key>ru</key>
+        <value>Маркировка честный знак</value>
+      </synonym>
+      <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+        <synonym>Extended</synonym>
+        <choiceForm>Extended</choiceForm>
+      </extension>
+      <type>
+        <types>CatalogRef.ШтрихкодыУпаковокТоваров</types>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="2e31f830-519c-4db5-a052-a4bafb991a7f">
+      <name>рар_мп_ЗаполнениеГТД</name>
+      <synonym>
+        <key>ru</key>
+        <value>Заполнять ГТД</value>
+      </synonym>
+      <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+        <synonym>Extended</synonym>
+        <choiceForm>Extended</choiceForm>
+      </extension>
+      <type>
+        <types>Boolean</types>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="84041b21-ac9f-437e-9b2d-69f95f812708">
+      <name>рар_мп_НомерГТД</name>
+      <synonym>
+        <key>ru</key>
+        <value>Номер ГТД</value>
+      </synonym>
+      <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+        <synonym>Extended</synonym>
+        <choiceForm>Extended</choiceForm>
+      </extension>
+      <type>
+        <types>CatalogRef.НомераГТД</types>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+  </tabularSections>
+  <tabularSections uuid="a15c1a71-a61a-4d0e-9de5-ca7f8104230c" extendedConfigurationObject="7b526229-3286-418a-920a-ff15a9b3ec48">
+    <producedTypes>
+      <objectType typeId="cfbdf885-1159-42ea-8f87-eb0daaa9eadf" valueTypeId="a75f878f-9680-4b55-9082-42fb9ba3e417"/>
+      <rowType typeId="43d7b846-8414-42bb-b502-80d9d16b8d89" valueTypeId="15493b2a-978d-41f7-b3a3-d07f03b61de0"/>
+    </producedTypes>
+    <name>Товары</name>
+    <objectBelonging>Adopted</objectBelonging>
+    <extension xsi:type="mdclassExtension:MdObjectExtension">
+      <extendedConfigurationObject>Checked</extendedConfigurationObject>
+    </extension>
+    <attributes uuid="a1e98ec0-811e-49db-abaa-dab79ea3eecd" extendedConfigurationObject="da473af6-1960-4683-b941-b8e3988be4fb">
+      <name>Номенклатура</name>
+      <objectBelonging>Adopted</objectBelonging>
+      <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+        <extendedConfigurationObject>Checked</extendedConfigurationObject>
+        <typeExtension>
+          <types>
+            <state>Checked</state>
+            <type>CatalogRef.Номенклатура</type>
+          </types>
+        </typeExtension>
+      </extension>
+    </attributes>
+    <attributes uuid="42e30305-d35a-40ac-aac7-cbfa772e15b7" extendedConfigurationObject="ea68fa0a-5188-4f2e-b04a-9834dbc8adaa">
+      <name>Характеристика</name>
+      <objectBelonging>Adopted</objectBelonging>
+      <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+        <extendedConfigurationObject>Checked</extendedConfigurationObject>
+        <typeExtension>
+          <types>
+            <state>Checked</state>
+            <type>CatalogRef.ХарактеристикиНоменклатуры</type>
+          </types>
+        </typeExtension>
+      </extension>
+    </attributes>
+    <attributes uuid="d109f313-b8ba-40c8-b1b3-2ebbefe04b55" extendedConfigurationObject="89c8c32c-ef8a-46f1-a7b4-75b2e1524d3f">
+      <name>Количество</name>
+      <objectBelonging>Adopted</objectBelonging>
+      <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+        <extendedConfigurationObject>Checked</extendedConfigurationObject>
+        <typeExtension>
+          <types>
+            <state>Checked</state>
+            <type>Number</type>
+          </types>
+          <numberQualifiers>
+            <precision>15</precision>
+            <scale>3</scale>
+            <nonNegative>true</nonNegative>
+          </numberQualifiers>
+        </typeExtension>
+      </extension>
+    </attributes>
+  </tabularSections>
+</mdclass:Document>

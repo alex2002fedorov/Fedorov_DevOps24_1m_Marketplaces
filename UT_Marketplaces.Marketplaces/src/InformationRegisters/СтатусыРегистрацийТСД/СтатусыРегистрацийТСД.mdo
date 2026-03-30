@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:InformationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="78a43b0f-3966-4475-8c47-19f2b725b2cd">
+  <producedTypes>
+    <selectionType typeId="fa19ebef-ae68-4253-9d82-706f85332029" valueTypeId="04e48dad-9b59-41a3-8056-86d9ce8e33ea"/>
+    <listType typeId="b42be055-3adb-4651-b174-3b4e0a51c96e" valueTypeId="ce82932b-e93f-4129-bf6a-434fd455adb4"/>
+    <managerType typeId="067a2215-6bfd-4166-828c-c33914415440" valueTypeId="f416665f-e579-408b-bb29-47b6ad61bf60"/>
+    <recordSetType typeId="d74dfea5-46bd-4760-9b56-b2763686b2eb" valueTypeId="7479056c-cd38-4d72-8ee8-6322c9d0ab5f"/>
+    <recordKeyType typeId="60270630-8ea4-48fa-b7f4-aed490975355" valueTypeId="f68cc10a-ad7c-4cda-8e63-4549bc1f4d01"/>
+    <recordType typeId="90c6814e-b07a-40d9-9a17-238ccd5cc80a" valueTypeId="c5287e43-8c2f-489d-b1ee-3e2bb8574aeb"/>
+    <recordManagerType typeId="289c512e-6aca-4ed9-93d3-e810b4028d2f" valueTypeId="b7353347-a1f4-49f1-a8a3-682e887513eb"/>
+  </producedTypes>
+  <name>СтатусыРегистрацийТСД</name>
+  <synonym>
+    <key>ru</key>
+    <value>Статусы регистраций ТСД</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <editType>InDialog</editType>
+  <standardAttributes>
+    <dataHistory>Use</dataHistory>
+    <name>Active</name>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </standardAttributes>
+  <standardAttributes>
+    <dataHistory>Use</dataHistory>
+    <name>LineNumber</name>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </standardAttributes>
+  <standardAttributes>
+    <dataHistory>Use</dataHistory>
+    <name>Recorder</name>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </standardAttributes>
+  <standardAttributes>
+    <dataHistory>Use</dataHistory>
+    <name>Period</name>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fullTextSearch>Use</fullTextSearch>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </standardAttributes>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <recordPresentation>
+    <key>ru</key>
+    <value>Статусы регистраций ТСД</value>
+  </recordPresentation>
+  <listPresentation>
+    <key>ru</key>
+    <value>Статусы регистраций ТСД</value>
+  </listPresentation>
+  <resources uuid="f79fd85b-5558-46c8-b524-bc4aec952602">
+    <name>Статус</name>
+    <synonym>
+      <key>ru</key>
+      <value>Статус</value>
+    </synonym>
+    <type>
+      <types>EnumRef.СтатусыРегистрацийТСД</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="efaea96e-474c-4518-a6b1-e7043d0aacd2">
+    <name>ЛицензионныйКлючЛицензированиеТСД</name>
+    <synonym>
+      <key>ru</key>
+      <value>Лицензионный ключ</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>1000</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+  </resources>
+  <dimensions uuid="3f2ee7ee-b86f-4826-b65b-451891b1495d">
+    <name>Организация</name>
+    <synonym>
+      <key>ru</key>
+      <value>Организация</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Организации</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+</mdclass:InformationRegister>

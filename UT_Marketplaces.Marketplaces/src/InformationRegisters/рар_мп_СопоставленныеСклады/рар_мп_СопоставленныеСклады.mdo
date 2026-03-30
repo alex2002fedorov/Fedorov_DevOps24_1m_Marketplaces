@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:InformationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="063cb2ec-c288-4d28-9102-9132f7c68aae">
+  <producedTypes>
+    <selectionType typeId="dd0f4544-6b76-4467-a454-464d9c59a83a" valueTypeId="a441d342-5dc7-4985-b1b9-ee6c8687f4b1"/>
+    <listType typeId="af13fa3c-99dd-4fb9-b725-229524e30571" valueTypeId="4256b39e-cd9c-42fe-b480-bc041e8e37ab"/>
+    <managerType typeId="71ffbb98-358c-4ade-9035-48e9d3667005" valueTypeId="59dae358-a398-4967-9106-d1a38e9649fd"/>
+    <recordSetType typeId="083eb9a6-56d0-4339-8f25-360246c5b009" valueTypeId="ac455ba1-09e3-400f-81f7-0924ee524e12"/>
+    <recordKeyType typeId="e00fcc70-2d04-4c3d-af10-c6d892c89756" valueTypeId="ab7d516c-7425-4918-954a-731ed029eb4f"/>
+    <recordType typeId="c0b478ba-da62-4168-8d7d-3a0c08b58287" valueTypeId="6ca579f9-766b-4848-9a4a-37ca4b971e0b"/>
+    <recordManagerType typeId="6c2b3397-0ae1-4506-8c56-a74fc5ff4ff7" valueTypeId="1f70621e-7f95-49cf-a6e2-5263c693aacd"/>
+  </producedTypes>
+  <name>рар_мп_СопоставленныеСклады</name>
+  <synonym>
+    <key>ru</key>
+    <value>Сопоставленные склады (1С-Рарус)</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <editType>InDialog</editType>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <resources uuid="3a5deed2-962d-4156-a59f-3bf0a2ca686f">
+    <name>Склад</name>
+    <synonym>
+      <key>ru</key>
+      <value>Склад</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Склады</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <attributes uuid="68f63f1a-6c6c-4fb7-b421-30e3778d5a22">
+    <name>НазваниеСкладаНаМаркетплейсе</name>
+    <synonym>
+      <key>ru</key>
+      <value>Название склада на маркетплейсе</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>250</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+  </attributes>
+  <attributes uuid="89467ca5-44f0-4167-b81f-322acda4f2fe">
+    <name>рар_мп_ЯМ_campaignId</name>
+    <synonym>
+      <key>ru</key>
+      <value>CampaignId</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>100</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <dimensions uuid="2d39d7c4-c571-4af5-886f-7d8d9686bba8">
+    <name>АккаунтМаркетплейса</name>
+    <synonym>
+      <key>ru</key>
+      <value>Аккаунт маркетплейса</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.рар_мп_АккаунтыМаркетплейсов</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="3c67eff3-378e-458d-a820-76e56c8f00e6">
+    <name>УникальныйИдентификаторСклада</name>
+    <synonym>
+      <key>ru</key>
+      <value>Уникальный идентификатор склада</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>200</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+</mdclass:InformationRegister>

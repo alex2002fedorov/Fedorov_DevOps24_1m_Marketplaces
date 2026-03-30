@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Enum xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="905bb58f-9ca3-48b2-8e70-7d46489d0e63">
+  <producedTypes>
+    <refType typeId="78818a24-92c7-4729-90b6-463e203fc5e6" valueTypeId="6be40c91-e443-48fc-988d-f3546ed502fb"/>
+    <listType typeId="ae7cc2d2-0300-4ca8-be92-f22ca47331df" valueTypeId="4d74a01f-bf0e-4197-a13b-cfe1cf426497"/>
+    <managerType typeId="021ec77f-b347-4a3c-a695-5c5d3ef4c545" valueTypeId="58fd9dc3-8f77-4a0f-a4c5-95bb56d75611"/>
+  </producedTypes>
+  <name>рар_мп_ВидРегламентыхЗадач</name>
+  <synonym>
+    <key>ru</key>
+    <value>Вид регламентных задач</value>
+  </synonym>
+  <quickChoice>true</quickChoice>
+  <choiceMode>BothWays</choiceMode>
+  <enumValues uuid="583d9554-5fcf-40cc-9c64-160c3997c3c6">
+    <name>рар_мп_Ozon_ЗагрузкаЗаказов</name>
+    <synonym>
+      <key>ru</key>
+      <value>1С-Рарус. Ozon. Загрузка заказов</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="20a610a7-430f-48a3-a91d-63181948f2f1">
+    <name>рар_мп_ЯндексМаркет_ЗагрузкаЗаказов</name>
+    <synonym>
+      <key>ru</key>
+      <value>1С-Рарус. ЯндексМаркет. Загрузка заказов</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="be4a7fd5-47d2-4aca-bd7c-948477b604bb">
+    <name>рар_мп_Wildberries_ЗагрузкаЗаказов</name>
+    <synonym>
+      <key>ru</key>
+      <value>1С-Рарус. Wildberries. Загрузка заказов</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="b06a852d-8757-46e1-9cac-6e4b97b863a9">
+    <name>рар_мп_Wildberries_ОбновлениеОстатков</name>
+    <synonym>
+      <key>ru</key>
+      <value>1С-Рарус. Wildberries. Обновление остатков</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="6b8f1f58-4bce-4222-a090-4d6d128c1598">
+    <name>рар_мп_Ozon_ОбновлениеОстатков</name>
+    <synonym>
+      <key>ru</key>
+      <value>1С-Рарус. Ozon. Обновление остатков</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="c62b67a5-75e3-434d-bc85-e98097aaeeac">
+    <name>рар_мп_ЯндексМаркет_ОбновлениеОстатков</name>
+    <synonym>
+      <key>ru</key>
+      <value>1С-Рарус. ЯндексМаркет. Обновление остатков</value>
+    </synonym>
+  </enumValues>
+</mdclass:Enum>

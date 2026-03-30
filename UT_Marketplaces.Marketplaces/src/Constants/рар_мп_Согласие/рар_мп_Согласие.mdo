@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Constant xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="ca7e74cf-f177-4e2c-932e-6c5034a07a0a">
+  <producedTypes>
+    <managerType typeId="fb4ecec9-f282-4439-88f5-a996bed3d39e" valueTypeId="a5cdd5a0-3bf5-4180-a6f1-69f0b767ade3"/>
+    <valueManagerType typeId="668d29c7-d94f-4e75-93aa-de07d0bf9127" valueTypeId="324e9b89-766c-46c9-ac89-02bf20d3a98f"/>
+    <valueKeyType typeId="27752f83-bfc8-4bdc-9fc0-14023375b391" valueTypeId="726a3552-2dcf-48b0-beb4-919656fafc85"/>
+  </producedTypes>
+  <name>рар_мп_Согласие</name>
+  <synonym>
+    <key>ru</key>
+    <value>Согласие с ПЛС</value>
+  </synonym>
+  <type>
+    <types>Boolean</types>
+  </type>
+  <minValue xsi:type="core:UndefinedValue"/>
+  <maxValue xsi:type="core:UndefinedValue"/>
+  <dataLockControlMode>Managed</dataLockControlMode>
+</mdclass:Constant>

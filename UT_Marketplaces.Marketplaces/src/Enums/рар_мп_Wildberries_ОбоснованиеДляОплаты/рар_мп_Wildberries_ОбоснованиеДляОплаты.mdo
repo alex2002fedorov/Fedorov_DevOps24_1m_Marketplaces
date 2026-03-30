@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Enum xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="6f29b66d-bf55-42bd-83d6-af824e5de0f5">
+  <producedTypes>
+    <refType typeId="93400c92-02fa-4fef-a1f9-4604cf41639e" valueTypeId="45d1830f-d836-4456-9f5a-8450908ff19e"/>
+    <listType typeId="dd2bfe6d-43fb-465e-ad2a-e90142af1a7c" valueTypeId="a95dd185-b6ac-49d0-9728-06c1abed6539"/>
+    <managerType typeId="75a2312d-5282-41cf-bb25-941cee05db89" valueTypeId="16064ff7-a854-4302-8c09-b0f4b2ea17a0"/>
+  </producedTypes>
+  <name>рар_мп_Wildberries_ОбоснованиеДляОплаты</name>
+  <synonym>
+    <key>ru</key>
+    <value>Рар мп wildberries обоснование для оплаты</value>
+  </synonym>
+  <quickChoice>true</quickChoice>
+  <choiceMode>BothWays</choiceMode>
+  <enumValues uuid="d92039dd-6c3a-467e-98b1-82f7ee114e86">
+    <name>Продажа</name>
+    <synonym>
+      <key>ru</key>
+      <value>Продажа</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="e1490079-a3e7-4466-8406-f44ecc908cfc">
+    <name>Возврат</name>
+    <synonym>
+      <key>ru</key>
+      <value>Возврат</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="bb978c87-cf90-4532-b53e-8648035c70f9">
+    <name>Логистика</name>
+    <synonym>
+      <key>ru</key>
+      <value>Логистика</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="50c549e9-1860-48a5-8d1f-849a9d8cffae">
+    <name>ВозмещениеИздержек</name>
+    <synonym>
+      <key>ru</key>
+      <value>Возмещение издержек по перевозке/по складским операциям с товаром</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="c0899cb7-436a-49f6-ab1c-73765dc9d21a">
+    <name>ВозмещениеЗаВыдачу</name>
+    <synonym>
+      <key>ru</key>
+      <value>Возмещение за выдачу и возврат товаров на ПВЗ</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="aa6dd77d-dff0-4e87-b536-306ca4590d09">
+    <name>Хранение</name>
+    <synonym>
+      <key>ru</key>
+      <value>Хранение</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="3a6a8b45-60a1-4faa-aed4-20b56051e182">
+    <name>Штраф</name>
+    <synonym>
+      <key>ru</key>
+      <value>Штраф</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="c52f9067-5fc8-4465-a8c9-243709d8a7c3">
+    <name>КомпенсацияУщерба</name>
+    <synonym>
+      <key>ru</key>
+      <value>Компенсация ущерба</value>
+    </synonym>
+  </enumValues>
+</mdclass:Enum>

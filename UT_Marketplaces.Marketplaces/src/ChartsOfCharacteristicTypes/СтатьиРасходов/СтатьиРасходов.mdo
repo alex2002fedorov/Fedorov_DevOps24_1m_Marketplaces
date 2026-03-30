@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:ChartOfCharacteristicTypes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" xmlns:mdclassExtension="http://g5.1c.ru/v8/dt/metadata/mdclass/extension" uuid="13010c92-8c35-41f3-bbf2-c22f93556199" extendedConfigurationObject="21895752-24ac-4d5e-a4e1-d350a6d1d68d">
+  <producedTypes>
+    <objectType typeId="6d90049d-44fd-4119-8da2-9642bd32144f" valueTypeId="32cc3c78-5bee-45dc-8b16-c0f4a3910898"/>
+    <refType typeId="82d34a18-2cef-4ac4-a6f2-0e8b45ffca0f" valueTypeId="7b76195c-7372-4c16-aa77-605bda0c8883"/>
+    <selectionType typeId="d29ca8a4-7d83-43b5-b5b5-53e2f760fa3e" valueTypeId="971a5a68-7a1b-4a37-ac44-aed161c02025"/>
+    <listType typeId="ad5edf61-9e20-4535-b438-680829df0cf8" valueTypeId="0dd5e287-84b8-4401-b0fc-16fc7480f552"/>
+    <managerType typeId="b488b0a9-ae0e-44b1-9273-343ca643fc10" valueTypeId="58f28cd2-014d-4e7b-83d4-c5976a17a5e6"/>
+    <containerType typeId="f11f2cd2-21e1-4650-af5e-f64f23ebc039" valueTypeId="a0c5096d-ea3a-42e9-90e7-cc111de8d4b0"/>
+  </producedTypes>
+  <name>СтатьиРасходов</name>
+  <objectBelonging>Adopted</objectBelonging>
+  <extension xsi:type="mdclassExtension:ChartOfCharacteristicTypesExtension">
+    <extendedConfigurationObject>Checked</extendedConfigurationObject>
+    <typeExtension/>
+  </extension>
+  <attributes uuid="58c6258f-bf9a-45e9-86f4-05df286a0748" extendedConfigurationObject="c0612b3d-996f-46b2-b7ef-dfb9c209e24d">
+    <name>ВидДеятельностиДляНалоговогоУчетаЗатрат</name>
+    <objectBelonging>Adopted</objectBelonging>
+    <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+      <extendedConfigurationObject>Checked</extendedConfigurationObject>
+      <typeExtension>
+        <types>
+          <state>Checked</state>
+          <type>String</type>
+        </types>
+        <stringQualifiers>
+          <length>10</length>
+        </stringQualifiers>
+      </typeExtension>
+    </extension>
+  </attributes>
+  <attributes uuid="b700ce85-5944-4a3a-b340-3bb0cb82401e" extendedConfigurationObject="110223d5-15c1-4f4d-96b2-53d79af15029">
+    <name>ВариантРаздельногоУчетаНДС</name>
+    <objectBelonging>Adopted</objectBelonging>
+    <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+      <extendedConfigurationObject>Checked</extendedConfigurationObject>
+      <typeExtension>
+        <types>
+          <state>Checked</state>
+          <type>EnumRef.ВариантыРаздельногоУчетаНДС</type>
+        </types>
+      </typeExtension>
+    </extension>
+  </attributes>
+</mdclass:ChartOfCharacteristicTypes>

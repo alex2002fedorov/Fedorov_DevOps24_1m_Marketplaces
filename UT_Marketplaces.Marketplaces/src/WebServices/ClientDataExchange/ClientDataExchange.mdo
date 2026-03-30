@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:WebService xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="1d598d8f-f065-4a73-8f2f-cd45637d6a90">
+  <name>ClientDataExchange</name>
+  <synonym>
+    <key>ru</key>
+    <value>Client data exchange</value>
+  </synonym>
+  <namespace>http://rarus.ru/DA/WS</namespace>
+  <descriptorFileName>ClientDataExchange.1cws</descriptorFileName>
+  <reuseSessions>AutoUse</reuseSessions>
+  <sessionMaxAge>20</sessionMaxAge>
+  <operations uuid="b5b21c6c-cd2e-4baa-88e2-2659d0098ada">
+    <name>ExecuteMethod</name>
+    <synonym>
+      <key>ru</key>
+      <value>Execute method</value>
+    </synonym>
+    <xdtoReturningValueType>
+      <name>Structure</name>
+      <nsUri>http://v8.1c.ru/8.1/data/core</nsUri>
+    </xdtoReturningValueType>
+    <procedureName>ExecuteMethod</procedureName>
+    <dataLockControlMode>Managed</dataLockControlMode>
+    <parameters uuid="c61ba1ab-66b6-4046-8893-edb4f47116de">
+      <name>FunctionName</name>
+      <synonym>
+        <key>ru</key>
+        <value>Function name</value>
+      </synonym>
+      <xdtoValueType>
+        <name>string</name>
+        <nsUri>http://www.w3.org/2001/XMLSchema</nsUri>
+      </xdtoValueType>
+    </parameters>
+    <parameters uuid="624c2e57-16f3-4668-a095-498e5892209f">
+      <name>Arguments</name>
+      <synonym>
+        <key>ru</key>
+        <value>Arguments</value>
+      </synonym>
+      <xdtoValueType>
+        <name>Structure</name>
+        <nsUri>http://v8.1c.ru/8.1/data/core</nsUri>
+      </xdtoValueType>
+    </parameters>
+    <parameters uuid="98036664-32ee-46a9-9c0d-599fe8eae9be">
+      <name>Code</name>
+      <synonym>
+        <key>ru</key>
+        <value>Code</value>
+      </synonym>
+      <xdtoValueType>
+        <name>string</name>
+        <nsUri>http://www.w3.org/2001/XMLSchema</nsUri>
+      </xdtoValueType>
+    </parameters>
+  </operations>
+</mdclass:WebService>

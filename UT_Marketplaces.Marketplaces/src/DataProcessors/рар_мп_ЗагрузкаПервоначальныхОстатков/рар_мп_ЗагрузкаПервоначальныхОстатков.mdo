@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:DataProcessor xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="76c3f951-31e1-42f6-bfcb-5f291e93c0bb">
+  <producedTypes>
+    <objectType typeId="0b2213c7-4f01-4006-a024-9155244ecf38" valueTypeId="d7cc7819-b706-4a95-8ad2-d5ac14bf2476"/>
+    <managerType typeId="95e35782-4a00-458b-81c8-d847055d5b49" valueTypeId="c981550c-04ad-4ae4-b75f-87d169e9741a"/>
+  </producedTypes>
+  <name>рар_мп_ЗагрузкаПервоначальныхОстатков</name>
+  <synonym>
+    <key>ru</key>
+    <value>Загрузка первоначальных остатков (1С-Рарус)</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <defaultForm>DataProcessor.рар_мп_ЗагрузкаПервоначальныхОстатков.Form.Форма</defaultForm>
+  <forms uuid="2ea32e47-3f27-48be-8cab-4043211b3a53">
+    <name>Форма</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+</mdclass:DataProcessor>

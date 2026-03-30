@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Enum xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="4799b531-842e-4c6f-8f53-da940885f81f">
+  <producedTypes>
+    <refType typeId="0d8d6309-da4d-4763-8cf1-1164d3d661fb" valueTypeId="47fd1bcc-bfa2-4ebf-96bf-88fce1b31e89"/>
+    <listType typeId="42a95368-44ae-4835-a060-92df264abe5b" valueTypeId="93877fa1-60c3-4b1b-add7-5547a27b25c4"/>
+    <managerType typeId="9a400298-17a7-4133-8231-90ebffc38788" valueTypeId="addcf850-477d-445d-aad3-66ee2d6f566b"/>
+  </producedTypes>
+  <name>рар_мп_ЯндексМаркет_РазмерЯрлыков</name>
+  <synonym>
+    <key>ru</key>
+    <value>Размеры ярлыков в ЯндексМаркете (1С-Рарус)</value>
+  </synonym>
+  <quickChoice>true</quickChoice>
+  <choiceMode>BothWays</choiceMode>
+  <enumValues uuid="d59f2648-68b4-4c92-885e-d16f1668f5d6">
+    <name>A9_HORIZONTALLY</name>
+    <synonym>
+      <key>ru</key>
+      <value>58×40</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="463aab79-d6cb-4fc2-a1b9-1020d61d51c0">
+    <name>A9</name>
+    <synonym>
+      <key>ru</key>
+      <value>40×58</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="08d70880-0556-4164-b186-9ab54c78c8a6">
+    <name>A7</name>
+    <synonym>
+      <key>ru</key>
+      <value>75×120</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="7dd8f776-f638-4861-a5f3-caf786c8091d">
+    <name>A4</name>
+    <synonym>
+      <key>ru</key>
+      <value>A4</value>
+    </synonym>
+  </enumValues>
+</mdclass:Enum>

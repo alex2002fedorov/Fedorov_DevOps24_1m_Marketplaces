@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:WebService xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="8107f364-c1fa-4d27-b417-f6af91d1fbc7">
+  <name>TSDDataExchange</name>
+  <synonym>
+    <key>ru</key>
+    <value>TSD Data exchange</value>
+  </synonym>
+  <namespace>http://rarus.ru/TSDL/WS</namespace>
+  <xdtoPackages xsi:type="core:StringValue">
+    <value>http://v8.1c.ru/8.1/data/core</value>
+  </xdtoPackages>
+  <descriptorFileName>TSDLDataExchange.1cws</descriptorFileName>
+  <reuseSessions>AutoUse</reuseSessions>
+  <sessionMaxAge>20</sessionMaxAge>
+  <operations uuid="adaf5809-630d-42f2-b89c-4b3df00a66e8">
+    <name>ExecuteMethod</name>
+    <synonym>
+      <key>ru</key>
+      <value>Execute method</value>
+    </synonym>
+    <xdtoReturningValueType>
+      <name>Structure</name>
+      <nsUri>http://v8.1c.ru/8.1/data/core</nsUri>
+    </xdtoReturningValueType>
+    <procedureName>ExecuteMethod</procedureName>
+    <dataLockControlMode>Managed</dataLockControlMode>
+    <parameters uuid="d9358cba-dbf8-41ed-905f-01810142999c">
+      <name>FunctionName</name>
+      <synonym>
+        <key>ru</key>
+        <value>Function name</value>
+      </synonym>
+      <xdtoValueType>
+        <name>string</name>
+        <nsUri>http://www.w3.org/2001/XMLSchema</nsUri>
+      </xdtoValueType>
+    </parameters>
+    <parameters uuid="238c3281-1ae5-4f4f-9286-18fdbd9bb754">
+      <name>Arguments</name>
+      <synonym>
+        <key>ru</key>
+        <value>Arguments</value>
+      </synonym>
+      <xdtoValueType>
+        <name>Structure</name>
+        <nsUri>http://v8.1c.ru/8.1/data/core</nsUri>
+      </xdtoValueType>
+    </parameters>
+  </operations>
+</mdclass:WebService>

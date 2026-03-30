@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Enum xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="6a724c4e-64e4-43be-9919-2314b6b983a2">
+  <producedTypes>
+    <refType typeId="a72fe664-ff8f-4f5a-85e6-ace08b73c93e" valueTypeId="902adb0a-cf1d-43cf-8f44-f88742be1066"/>
+    <listType typeId="ec6f833b-b47d-4c45-92cc-a556a565ce20" valueTypeId="a4ed3110-c45c-47e0-9fb6-9cdf93cae50a"/>
+    <managerType typeId="d6699fd0-110f-4ef4-87ed-1c236f176307" valueTypeId="fbc2e2f1-6529-4732-94a0-81d3496eb098"/>
+  </producedTypes>
+  <name>рар_мп_Ozon_СтатусыЗаказов</name>
+  <synonym>
+    <key>ru</key>
+    <value>Статусы заказов в Ozon (1С-Рарус)</value>
+  </synonym>
+  <quickChoice>true</quickChoice>
+  <choiceMode>BothWays</choiceMode>
+  <enumValues uuid="ef9bd398-07ec-4670-8932-d1f1f3322290">
+    <name>acceptance_in_progress</name>
+    <synonym>
+      <key>ru</key>
+      <value>Идёт приёмка</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="ba6396ff-aabe-4431-8141-6201360aadb0">
+    <name>arbitration</name>
+    <synonym>
+      <key>ru</key>
+      <value>Арбитраж</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="06db2acd-d51d-4792-aace-f4edb7626fd5">
+    <name>awaiting_approve</name>
+    <synonym>
+      <key>ru</key>
+      <value>Ожидает подтверждения</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="ca246bb0-cfaa-46a9-b986-6be3abc85a02">
+    <name>awaiting_deliver</name>
+    <synonym>
+      <key>ru</key>
+      <value>Ожидает отгрузки</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="ace429e1-2f26-4a5b-9788-628d6afc3e5f">
+    <name>awaiting_packaging</name>
+    <synonym>
+      <key>ru</key>
+      <value>Ожидает упаковки</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="866b8825-a29e-4cb1-a36c-aea9c4124455">
+    <name>awaiting_registration</name>
+    <synonym>
+      <key>ru</key>
+      <value>Ожидает регистрации</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="0e38e570-cbfe-437b-8dab-6e0c1ac2b895">
+    <name>awaiting_verification</name>
+    <synonym>
+      <key>ru</key>
+      <value>Создано</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="b6f4fcbf-3f0e-4f78-864f-55f6b7257a45">
+    <name>cancelled</name>
+    <synonym>
+      <key>ru</key>
+      <value>Отменено</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="e65708ef-2f2f-41dc-96bb-72280dde58e0">
+    <name>cancelled_from_split_pending</name>
+    <synonym>
+      <key>ru</key>
+      <value>Отменён из-за разделения отправления</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="37858fcc-d7e1-4efa-80cb-e7f2d63cc38f">
+    <name>client_arbitration</name>
+    <synonym>
+      <key>ru</key>
+      <value>Клиентский арбитраж доставки</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="fb145fc5-473f-477e-8d6f-ab5a8e1f86fb">
+    <name>delivering</name>
+    <synonym>
+      <key>ru</key>
+      <value>Доставляется</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="1a1d973f-8cf9-4204-9508-6eef7e3cfd27">
+    <name>driver_pickup</name>
+    <synonym>
+      <key>ru</key>
+      <value>У водителя</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="eeed8051-3675-4b8e-94c9-a4b43b8abfbf">
+    <name>not_accepted</name>
+    <synonym>
+      <key>ru</key>
+      <value>Не принят на сортировочном центре</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="22ebaa40-03a0-46b7-b45a-352c2bd4348d">
+    <name>sent_by_seller</name>
+    <synonym>
+      <key>ru</key>
+      <value>Отправлено продавцом</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="9c2cf168-8fb4-4900-bb7f-e9aefeb1510e">
+    <name>delivered</name>
+    <synonym>
+      <key>ru</key>
+      <value>Доставлено</value>
+    </synonym>
+  </enumValues>
+</mdclass:Enum>

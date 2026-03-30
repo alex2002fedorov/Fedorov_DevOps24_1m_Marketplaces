@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:InformationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="ce6192db-a3e1-4707-93e3-7265966a182f">
+  <producedTypes>
+    <selectionType typeId="b1b98e80-6f5d-40f3-8f98-4239ccd362bf" valueTypeId="256b6821-b3af-4218-9b6f-e00c87e7759c"/>
+    <listType typeId="f17c85f3-9dae-46df-aa82-86f1713a94a6" valueTypeId="d4c81c59-17f4-4b79-91a7-430b4c3c9308"/>
+    <managerType typeId="5c5d993e-c4d2-439a-8cdb-7b13c62660d5" valueTypeId="0ca549ec-459d-445d-8513-c081a3da8382"/>
+    <recordSetType typeId="99b8b2c6-6b59-4677-bf9c-fa7e73c85528" valueTypeId="ee0f3eb7-2dee-422c-a072-e912c5ede423"/>
+    <recordKeyType typeId="d1fd67e3-a213-4ad7-ae4f-66e0df75e364" valueTypeId="59ad8379-f116-425d-b69e-f88867f728d3"/>
+    <recordType typeId="4e3c6d05-2c11-432c-9413-1563c487e5a1" valueTypeId="fd9e9e60-b1c0-43f8-973c-8632ad4a0de1"/>
+    <recordManagerType typeId="1b8eaa82-3e62-43bb-8ee9-1e7f9b29e346" valueTypeId="9ae6b2e5-db04-4d17-8a6d-db33e4fdad36"/>
+  </producedTypes>
+  <name>РегистрацияТСД</name>
+  <synonym>
+    <key>ru</key>
+    <value>Регистрация ТСД</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <editType>InDialog</editType>
+  <defaultListForm>InformationRegister.РегистрацияТСД.Form.ФормаСписка</defaultListForm>
+  <standardAttributes>
+    <dataHistory>Use</dataHistory>
+    <name>Active</name>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </standardAttributes>
+  <standardAttributes>
+    <dataHistory>Use</dataHistory>
+    <name>LineNumber</name>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </standardAttributes>
+  <standardAttributes>
+    <dataHistory>Use</dataHistory>
+    <name>Recorder</name>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </standardAttributes>
+  <standardAttributes>
+    <dataHistory>Use</dataHistory>
+    <name>Period</name>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fullTextSearch>Use</fullTextSearch>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </standardAttributes>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <resources uuid="4857012a-4748-40e2-a348-98c57b625bbe">
+    <name>ВерсияМП</name>
+    <synonym>
+      <key>ru</key>
+      <value>Версия Мобильного приложения</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>10</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+  </resources>
+  <resources uuid="22874b4f-8dab-4233-b2fb-eb06c6d9809e">
+    <name>ДатаПоследнегоОбращения</name>
+    <synonym>
+      <key>ru</key>
+      <value>Дата последнего обращения</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers>
+        <dateFractions>Date</dateFractions>
+      </dateQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <dimensions uuid="952e3102-6989-47ca-b8c3-ab12fc308648">
+    <name>IDТСД</name>
+    <synonym>
+      <key>ru</key>
+      <value>ID ТСД</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.IDТСД</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <forms uuid="056c145f-cae9-4333-8401-75df02de0a6f">
+    <name>ФормаСписка</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма списка</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+</mdclass:InformationRegister>

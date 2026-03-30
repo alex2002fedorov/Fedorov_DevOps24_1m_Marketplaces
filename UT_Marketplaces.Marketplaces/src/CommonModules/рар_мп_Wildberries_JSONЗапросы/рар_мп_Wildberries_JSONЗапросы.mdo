@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="998ec3e5-4068-4513-af43-cf8dc1d18de3">
+  <name>рар_мп_Wildberries_JSONЗапросы</name>
+  <synonym>
+    <key>ru</key>
+    <value>Wildberries JSON запросы</value>
+  </synonym>
+  <server>true</server>
+</mdclass:CommonModule>

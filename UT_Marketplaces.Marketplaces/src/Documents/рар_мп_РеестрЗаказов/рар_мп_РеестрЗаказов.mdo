@@ -1,0 +1,893 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="03fffef1-6b9b-47b1-8c39-42149e9105f7">
+  <producedTypes>
+    <objectType typeId="4ce32447-7723-41a9-b398-b1485a995dcc" valueTypeId="74dabc15-e51d-4656-a5c6-0bd4c65100b2"/>
+    <refType typeId="063c32bf-b7e4-4d5d-8115-b5594b4061c6" valueTypeId="b7173915-fb88-4c37-a79e-238829207d44"/>
+    <selectionType typeId="03bb741d-39ca-4107-90a1-7d310b0f8b5d" valueTypeId="b87186de-0833-4893-bd8d-dbb3d229a15d"/>
+    <listType typeId="7a3533aa-1032-490b-bb86-268711d104b5" valueTypeId="24843168-0cc2-45f1-b3a4-58b2703f2d9c"/>
+    <managerType typeId="88f0f3d5-9e08-4b02-a131-8451057cf4fb" valueTypeId="e2484f53-12b5-425b-808c-73182cecaa5e"/>
+  </producedTypes>
+  <name>рар_мп_РеестрЗаказов</name>
+  <synonym>
+    <key>ru</key>
+    <value>Реестр заказов (1С-Рарус)</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <inputByString>Document.рар_мп_РеестрЗаказов.StandardAttribute.Number</inputByString>
+  <fullTextSearchOnInputByString>DontUse</fullTextSearchOnInputByString>
+  <createOnInput>Use</createOnInput>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <fullTextSearch>Use</fullTextSearch>
+  <objectPresentation>
+    <key>ru</key>
+    <value>Реестр заказов (1С-Рарус)</value>
+  </objectPresentation>
+  <listPresentation>
+    <key>ru</key>
+    <value>Реестр заказов (1С-Рарус)</value>
+  </listPresentation>
+  <numberType>String</numberType>
+  <numberLength>9</numberLength>
+  <numberAllowedLength>Variable</numberAllowedLength>
+  <checkUnique>true</checkUnique>
+  <autonumbering>true</autonumbering>
+  <defaultObjectForm>Document.рар_мп_РеестрЗаказов.Form.ФормаДокумента</defaultObjectForm>
+  <defaultListForm>Document.рар_мп_РеестрЗаказов.Form.ФормаСписка</defaultListForm>
+  <postInPrivilegedMode>true</postInPrivilegedMode>
+  <unpostInPrivilegedMode>true</unpostInPrivilegedMode>
+  <attributes uuid="d4e316fa-d339-42eb-a8b3-974410bdd32c">
+    <name>рар_мп_АккаунтМаркетплейса</name>
+    <synonym>
+      <key>ru</key>
+      <value>Аккаунт маркетплейса</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.рар_мп_АккаунтыМаркетплейсов</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="0ed31738-5179-458d-986b-f76c31a506c4">
+    <name>рар_мп_ДатаОтгрузки</name>
+    <synonym>
+      <key>ru</key>
+      <value>Дата отгрузки</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers>
+        <dateFractions>Date</dateFractions>
+      </dateQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="9fd76861-3324-4a08-8145-a8c3a3e2439b">
+    <name>рар_мп_Wildberries_НомерПоставки</name>
+    <synonym>
+      <key>ru</key>
+      <value>Номер поставки</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>30</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="9f1fcbaf-fd25-48ee-862a-9fbe0b56e02f">
+    <name>рар_мп_ЗапрещеноИзменятьСоставаРеестра</name>
+    <synonym>
+      <key>ru</key>
+      <value>Разрешено изменение состава реестра</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="1c87fa77-f198-47b2-a7c8-2495cb88ab1c">
+    <name>рар_мп_СтатусДокументаВТСД</name>
+    <synonym>
+      <key>ru</key>
+      <value>Статус документа в ТСД</value>
+    </synonym>
+    <type>
+      <types>EnumRef.рар_мп_СтатусыДокументовВТСД</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="af81b82e-a698-4d53-aa25-044b1424bd20">
+    <name>рар_мп_ПользовательТСД</name>
+    <synonym>
+      <key>ru</key>
+      <value>Пользователь взявший в работу в ТСД</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Пользователи</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <forms uuid="07453dbe-8acc-4f73-bc9a-279128dadb9a">
+    <name>ФормаДокумента</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма документа</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <forms uuid="604db94b-fd1c-47ed-b8d1-4fc4c626af93">
+    <name>ФормаСписка</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма списка</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <tabularSections uuid="ae1a14e5-a2d9-4332-943a-c9a481bbc983">
+    <producedTypes>
+      <objectType typeId="051ced85-d5a4-4f8d-bfea-acf63cc5b1e8" valueTypeId="9c24ad44-b750-427c-bd0b-de70b62994ed"/>
+      <rowType typeId="24796ae2-74aa-412e-9c03-b3f11bf45a0c" valueTypeId="3a7a5751-23c8-4ca7-a29f-2e1edb8f30fc"/>
+    </producedTypes>
+    <name>рар_мп_ЗаказыИзМаркетплейса</name>
+    <synonym>
+      <key>ru</key>
+      <value>Заказы из маркетплейса</value>
+    </synonym>
+    <attributes uuid="382ed32a-f9dc-4462-9381-90e194e67f7d">
+      <name>рар_мп_Заказ</name>
+      <synonym>
+        <key>ru</key>
+        <value>Заказ</value>
+      </synonym>
+      <type>
+        <types>DocumentRef.ЗаказКлиента</types>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="a22070d7-1d1f-473c-ab62-71f39ea2b740">
+      <name>рар_мп_НомерЗаказа</name>
+      <synonym>
+        <key>ru</key>
+        <value>Номер заказа</value>
+      </synonym>
+      <type>
+        <types>String</types>
+        <stringQualifiers>
+          <length>50</length>
+        </stringQualifiers>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="07da83ea-7eb1-421b-89fd-ab7306794575">
+      <name>рар_мп_СтатусЗаказа</name>
+      <synonym>
+        <key>ru</key>
+        <value>Статус заказа</value>
+      </synonym>
+      <type>
+        <types>EnumRef.рар_мп_ЯндексМаркет_СтатусыЗаказов</types>
+        <types>EnumRef.рар_мп_Ozon_СтатусыЗаказов</types>
+        <types>EnumRef.рар_мп_Wildberries_СтатусыЗаказов</types>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="cd946b46-737b-468e-90d2-c0c53f605f7d">
+      <name>рар_мп_СтатусОбработкиЗаказа</name>
+      <synonym>
+        <key>ru</key>
+        <value>Статус обработки заказа</value>
+      </synonym>
+      <type>
+        <types>EnumRef.рар_мп_Ozon_ПодстатусыЗаказов</types>
+        <types>EnumRef.рар_мп_ЯндексМаркет_ПодстатусыЗаказов</types>
+        <types>EnumRef.рар_мп_Wildberries_СтатусыОбработкиЗаказов</types>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="21438ea4-c245-4460-8788-0d0101c1fc41">
+      <name>рар_мп_ПечатьЭтикетки</name>
+      <synonym>
+        <key>ru</key>
+        <value>Печать этикетки</value>
+      </synonym>
+      <type>
+        <types>Number</types>
+        <numberQualifiers>
+          <precision>10</precision>
+        </numberQualifiers>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="84f667be-77c7-4eeb-832f-80beb673f5c0">
+      <name>рар_мп_СкачатьЭтикетку</name>
+      <synonym>
+        <key>ru</key>
+        <value>Скачать этикетку</value>
+      </synonym>
+      <type>
+        <types>Number</types>
+        <numberQualifiers>
+          <precision>10</precision>
+        </numberQualifiers>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+  </tabularSections>
+  <tabularSections uuid="9262b1a6-4f5e-453f-94bd-53ff9d592f21">
+    <producedTypes>
+      <objectType typeId="3c35b548-9f29-4280-be5f-4ff7f4cb82ee" valueTypeId="57a6715f-474a-41c0-9f13-69a1094d3891"/>
+      <rowType typeId="551f7bd2-8482-4623-9715-fdfa2a915b56" valueTypeId="0cfb4d8d-6a2b-4cd5-a3bb-64df2d06ddd7"/>
+    </producedTypes>
+    <name>рар_мп_ПередачаНаКомиссию</name>
+    <synonym>
+      <key>ru</key>
+      <value>Передача на комиссию</value>
+    </synonym>
+    <attributes uuid="09c950b2-074a-4920-8f5f-5241e2b6e3b5">
+      <name>рар_мп_Заказ</name>
+      <synonym>
+        <key>ru</key>
+        <value>Заказ</value>
+      </synonym>
+      <type>
+        <types>DocumentRef.ЗаказКлиента</types>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="320542e8-8774-46e4-90d8-6a173c5331d0">
+      <name>рар_мп_НомерЗаказа</name>
+      <synonym>
+        <key>ru</key>
+        <value>Номер заказа</value>
+      </synonym>
+      <type>
+        <types>String</types>
+        <stringQualifiers>
+          <length>50</length>
+        </stringQualifiers>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="edaa60bf-a96e-4a45-8f6e-c04755429ef6">
+      <name>рар_мп_ПередачаНаКомиссию</name>
+      <synonym>
+        <key>ru</key>
+        <value>Передача на комиссию</value>
+      </synonym>
+      <type>
+        <types>DocumentRef.ПередачаТоваровХранителю</types>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+  </tabularSections>
+  <tabularSections uuid="6ebc0e05-fb4d-4361-865a-c64867dcb289">
+    <producedTypes>
+      <objectType typeId="85bebe97-4b89-4142-9507-996d86c27de3" valueTypeId="27f2ab3d-0ca4-494f-bb18-05c8cfc67bf0"/>
+      <rowType typeId="7f511c1b-ba8f-44c2-913a-3db39f18a4f6" valueTypeId="2b5f3eb2-0c2c-4d0b-87b5-ddef6ade8f33"/>
+    </producedTypes>
+    <name>рар_мп_ТоварыИзЗаказов</name>
+    <synonym>
+      <key>ru</key>
+      <value>Товары из заказов</value>
+    </synonym>
+    <attributes uuid="9da01299-f96e-4ad6-ac03-7ca85cd27b14">
+      <name>рар_мп_НомерЗаказа</name>
+      <synonym>
+        <key>ru</key>
+        <value>Номер заказа</value>
+      </synonym>
+      <type>
+        <types>String</types>
+        <stringQualifiers>
+          <length>50</length>
+        </stringQualifiers>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="ed8f2965-184e-4a37-b8a1-ebda7d7ad15d">
+      <name>рар_мп_СтрокаИзТЧТовары</name>
+      <synonym>
+        <key>ru</key>
+        <value>Номер строки из табличной части Товары</value>
+      </synonym>
+      <type>
+        <types>Number</types>
+        <numberQualifiers>
+          <precision>10</precision>
+        </numberQualifiers>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="efef7936-15f7-4f7b-b93a-5983953294fc">
+      <name>рар_мп_Номенклатура</name>
+      <synonym>
+        <key>ru</key>
+        <value>Номенклатура</value>
+      </synonym>
+      <type>
+        <types>CatalogRef.Номенклатура</types>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="16c00d12-eb3d-4f7c-bec3-c42a7b5d490a">
+      <name>рар_мп_Характеристика</name>
+      <synonym>
+        <key>ru</key>
+        <value>Характеристика</value>
+      </synonym>
+      <type>
+        <types>CatalogRef.ХарактеристикиНоменклатуры</types>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="4bbfbcac-ad66-47f6-aa31-7e044e58bb18">
+      <name>рар_мп_Артикул</name>
+      <synonym>
+        <key>ru</key>
+        <value>Артикул</value>
+      </synonym>
+      <type>
+        <types>String</types>
+        <stringQualifiers>
+          <length>50</length>
+        </stringQualifiers>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="26b9f7d7-5884-47b1-a9d9-76882686e3a5">
+      <name>рар_мп_КоличествоУпаковок</name>
+      <synonym>
+        <key>ru</key>
+        <value>Количество</value>
+      </synonym>
+      <type>
+        <types>Number</types>
+        <numberQualifiers>
+          <precision>15</precision>
+          <scale>3</scale>
+          <nonNegative>true</nonNegative>
+        </numberQualifiers>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="2c2813f0-8053-41a1-b38a-dcb1e7f4c96f">
+      <name>рар_мп_Количество</name>
+      <synonym>
+        <key>ru</key>
+        <value>Количество</value>
+      </synonym>
+      <type>
+        <types>Number</types>
+        <numberQualifiers>
+          <precision>15</precision>
+          <scale>3</scale>
+          <nonNegative>true</nonNegative>
+        </numberQualifiers>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+  </tabularSections>
+  <tabularSections uuid="7a7b271c-a348-4a5e-888b-ed98e34c727e">
+    <producedTypes>
+      <objectType typeId="63bd20b1-abf9-4356-ad3f-df2ab7e21548" valueTypeId="3a7d8e50-6f8c-45f7-a14e-1ade5d920d7f"/>
+      <rowType typeId="3a69ce43-580a-41cc-9a96-954c58f7e580" valueTypeId="a33c02e1-8966-4672-a5ef-e54c9acdd136"/>
+    </producedTypes>
+    <name>рар_мп_Коробки</name>
+    <synonym>
+      <key>ru</key>
+      <value>Коробки</value>
+    </synonym>
+    <attributes uuid="1e9d8468-e444-4cf8-8986-9b079096150f">
+      <name>рар_мп_НомерЗаказа</name>
+      <synonym>
+        <key>ru</key>
+        <value>Номер заказа</value>
+      </synonym>
+      <type>
+        <types>String</types>
+        <stringQualifiers>
+          <length>50</length>
+        </stringQualifiers>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="8602200d-49b1-41ec-8a4b-c2ab801d8ac0">
+      <name>рар_мп_Коробка</name>
+      <synonym>
+        <key>ru</key>
+        <value>Коробка</value>
+      </synonym>
+      <type>
+        <types>String</types>
+        <stringQualifiers>
+          <length>50</length>
+        </stringQualifiers>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+  </tabularSections>
+  <tabularSections uuid="271c1a05-a017-4631-ab66-5080a2559320">
+    <producedTypes>
+      <objectType typeId="a2c49ac5-83f8-4d84-9b28-e02e89a113d4" valueTypeId="6a5076d7-8cd8-4560-9b8e-9965db11f284"/>
+      <rowType typeId="5ad18a5d-122e-46c7-b673-a5d1414d6cf2" valueTypeId="09e15615-2b59-46d2-a35f-ecd78e97a5fb"/>
+    </producedTypes>
+    <name>рар_мп_РаспределенныеТовары</name>
+    <synonym>
+      <key>ru</key>
+      <value>Распределенные товары</value>
+    </synonym>
+    <attributes uuid="9c17f01c-3ef9-4264-b19e-730d5893d518">
+      <name>рар_мп_Коробка</name>
+      <synonym>
+        <key>ru</key>
+        <value>Коробка</value>
+      </synonym>
+      <type>
+        <types>String</types>
+        <stringQualifiers>
+          <length>50</length>
+        </stringQualifiers>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="fa701be6-cec9-4839-afb0-0bbf52adcfc6">
+      <name>рар_мп_НомерЗаказа</name>
+      <synonym>
+        <key>ru</key>
+        <value>Номер заказа</value>
+      </synonym>
+      <type>
+        <types>String</types>
+        <stringQualifiers>
+          <length>50</length>
+        </stringQualifiers>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="12c5c219-ae88-4b5c-a798-d460d2ffc994">
+      <name>рар_мп_СтрокаИзТЧТовары</name>
+      <synonym>
+        <key>ru</key>
+        <value>Номер строки из табличной части Товары</value>
+      </synonym>
+      <type>
+        <types>Number</types>
+        <numberQualifiers>
+          <precision>10</precision>
+        </numberQualifiers>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="3f792d43-28e0-4c71-b68e-047ebd07f1f3">
+      <name>рар_мп_Номенклатура</name>
+      <synonym>
+        <key>ru</key>
+        <value>Номенклатура</value>
+      </synonym>
+      <type>
+        <types>CatalogRef.Номенклатура</types>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="bd25bb77-3035-4152-9016-56e5c3d43e0e">
+      <name>рар_мп_Характеристика</name>
+      <synonym>
+        <key>ru</key>
+        <value>Характеристика</value>
+      </synonym>
+      <type>
+        <types>CatalogRef.ХарактеристикиНоменклатуры</types>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="e82af856-950f-4fc3-9c3f-1a44e1c637f8">
+      <name>рар_мп_Артикул</name>
+      <synonym>
+        <key>ru</key>
+        <value>Артикул</value>
+      </synonym>
+      <type>
+        <types>String</types>
+        <stringQualifiers>
+          <length>50</length>
+        </stringQualifiers>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="04043bea-2eb3-457b-b779-40675bb1054d">
+      <name>рар_мп_КоличествоУпаковок</name>
+      <synonym>
+        <key>ru</key>
+        <value>Количество</value>
+      </synonym>
+      <type>
+        <types>Number</types>
+        <numberQualifiers>
+          <precision>15</precision>
+          <scale>3</scale>
+          <nonNegative>true</nonNegative>
+        </numberQualifiers>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="48fe941d-ff1a-4c5a-804f-86768b846e35">
+      <name>рар_мп_Количество</name>
+      <synonym>
+        <key>ru</key>
+        <value>Количество</value>
+      </synonym>
+      <type>
+        <types>Number</types>
+        <numberQualifiers>
+          <precision>15</precision>
+          <scale>3</scale>
+          <nonNegative>true</nonNegative>
+        </numberQualifiers>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+  </tabularSections>
+  <tabularSections uuid="a584c62b-4eb0-452a-8436-6ffdc6d01b15">
+    <producedTypes>
+      <objectType typeId="576fcf38-f5a6-40a4-9e25-d5f96a70d084" valueTypeId="84f69ecb-886c-4fcd-82e7-aff05aa215bc"/>
+      <rowType typeId="2b828dc9-3015-4480-909a-20e4ff96c7ab" valueTypeId="1c8b6dcd-9d25-49a6-b34b-24d0f013ee05"/>
+    </producedTypes>
+    <name>рар_мп_МаркируемыеТовары</name>
+    <synonym>
+      <key>ru</key>
+      <value>Маркируемые товары</value>
+    </synonym>
+    <attributes uuid="65a2de81-049c-47ce-bbab-c12c5e93a3cd">
+      <name>рар_мп_НомерЗаказа</name>
+      <synonym>
+        <key>ru</key>
+        <value>Номер заказа</value>
+      </synonym>
+      <type>
+        <types>String</types>
+        <stringQualifiers>
+          <length>50</length>
+        </stringQualifiers>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="44f6e6c1-6e08-4e54-9a67-d30d4c54c427">
+      <name>рар_мп_СтрокаИзТЧТовары</name>
+      <synonym>
+        <key>ru</key>
+        <value>Номер строки из табличной части Товары</value>
+      </synonym>
+      <type>
+        <types>Number</types>
+        <numberQualifiers>
+          <precision>10</precision>
+        </numberQualifiers>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="f1f963f0-eb15-41b4-8017-cb353a7e2c3e">
+      <name>рар_мп_Exemplar_Id</name>
+      <synonym>
+        <key>ru</key>
+        <value>Exemplar id</value>
+      </synonym>
+      <type>
+        <types>Number</types>
+        <numberQualifiers>
+          <precision>14</precision>
+        </numberQualifiers>
+      </type>
+      <format>
+        <key>ru</key>
+        <value>ЧГ=0</value>
+      </format>
+      <editFormat>
+        <key>ru</key>
+        <value>ЧГ=0</value>
+      </editFormat>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="3234943e-2a73-42fd-af9c-c497c7c2aae3">
+      <name>рар_мп_Артикул</name>
+      <synonym>
+        <key>ru</key>
+        <value>Артикул</value>
+      </synonym>
+      <type>
+        <types>String</types>
+        <stringQualifiers>
+          <length>50</length>
+        </stringQualifiers>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="d19ceec9-e4b2-4328-901a-59393f49af58">
+      <name>рар_мп_IDТовара</name>
+      <synonym>
+        <key>ru</key>
+        <value>ID Товара в маркетплейсе</value>
+      </synonym>
+      <type>
+        <types>String</types>
+        <stringQualifiers>
+          <length>30</length>
+        </stringQualifiers>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="b60b1550-c7bd-4727-9ffe-e1dc10a5282a">
+      <name>рар_мп_Номенклатура</name>
+      <synonym>
+        <key>ru</key>
+        <value>Номенклатура</value>
+      </synonym>
+      <type>
+        <types>CatalogRef.Номенклатура</types>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="0af6a7d1-dad9-49aa-9250-8914802e1029">
+      <name>рар_мп_Характеристика</name>
+      <synonym>
+        <key>ru</key>
+        <value>Характеристика</value>
+      </synonym>
+      <type>
+        <types>CatalogRef.ХарактеристикиНоменклатуры</types>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="1371f76e-0891-4dd7-8365-68b2ef909eb0">
+      <name>рар_мп_ЗаполнениеМаркировки</name>
+      <synonym>
+        <key>ru</key>
+        <value>Заполнять маркировку</value>
+      </synonym>
+      <type>
+        <types>Boolean</types>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="2564db23-13cc-4d83-96bc-6927fa816b7a">
+      <name>рар_мп_ЧестныйЗнак</name>
+      <synonym>
+        <key>ru</key>
+        <value>Честный знак (маркировка)</value>
+      </synonym>
+      <type>
+        <types>CatalogRef.ШтрихкодыУпаковокТоваров</types>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="db15a405-ed4f-4f49-ba20-90fdba82822d">
+      <name>рар_мп_ЗаполнениеГТД</name>
+      <synonym>
+        <key>ru</key>
+        <value>Заполнять ГТД</value>
+      </synonym>
+      <type>
+        <types>Boolean</types>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="6cfadfd5-417e-46dc-b13b-b21a37dac738">
+      <name>рар_мп_НомерГТД</name>
+      <synonym>
+        <key>ru</key>
+        <value>Номер ГТД</value>
+      </synonym>
+      <type>
+        <types>CatalogRef.НомераГТД</types>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+  </tabularSections>
+  <tabularSections uuid="fcd5b88b-3124-438b-a950-8acdcaffa9e8">
+    <producedTypes>
+      <objectType typeId="4d4bcaa9-528b-4a2c-8b14-f7c0e6537f68" valueTypeId="da8ab27b-31aa-437c-a927-2124fffc0d74"/>
+      <rowType typeId="735720e7-b5e7-4d77-b078-de9910906e59" valueTypeId="bffcc3fb-148f-4ba9-965b-c9a89f4452ad"/>
+    </producedTypes>
+    <name>рар_мп_КоличествоГрузовыхМест</name>
+    <synonym>
+      <key>ru</key>
+      <value>Количество грузовых мест</value>
+    </synonym>
+    <attributes uuid="51bfe614-22f8-48fb-b002-411e8d18dcb6">
+      <name>рар_мп_ИдентификаторСклада</name>
+      <synonym>
+        <key>ru</key>
+        <value>Идентификатор склада</value>
+      </synonym>
+      <type>
+        <types>String</types>
+        <stringQualifiers>
+          <length>200</length>
+        </stringQualifiers>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="3fc77424-1485-4b10-bca0-fe963e507f9f">
+      <name>рар_мп_КоличествоГрузовыхМест</name>
+      <synonym>
+        <key>ru</key>
+        <value>Количество грузовых мест</value>
+      </synonym>
+      <type>
+        <types>Number</types>
+        <numberQualifiers>
+          <precision>10</precision>
+          <nonNegative>true</nonNegative>
+        </numberQualifiers>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+  </tabularSections>
+  <templates uuid="d1b80aaa-32c1-4858-b3cb-648ba11a8a4c">
+    <name>рар_мп_Wildberries_Этикетки</name>
+    <synonym>
+      <key>ru</key>
+      <value>Этикетки (Wildberries)</value>
+    </synonym>
+  </templates>
+  <templates uuid="4a0ec522-bb85-481b-a3b0-cf8215aa70d0">
+    <name>рар_мп_Wildberries_ЛистПодбора</name>
+    <synonym>
+      <key>ru</key>
+      <value>Лист подбора (Wildberries)</value>
+    </synonym>
+  </templates>
+  <templates uuid="c0f28451-9310-47ad-9ee9-14aed476775b">
+    <name>рар_мп_Ozon_ЛистПодбора</name>
+    <synonym>
+      <key>ru</key>
+      <value>Лист подбора (Ozon)</value>
+    </synonym>
+  </templates>
+</mdclass:Document>

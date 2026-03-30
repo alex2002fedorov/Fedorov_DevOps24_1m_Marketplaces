@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:AccumulationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" xmlns:mdclassExtension="http://g5.1c.ru/v8/dt/metadata/mdclass/extension" uuid="ab828b7d-2843-499a-8e4f-e706a9d43a18" extendedConfigurationObject="80440cbb-f97b-4620-8eca-b89f9a033f08">
+  <producedTypes>
+    <selectionType typeId="4d250a99-a1a6-4bad-9b79-b11a611e8b4e" valueTypeId="84118e4c-e029-4179-a09b-9fb9d494101c"/>
+    <listType typeId="cc5af9bf-32cb-492b-af7c-dfae2a3c240f" valueTypeId="ca9c7626-fbe8-43b0-948f-d10cc25fe543"/>
+    <managerType typeId="6e321fe3-031d-4157-9254-4b3a61c6586e" valueTypeId="b18124f2-0a38-455b-a890-ce0cd60e50bb"/>
+    <recordSetType typeId="8012e089-61a1-4506-8c48-6d85c45ce6e7" valueTypeId="d4b3875c-417d-47dd-b849-602d85f02e68"/>
+    <recordKeyType typeId="61ee1f1d-34f9-4280-a82a-343a13dcec39" valueTypeId="e252c785-09e8-441c-920f-762460404a12"/>
+    <recordType typeId="92cace47-2f0f-42fd-b3ec-0c8e26fef95b" valueTypeId="f0139200-e556-4374-bace-355154c0a21d"/>
+  </producedTypes>
+  <name>ТоварыНаСкладах</name>
+  <objectBelonging>Adopted</objectBelonging>
+  <extension xsi:type="mdclassExtension:AccumulationRegisterExtension">
+    <extendedConfigurationObject>Checked</extendedConfigurationObject>
+    <registerType>Checked</registerType>
+  </extension>
+  <resources uuid="7762c617-d2f7-4b94-9c97-4d3de8c03e71" extendedConfigurationObject="2d1fe73e-1f3d-4ee9-9dd1-010dfff742b1">
+    <name>ВНаличии</name>
+    <objectBelonging>Adopted</objectBelonging>
+    <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+      <extendedConfigurationObject>Checked</extendedConfigurationObject>
+      <typeExtension>
+        <types>
+          <state>Checked</state>
+          <type>Number</type>
+        </types>
+        <numberQualifiers>
+          <precision>15</precision>
+          <scale>3</scale>
+        </numberQualifiers>
+      </typeExtension>
+    </extension>
+  </resources>
+  <dimensions uuid="a0425bb3-c4fa-4ebd-9af0-be137c7c70ab" extendedConfigurationObject="70b08d50-30e9-4115-9e39-67ef989c58b2">
+    <name>Номенклатура</name>
+    <objectBelonging>Adopted</objectBelonging>
+    <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+      <extendedConfigurationObject>Checked</extendedConfigurationObject>
+      <typeExtension>
+        <types>
+          <state>Checked</state>
+          <type>CatalogRef.Номенклатура</type>
+        </types>
+      </typeExtension>
+    </extension>
+  </dimensions>
+  <dimensions uuid="ce1f0757-94c7-4a9c-8e57-6b568c7bb3bc" extendedConfigurationObject="c9fd5a1a-3aa5-4048-b15e-f8b6a41ab96f">
+    <name>Характеристика</name>
+    <objectBelonging>Adopted</objectBelonging>
+    <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+      <extendedConfigurationObject>Checked</extendedConfigurationObject>
+      <typeExtension>
+        <types>
+          <state>Checked</state>
+          <type>CatalogRef.ХарактеристикиНоменклатуры</type>
+        </types>
+      </typeExtension>
+    </extension>
+  </dimensions>
+  <dimensions uuid="461db4a1-3e1f-4ece-9770-c05e8d900162" extendedConfigurationObject="29d5a4e7-4544-4ed2-a8bf-d541eef13703">
+    <name>Склад</name>
+    <objectBelonging>Adopted</objectBelonging>
+    <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+      <extendedConfigurationObject>Checked</extendedConfigurationObject>
+      <typeExtension>
+        <types>
+          <state>Checked</state>
+          <type>CatalogRef.Склады</type>
+        </types>
+      </typeExtension>
+    </extension>
+  </dimensions>
+</mdclass:AccumulationRegister>

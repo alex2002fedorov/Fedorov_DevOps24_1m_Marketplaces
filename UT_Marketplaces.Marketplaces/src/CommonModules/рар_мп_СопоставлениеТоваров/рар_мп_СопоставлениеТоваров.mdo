@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="3b7b1569-8cfa-4eca-afc6-4459518579b7">
+  <name>рар_мп_СопоставлениеТоваров</name>
+  <synonym>
+    <key>ru</key>
+    <value>Сопоставление товаров</value>
+  </synonym>
+  <server>true</server>
+</mdclass:CommonModule>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:DataProcessor xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="981c120b-e7a3-46b6-92b9-90606c718ad4">
+  <producedTypes>
+    <objectType typeId="246fe66f-86b7-4046-86b5-2dab41c04d44" valueTypeId="36c510f4-d86d-4235-babb-6bc8397abef3"/>
+    <managerType typeId="09ef1d89-09d6-4706-8d75-ef1e1384e65e" valueTypeId="59b8a55f-a931-485e-8c58-180cb312bd31"/>
+  </producedTypes>
+  <name>рар_мп_Механизмы</name>
+  <synonym>
+    <key>ru</key>
+    <value>Механизмы по работе с маркетплейсами (1С-Рарус)</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <defaultForm>DataProcessor.рар_мп_Механизмы.Form.Форма</defaultForm>
+  <forms uuid="ec24cb72-f7fe-46b9-b141-24acc9ea5dd9">
+    <name>Форма</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+</mdclass:DataProcessor>

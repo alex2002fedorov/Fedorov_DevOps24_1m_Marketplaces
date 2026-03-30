@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="f30d9f67-4803-4722-94ae-610d02e5a809">
+  <name>рар_мп_ОтчетКомиссионера</name>
+  <synonym>
+    <key>ru</key>
+    <value>Отчет комиссионера</value>
+  </synonym>
+  <server>true</server>
+</mdclass:CommonModule>

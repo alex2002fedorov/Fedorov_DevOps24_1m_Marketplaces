@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:InformationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="5b8bc4ec-35d8-4e15-b663-355715c7b913">
+  <producedTypes>
+    <selectionType typeId="bb8397b7-baf7-42cd-abd5-f5cf4ba3fe1c" valueTypeId="71c04db6-abc1-428d-a240-9ca552d3453d"/>
+    <listType typeId="636da672-17b3-4bbd-8ec0-68c2d37279b5" valueTypeId="d41afa42-5c37-4eee-803f-11acb730e771"/>
+    <managerType typeId="9479c4fa-4725-4846-bfdf-15eaed67d226" valueTypeId="b519889f-3efd-4e7a-b2cb-022b482ab735"/>
+    <recordSetType typeId="4fe91a66-247d-4352-b943-2e18db717fef" valueTypeId="e264c5ec-68fa-40db-81ec-5c113007e3fb"/>
+    <recordKeyType typeId="ee1e69a7-e799-40cc-9f2f-26df03e9c56a" valueTypeId="be542c41-63a0-4d7c-94dc-f0f10fd0459f"/>
+    <recordType typeId="c7aad621-fe4f-4061-9bbc-666c4d8e7b90" valueTypeId="a2713c3e-8edc-4be2-8ff1-87128005b53c"/>
+    <recordManagerType typeId="cc90557d-ff68-44ed-a81e-7628cb78fee1" valueTypeId="6f25a20a-b467-435c-a92d-20ef42485ca7"/>
+  </producedTypes>
+  <name>рар_мп_РегламентныеЗаданияРасширения</name>
+  <synonym>
+    <key>ru</key>
+    <value>Регламентные задания расширения (1С-Рарус)</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <editType>InDialog</editType>
+  <defaultRecordForm>InformationRegister.рар_мп_РегламентныеЗаданияРасширения.Form.ФормаЗаписи</defaultRecordForm>
+  <defaultListForm>InformationRegister.рар_мп_РегламентныеЗаданияРасширения.Form.ФормаСписка</defaultListForm>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <resources uuid="6c7f814e-c4db-446c-b6f7-dd8c91224ecc">
+    <name>Использование</name>
+    <synonym>
+      <key>ru</key>
+      <value>Использование</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="ca72eea4-fa57-4ce1-a8e3-b24fae55f55d">
+    <name>Расписание</name>
+    <synonym>
+      <key>ru</key>
+      <value>Расписание</value>
+    </synonym>
+    <type>
+      <types>ValueStorage</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="4e5c0455-279f-4f11-8834-cb26a7ef2ce5">
+    <name>Идентификатор</name>
+    <synonym>
+      <key>ru</key>
+      <value>Идентификатор</value>
+    </synonym>
+    <type>
+      <types>UUID</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <dimensions uuid="6227d980-8407-4512-9e93-f22f0c69997d">
+    <name>РегламентноеЗадание</name>
+    <synonym>
+      <key>ru</key>
+      <value>Регламентное задание</value>
+    </synonym>
+    <type>
+      <types>EnumRef.рар_мп_ВидРегламентыхЗадач</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <forms uuid="fccf7941-cdb5-4b60-81b9-0d2d7a54b703">
+    <name>ФормаЗаписи</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма записи</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <forms uuid="e28692f5-9f8d-4f21-acb7-cd48a01abdb8">
+    <name>ФормаСписка</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма списка</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+</mdclass:InformationRegister>

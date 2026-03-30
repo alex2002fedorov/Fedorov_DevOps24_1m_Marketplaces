@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:DataProcessor xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="edf12e80-0199-428c-b132-9c67974cd2a8">
+  <producedTypes>
+    <objectType typeId="9f3cb2ee-4266-4f47-95b0-7480eecf9ac5" valueTypeId="5342adb0-9df8-4899-b038-cbb6a1e19b36"/>
+    <managerType typeId="c599b988-ca10-4968-a2c1-f2c89ea8fd08" valueTypeId="cf8fb57f-8a06-4364-9544-aee6f538a724"/>
+  </producedTypes>
+  <name>рар_мп_ЗагрузкаОтчетаКомиссионера</name>
+  <synonym>
+    <key>ru</key>
+    <value>Загрузка отчета комиссионера (1С-Рарус)</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <defaultForm>DataProcessor.рар_мп_ЗагрузкаОтчетаКомиссионера.Form.Форма</defaultForm>
+  <forms uuid="dc86eeb0-7c72-4491-bd19-aec7a3ab5675">
+    <name>Форма</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+</mdclass:DataProcessor>

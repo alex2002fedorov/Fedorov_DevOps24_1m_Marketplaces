@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Catalog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" xmlns:mdclassExtension="http://g5.1c.ru/v8/dt/metadata/mdclass/extension" uuid="4f13b118-0d75-4a08-af52-00ed46dc2c9d" extendedConfigurationObject="25600f00-5a0f-4302-95ea-d20a98b8212d">
+  <producedTypes>
+    <objectType typeId="edf3df88-e0d4-47d5-ad94-921ec035bc81" valueTypeId="88afb6e4-6d22-49d6-be7c-1deb78259d17"/>
+    <refType typeId="a15d8fcb-8fba-4cdd-935a-23ea925e42e1" valueTypeId="dceff164-1caa-44a9-80bd-bca945985081"/>
+    <selectionType typeId="08e5bef7-582e-49ba-b8a2-a11f584945fc" valueTypeId="9e6d836f-8799-45ab-9cca-5dcf7f04cff3"/>
+    <listType typeId="8e87f9b7-ed81-4cd3-8742-113f11e14b72" valueTypeId="1dbfa3bd-a7f2-4cec-8a8d-5ddcadd5fd7a"/>
+    <managerType typeId="cbc5080e-9c18-4048-a73e-e4b009827a53" valueTypeId="83b5c38d-9478-4b1f-aaeb-b24bce6a6a14"/>
+  </producedTypes>
+  <name>СкидкиНаценки</name>
+  <objectBelonging>Adopted</objectBelonging>
+  <extension xsi:type="mdclassExtension:CatalogExtension">
+    <extendedConfigurationObject>Checked</extendedConfigurationObject>
+  </extension>
+  <attributes uuid="928e7eb3-c7f7-45ff-948f-83ea0a904b9b" extendedConfigurationObject="104d0893-c303-444e-ac77-9494888a864a">
+    <name>СегментНоменклатурыОграничения</name>
+    <objectBelonging>Adopted</objectBelonging>
+    <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+      <extendedConfigurationObject>Checked</extendedConfigurationObject>
+      <typeExtension>
+        <types>
+          <state>Checked</state>
+          <type>CatalogRef.СегментыНоменклатуры</type>
+        </types>
+      </typeExtension>
+    </extension>
+  </attributes>
+</mdclass:Catalog>

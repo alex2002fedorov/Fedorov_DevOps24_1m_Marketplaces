@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:DataProcessor xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" xmlns:mdclassExtension="http://g5.1c.ru/v8/dt/metadata/mdclass/extension" uuid="31e9c7cf-d32e-46a8-b59b-04bbd1ff4330" extendedConfigurationObject="732cf20a-4297-48af-8af8-24c2073334a1">
+  <producedTypes>
+    <objectType typeId="d58cb2bc-786f-4b34-af02-ec0693d5a685" valueTypeId="d8658147-6caf-4576-85db-621b310ae122"/>
+    <managerType typeId="a687534c-3cd8-4b97-8f52-4dcc2427af9c" valueTypeId="c8459f30-b6ae-49d1-b134-07d1dfbd22ee"/>
+  </producedTypes>
+  <name>ПечатьЭтикетокИЦенников</name>
+  <objectBelonging>Adopted</objectBelonging>
+  <extension xsi:type="mdclassExtension:DataProcessorExtension">
+    <extendedConfigurationObject>Checked</extendedConfigurationObject>
+  </extension>
+  <forms uuid="f0dd8ca0-45cc-48c9-a988-b3143ef0f265" extendedConfigurationObject="0e1e7fc3-c2ff-43cb-bd30-8ea6c9552c86">
+    <name>ФормаТовары</name>
+    <objectBelonging>Adopted</objectBelonging>
+    <extension xsi:type="mdclassExtension:BasicFormExtension">
+      <extendedConfigurationObject>Checked</extendedConfigurationObject>
+      <form>Extended</form>
+    </extension>
+  </forms>
+</mdclass:DataProcessor>

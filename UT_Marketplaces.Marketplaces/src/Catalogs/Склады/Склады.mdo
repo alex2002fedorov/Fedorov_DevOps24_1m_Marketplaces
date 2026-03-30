@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Catalog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" xmlns:mdclassExtension="http://g5.1c.ru/v8/dt/metadata/mdclass/extension" uuid="9fd8fa69-e68e-49b5-9667-e9f65357f29c" extendedConfigurationObject="07b3c407-9a3a-4f94-b798-226c96d66840">
+  <producedTypes>
+    <objectType typeId="c804bb37-68e4-4c7c-b87e-9759b6469d5b" valueTypeId="579149ab-fbd2-4dcb-91f2-f55c3df340dd"/>
+    <refType typeId="2b6873e5-d49c-45e8-8b7e-7f37fd00c7b1" valueTypeId="c3f9a338-b2dc-4687-91eb-94c1adc07c19"/>
+    <selectionType typeId="b7830f2b-8cc6-496c-9888-45926aec471d" valueTypeId="d2efd351-f05b-4eab-acb3-cafcec10963c"/>
+    <listType typeId="7a916c6a-95bc-4350-ae27-694d281b4fad" valueTypeId="8b621941-7bc6-4a5f-9a87-49d4871a1958"/>
+    <managerType typeId="dd8c3bd1-299f-48a0-9a29-313c8a1660f6" valueTypeId="4bdabd16-cd49-4c77-ba4a-d39067907a8d"/>
+  </producedTypes>
+  <name>Склады</name>
+  <objectBelonging>Adopted</objectBelonging>
+  <extension xsi:type="mdclassExtension:CatalogExtension">
+    <extendedConfigurationObject>Checked</extendedConfigurationObject>
+  </extension>
+  <attributes uuid="bd667bd4-632b-45b9-b191-81f721d51d41" extendedConfigurationObject="4f41c975-1f0d-4d95-b6fc-9938d4d8d4ff">
+    <name>ИспользоватьОрдернуюСхемуПриОтгрузке</name>
+    <objectBelonging>Adopted</objectBelonging>
+    <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+      <extendedConfigurationObject>Checked</extendedConfigurationObject>
+      <typeExtension>
+        <types>
+          <state>Checked</state>
+          <type>Boolean</type>
+        </types>
+      </typeExtension>
+    </extension>
+  </attributes>
+  <attributes uuid="de1dd5eb-952f-4c23-b30a-a7a4d0ae158a" extendedConfigurationObject="f459e2e3-93ba-4b46-9b48-38ca910f782c">
+    <name>ИспользоватьОрдернуюСхемуПриОтраженииИзлишковНедостач</name>
+    <objectBelonging>Adopted</objectBelonging>
+    <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+      <extendedConfigurationObject>Checked</extendedConfigurationObject>
+      <typeExtension>
+        <types>
+          <state>Checked</state>
+          <type>Boolean</type>
+        </types>
+      </typeExtension>
+    </extension>
+  </attributes>
+  <attributes uuid="adb9cc30-d433-4d3b-b606-4f7e14f23647" extendedConfigurationObject="6e8f132c-946f-45cd-bc8f-57819f36624e">
+    <name>ИспользоватьОрдернуюСхемуПриПоступлении</name>
+    <objectBelonging>Adopted</objectBelonging>
+    <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+      <extendedConfigurationObject>Checked</extendedConfigurationObject>
+      <typeExtension>
+        <types>
+          <state>Checked</state>
+          <type>Boolean</type>
+        </types>
+      </typeExtension>
+    </extension>
+  </attributes>
+  <attributes uuid="3702b4a3-95c3-417a-867a-2a00ba582a75" extendedConfigurationObject="8447539a-9f16-4fa7-9ce9-c5b28e7d9e4f">
+    <name>ИспользоватьСкладскиеПомещения</name>
+    <objectBelonging>Adopted</objectBelonging>
+    <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+      <extendedConfigurationObject>Checked</extendedConfigurationObject>
+      <typeExtension>
+        <types>
+          <state>Checked</state>
+          <type>Boolean</type>
+        </types>
+      </typeExtension>
+    </extension>
+  </attributes>
+</mdclass:Catalog>

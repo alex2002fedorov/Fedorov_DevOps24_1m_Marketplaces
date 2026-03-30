@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Enum xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="072a4baf-9eca-4899-aff9-40a25d54c22a">
+  <producedTypes>
+    <refType typeId="b9044aa1-dbc8-44e0-bc3a-392d55d0bf5f" valueTypeId="d80a447c-9b61-4645-8ff1-f0b274972453"/>
+    <listType typeId="17e1f0a6-e0aa-4311-ac70-881b979adbae" valueTypeId="5cc3b02d-a592-481d-b8af-225e6f173d91"/>
+    <managerType typeId="5445b904-6ab7-4580-a9ae-66a030ebd80c" valueTypeId="584a2671-5ae8-4198-b56d-8f4bb4e4fe44"/>
+  </producedTypes>
+  <name>рар_мп_СхемыРаботы</name>
+  <synonym>
+    <key>ru</key>
+    <value>Схемы работы маркетплейсов (1С-Рарус)</value>
+  </synonym>
+  <quickChoice>true</quickChoice>
+  <choiceMode>BothWays</choiceMode>
+  <enumValues uuid="e9a9a844-849f-45eb-9ca7-3375d99f1208">
+    <name>FBS</name>
+    <synonym>
+      <key>ru</key>
+      <value>FBS</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="fd40ab59-03eb-4347-88ab-678f40238b7b">
+    <name>FBO</name>
+    <synonym>
+      <key>ru</key>
+      <value>FBO</value>
+    </synonym>
+  </enumValues>
+</mdclass:Enum>

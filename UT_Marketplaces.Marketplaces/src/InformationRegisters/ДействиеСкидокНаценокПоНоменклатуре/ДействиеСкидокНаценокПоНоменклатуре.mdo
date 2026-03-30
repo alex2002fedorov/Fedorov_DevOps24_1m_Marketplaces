@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:InformationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" xmlns:mdclassExtension="http://g5.1c.ru/v8/dt/metadata/mdclass/extension" uuid="bce28d39-115f-4606-9f10-b65d06a628f3" extendedConfigurationObject="4ff6c3c4-9bf3-4880-b594-fccf5875e951">
+  <producedTypes>
+    <selectionType typeId="9338967f-e215-4ed7-85f1-00fe8640dec6" valueTypeId="1e88827b-d847-4cac-a929-6cd614917a68"/>
+    <listType typeId="eba0f537-0084-49c3-8cd6-a31634a35917" valueTypeId="a718932d-8cdb-48f6-8e76-706b52f29d05"/>
+    <managerType typeId="c05ec29f-af74-43ab-88e9-5d6dd4f396b1" valueTypeId="1c77cf3f-0e05-4a59-8dda-cefabf56c95a"/>
+    <recordSetType typeId="330bc4cf-40e2-4d82-87af-8442709ca221" valueTypeId="584c0eb8-998b-42b3-ac20-e08e93dcfa28"/>
+    <recordKeyType typeId="a80c6816-79b5-4ec8-8db1-01a29bcfdea1" valueTypeId="1d9df3fd-7dbf-476d-83f5-87ecc6a1baa2"/>
+    <recordType typeId="f98b009d-35ef-4fca-885b-1de0d4050877" valueTypeId="37ce3bde-5ebb-41e3-a143-d05b82882813"/>
+    <recordManagerType typeId="da651396-64ea-493e-b444-a9df6350d346" valueTypeId="2d3aa79b-f101-497e-8620-c1ef987e472d"/>
+  </producedTypes>
+  <name>ДействиеСкидокНаценокПоНоменклатуре</name>
+  <objectBelonging>Adopted</objectBelonging>
+  <extension xsi:type="mdclassExtension:InformationRegisterExtension">
+    <extendedConfigurationObject>Checked</extendedConfigurationObject>
+    <informationRegisterPeriodicity>Checked</informationRegisterPeriodicity>
+    <writeMode>Checked</writeMode>
+  </extension>
+  <informationRegisterPeriodicity>Day</informationRegisterPeriodicity>
+  <resources uuid="471eac48-5c47-4887-a517-e5d1e2ba22d6" extendedConfigurationObject="287daa44-2119-47ad-a8c8-f6e16ddbacea">
+    <name>Статус</name>
+    <objectBelonging>Adopted</objectBelonging>
+    <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+      <extendedConfigurationObject>Checked</extendedConfigurationObject>
+      <typeExtension>
+        <types>
+          <state>Checked</state>
+          <type>EnumRef.СтатусыДействияСкидок</type>
+        </types>
+      </typeExtension>
+    </extension>
+  </resources>
+  <dimensions uuid="8e8a99be-250b-4e3a-b3a2-c3a25f6bcc5c" extendedConfigurationObject="c09ba11e-7348-40ca-a357-74d1ff6e3259">
+    <name>Источник</name>
+    <objectBelonging>Adopted</objectBelonging>
+    <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+      <extendedConfigurationObject>Checked</extendedConfigurationObject>
+      <typeExtension>
+        <types>
+          <state>Checked</state>
+          <type>AnyRef</type>
+        </types>
+      </typeExtension>
+    </extension>
+  </dimensions>
+  <dimensions uuid="eee327d5-a191-461c-b9ee-750d60c3aef4" extendedConfigurationObject="89e99e2d-c45c-467c-a13d-98adfc010d4b">
+    <name>Номенклатура</name>
+    <objectBelonging>Adopted</objectBelonging>
+    <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+      <extendedConfigurationObject>Checked</extendedConfigurationObject>
+      <typeExtension>
+        <types>
+          <state>Checked</state>
+          <type>CatalogRef.Номенклатура</type>
+        </types>
+      </typeExtension>
+    </extension>
+  </dimensions>
+  <dimensions uuid="7af9ef37-6edc-4109-bc36-075671e8f742" extendedConfigurationObject="06843c48-39be-4ba8-8fb6-b26e30adcdf0">
+    <name>Характеристика</name>
+    <objectBelonging>Adopted</objectBelonging>
+    <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+      <extendedConfigurationObject>Checked</extendedConfigurationObject>
+      <typeExtension>
+        <types>
+          <state>Checked</state>
+          <type>CatalogRef.ХарактеристикиНоменклатуры</type>
+        </types>
+      </typeExtension>
+    </extension>
+  </dimensions>
+</mdclass:InformationRegister>

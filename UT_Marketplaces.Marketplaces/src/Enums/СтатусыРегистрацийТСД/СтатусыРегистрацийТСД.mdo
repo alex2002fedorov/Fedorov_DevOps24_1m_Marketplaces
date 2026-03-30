@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Enum xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="6e3ffefa-3b3d-4a2f-acb1-7e0b16939004">
+  <producedTypes>
+    <refType typeId="56844a1b-183d-49c9-8433-93a78f9d97df" valueTypeId="c44a1aff-ec83-4f99-a8a5-c9d91b7a2762"/>
+    <listType typeId="6bda6d81-9fe0-4144-816b-98de6e989417" valueTypeId="211bb13c-a9fa-45dd-8eca-59c541aab479"/>
+    <managerType typeId="e7691498-bec4-41fa-8849-d44d04e0638e" valueTypeId="7c5a00db-5b20-4258-8b33-fd2903783e6d"/>
+  </producedTypes>
+  <name>СтатусыРегистрацийТСД</name>
+  <synonym>
+    <key>ru</key>
+    <value>Статусы регистраций ТСД</value>
+  </synonym>
+  <standardAttributes>
+    <dataHistory>Use</dataHistory>
+    <name>Order</name>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </standardAttributes>
+  <standardAttributes>
+    <dataHistory>Use</dataHistory>
+    <name>Ref</name>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </standardAttributes>
+  <quickChoice>true</quickChoice>
+  <choiceMode>BothWays</choiceMode>
+  <enumValues uuid="d89349de-5d40-4d88-bf93-2dbe2f7ee0b6">
+    <name>ОтправленаНаРегистрацию</name>
+    <synonym>
+      <key>ru</key>
+      <value>Отправлена на регистрацию</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="0e7fac11-81ae-4fec-926f-b0c370f4b6d7">
+    <name>ЛицензияПолучена</name>
+    <synonym>
+      <key>ru</key>
+      <value>Лицензия успешно получена</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="bc5f989b-5e8f-4194-a3b0-b64250843ed4">
+    <name>ЛицензияЗаканчивается</name>
+    <synonym>
+      <key>ru</key>
+      <value>Срок действия лицензии скоро закончится</value>
+    </synonym>
+  </enumValues>
+</mdclass:Enum>

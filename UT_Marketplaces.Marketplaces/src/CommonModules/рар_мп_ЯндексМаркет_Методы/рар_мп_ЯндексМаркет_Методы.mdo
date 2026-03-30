@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="ad94b30a-dcae-44a6-b564-d7ea35a9d4f5">
+  <name>рар_мп_ЯндексМаркет_Методы</name>
+  <synonym>
+    <key>ru</key>
+    <value>Яндекс Маркет методы</value>
+  </synonym>
+  <server>true</server>
+</mdclass:CommonModule>

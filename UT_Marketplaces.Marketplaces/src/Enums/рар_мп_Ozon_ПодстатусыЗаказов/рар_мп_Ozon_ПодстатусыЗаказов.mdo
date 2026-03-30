@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Enum xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="0e4f023c-0c45-43bc-81f5-51c81d4863a0">
+  <producedTypes>
+    <refType typeId="053e698a-2569-4022-8309-aa0a6b045831" valueTypeId="78177c3b-9462-4b1d-8574-7e1d18ebb9bc"/>
+    <listType typeId="83cd351b-d481-465d-b9ea-92db4053bf97" valueTypeId="436828ea-1aca-4701-a657-17436c4b2aac"/>
+    <managerType typeId="73199050-b89a-47be-97bb-ad1224b4b4aa" valueTypeId="22a7adc4-a547-474f-8341-37f3a07b8a5f"/>
+  </producedTypes>
+  <name>рар_мп_Ozon_ПодстатусыЗаказов</name>
+  <synonym>
+    <key>ru</key>
+    <value>Подстатусы заказов в Ozon (1С-Рарус)</value>
+  </synonym>
+  <quickChoice>true</quickChoice>
+  <choiceMode>BothWays</choiceMode>
+  <enumValues uuid="586944b6-d30c-45e1-ae59-4817f2207b80">
+    <name>posting_acceptance_in_progress</name>
+    <synonym>
+      <key>ru</key>
+      <value>Идёт приёмка</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="a36cd0a7-e8d6-404b-9cde-24c4c2d6bbc0">
+    <name>posting_in_arbitration</name>
+    <synonym>
+      <key>ru</key>
+      <value>Арбитраж</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="2b855cc2-1618-4ebe-97e2-67126a62400c">
+    <name>posting_created</name>
+    <synonym>
+      <key>ru</key>
+      <value>Создано</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="ebe5e4f3-5d64-4c0e-a72e-c412eb01513c">
+    <name>posting_in_carriage</name>
+    <synonym>
+      <key>ru</key>
+      <value>В перевозке</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="30447821-29e1-4aaa-9cf9-5739f46ba140">
+    <name>posting_not_in_carriage</name>
+    <synonym>
+      <key>ru</key>
+      <value>Не добавлено в перевозку</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="c9047ffb-72f6-487b-b94a-f6dc4fbade7d">
+    <name>posting_registered</name>
+    <synonym>
+      <key>ru</key>
+      <value>Зарегистрировано</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="6d454c5a-a374-4364-9601-44aacf263ba4">
+    <name>posting_transferring_to_delivery</name>
+    <synonym>
+      <key>ru</key>
+      <value>Передаётся в доставку</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="05b8cc47-8c35-495c-98ce-c888459d6bcf">
+    <name>posting_awaiting_passport_data</name>
+    <synonym>
+      <key>ru</key>
+      <value>Ожидает паспортных данных</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="f1b22c36-1023-44b8-b880-8c7b7ba7d5fa">
+    <name>posting_awaiting_registration</name>
+    <synonym>
+      <key>ru</key>
+      <value>Ожидает регистрации</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="d98c7f1e-eb1d-4c80-a757-1a0dcdd78254">
+    <name>posting_registration_error</name>
+    <synonym>
+      <key>ru</key>
+      <value>Ошибка регистрации</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="fe53194f-d4e9-4261-bb6f-cb5a0b0084f0">
+    <name>posting_split_pending</name>
+    <synonym>
+      <key>ru</key>
+      <value>Создано</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="dd1d12e8-6355-4a6d-8518-df898206c772">
+    <name>posting_canceled</name>
+    <synonym>
+      <key>ru</key>
+      <value>Отменено</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="fdf5a45c-ad49-4896-9296-d398c35fc606">
+    <name>posting_in_client_arbitration</name>
+    <synonym>
+      <key>ru</key>
+      <value>Клиентский арбитраж доставки</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="2e0eb468-54d4-4cc6-8914-38ab1f283dd6">
+    <name>posting_delivered</name>
+    <synonym>
+      <key>ru</key>
+      <value>Доставлено</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="15bd95c2-9f4b-4658-a2d8-620b0fa96253">
+    <name>posting_received</name>
+    <synonym>
+      <key>ru</key>
+      <value>Получено</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="274453e2-cc4e-4deb-9370-9ae3ae7b0bb9">
+    <name>posting_conditionally_delivered</name>
+    <synonym>
+      <key>ru</key>
+      <value>Условно доставлено</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="4e201de4-c3db-4fcd-8692-99ca5ca4f9e3">
+    <name>posting_in_courier_service</name>
+    <synonym>
+      <key>ru</key>
+      <value>Курьер в пути</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="27260d83-fe76-44ab-839d-8bf4a706068c">
+    <name>posting_in_pickup_point</name>
+    <synonym>
+      <key>ru</key>
+      <value>В пункте выдачи</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="bf760ab6-e5d8-4a6d-a099-decbab8ce367">
+    <name>posting_on_way_to_city</name>
+    <synonym>
+      <key>ru</key>
+      <value>В пути в ваш город</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="ea6869f7-c781-490e-9886-db76621f1ede">
+    <name>posting_on_way_to_pickup_point</name>
+    <synonym>
+      <key>ru</key>
+      <value>В пути в пункт выдачи</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="9791782d-e942-488a-96c9-cc0b4f12ff41">
+    <name>posting_returned_to_warehouse</name>
+    <synonym>
+      <key>ru</key>
+      <value>Возвращено на склад</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="cbfb9578-8f05-4bbd-bcc1-d9ad1c1f4a34">
+    <name>posting_transferred_to_courier_service</name>
+    <synonym>
+      <key>ru</key>
+      <value>Передаётся в службу доставки</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="2cb1015f-5168-4f89-a681-a25c56a76f42">
+    <name>posting_driver_pick_up</name>
+    <synonym>
+      <key>ru</key>
+      <value>У водителя</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="5191b58a-86de-4e18-98c7-b0490bb198bc">
+    <name>posting_not_in_sort_center</name>
+    <synonym>
+      <key>ru</key>
+      <value>Не принято на сортировочном центре</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="fc90d874-1ada-42fd-90a6-2666df348295">
+    <name>sent_by_seller</name>
+    <synonym>
+      <key>ru</key>
+      <value>Отправлено продавцом</value>
+    </synonym>
+  </enumValues>
+</mdclass:Enum>

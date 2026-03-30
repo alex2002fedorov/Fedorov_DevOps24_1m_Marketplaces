@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Enum xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="258d0b30-d29e-4df6-992b-7e4cc3dd717b">
+  <producedTypes>
+    <refType typeId="7f783dbe-2ef5-4e85-bb0d-9ddf20550839" valueTypeId="8a9c6dac-fbcb-44db-b508-e3cd73bdb762"/>
+    <listType typeId="9f0f90f1-b688-451e-b558-efb22a513b4d" valueTypeId="8fd6a85c-2520-43ce-bf0f-a1a92caee0b5"/>
+    <managerType typeId="b5b5ee9c-f618-4939-9edb-919f43a82a7b" valueTypeId="3ae36bc0-dddd-4d69-b037-86ca4006a843"/>
+  </producedTypes>
+  <name>рар_мп_Wildberries_РазмерСтикеров</name>
+  <synonym>
+    <key>ru</key>
+    <value>Размер стикеров в Wildberries (1С-Рарус)</value>
+  </synonym>
+  <quickChoice>true</quickChoice>
+  <choiceMode>BothWays</choiceMode>
+  <enumValues uuid="f9733ea4-c02d-435e-aa31-7c0b2d59226e">
+    <name>ПятьдесятВосемьНаСорок</name>
+    <synonym>
+      <key>ru</key>
+      <value>58×40</value>
+    </synonym>
+  </enumValues>
+  <enumValues uuid="24e1b0a1-2340-4204-b026-c55cb96a1b78">
+    <name>СорокНаТридцать</name>
+    <synonym>
+      <key>ru</key>
+      <value>40×30</value>
+    </synonym>
+  </enumValues>
+</mdclass:Enum>
