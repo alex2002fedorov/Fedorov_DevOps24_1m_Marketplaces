@@ -1,0 +1,33 @@
+# Скрытые каталоги IDE
+.metadata/
+.idea/
+.settings/
+.vscode/
+
+# Бинарные артефакты сборки
+*.cf
+*.cfe
+*.dt
+*.thmx
+
+# Локальные настройки 1С
+*.log
+1cv8.log
+*.bak
+
+# Переменные окружения
+.env
+secrets/
+
+# Временные файлы
+tmp/
+temp/
+build/
+dist/
+
+# ОС файлы
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
