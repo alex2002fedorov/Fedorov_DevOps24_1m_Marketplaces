@@ -20,8 +20,21 @@ jobs:
           ls -la UT_Marketplaces.Marketplaces || true
           ls -la UT_Marketplaces.Marketplaces/src || true
 
-      - name: Show BSL analyze help
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Show Java version
+        run: java -version
+
+      - name: Download BSL Language Server
         run: |
-          docker run --rm \
-            1csyntax/bsl-language-server:latest \
-            analyze --help || true
+          curl -L -o bsl-language-server.jar https://github.com/1c-syntax/bsl-language-server/releases/latest/download/bsl-language-server.exec.jar
+          ls -lh bsl-language-server.jar
+          file bsl-language-server.jar || true
+
+      - name: Show BSL Language Server help
+        run: |
+          java -jar bsl-language-server.jar --help
