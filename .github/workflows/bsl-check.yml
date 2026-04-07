@@ -31,10 +31,14 @@ jobs:
 
       - name: Download BSL Language Server
         run: |
-          curl -L -o bsl-language-server.jar https://github.com/1c-syntax/bsl-language-server/releases/latest/download/bsl-language-server.exec.jar
+          curl -L -o bsl-language-server.jar https://github.com/1c-syntax/bsl-language-server/releases/download/v0.29.0/bsl-language-server-0.29.0-exec.jar
           ls -lh bsl-language-server.jar
           file bsl-language-server.jar || true
 
       - name: Show BSL Language Server help
         run: |
           java -jar bsl-language-server.jar --help
+
+      - name: Run BSL analysis
+        run: |
+          java -jar bsl-language-server.jar analyze UT_Marketplaces.Marketplaces/src
