@@ -41,10 +41,20 @@ jobs:
           java -jar bsl-language-server.jar analyze \
             --srcDir UT_Marketplaces.Marketplaces/src \
             --outputDir bsl-report \
-            --reporter json \
-            --fail-on error
+            --reporter json
 
-      - name: Upload BSL report artifacts (always, even on failure)
+      - name: Check for errors in JSON report
+        run: |
+          # Проверяем, есть ли в отчёте диагностики с severity: "Error"
+          if grep -q '"severity": *"Error"' bsl-report/*.json; then
+            echo "❌ Обнаружены ошибки уровня Error в коде. См. артефакт отчёта."
+            echo "Количество ошибок: $(grep -c '"severity": *"Error"' bsl-report/*.json || true)"
+            exit 1
+          else
+            echo "✅ Ошибок уровня Error не найдено."
+          fi
+
+      - name: Upload BSL report artifacts (always)
         if: always()
         uses: actions/upload-artifact@v4
         with:
