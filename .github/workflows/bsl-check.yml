@@ -39,6 +39,10 @@ jobs:
         run: |
           java -jar bsl-language-server.jar --help
 
+      - name: Show BSL analyze help
+        run: |
+          java -jar bsl-language-server.jar analyze --help
+
       - name: Run BSL analysis
         run: |
           java -jar bsl-language-server.jar analyze UT_Marketplaces.Marketplaces/src
