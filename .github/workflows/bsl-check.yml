@@ -31,9 +31,9 @@ jobs:
 
       - name: Download BSL Language Server
         run: |
-          curl -L -o bsl-language-server.jar https://github.com/1c-syntax/bsl-language-server/releases/download/v0.29.0/bsl-language-server-0.29.0-exec.jar
+          curl -L -o bsl-language-server.jar \
+            https://github.com/1c-syntax/bsl-language-server/releases/download/v0.29.0/bsl-language-server-0.29.0-exec.jar
           ls -lh bsl-language-server.jar
-          file bsl-language-server.jar || true
 
       - name: Run BSL analysis and generate JSON report
         run: |
@@ -41,9 +41,10 @@ jobs:
           java -jar bsl-language-server.jar analyze \
             --srcDir UT_Marketplaces.Marketplaces/src \
             --outputDir bsl-report \
-            --reporter json
+            --reporter json \
+            --fail-on error
 
-      - name: Upload BSL report artifacts
+      - name: Upload BSL report artifacts (always, even on failure)
         if: always()
         uses: actions/upload-artifact@v4
         with:
