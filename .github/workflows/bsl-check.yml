@@ -13,29 +13,25 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Java
-        uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: '17'
-
-      - name: Download BSL Language Server
+      - name: Show repository structure
         run: |
-          curl -L -o bsl-language-server.jar https://github.com/1c-syntax/bsl-language-server/releases/latest/download/bsl-language-server.jar
+          pwd
+          ls -la
+          ls -la UT_Marketplaces.Marketplaces || true
 
-      - name: Show BSL Language Server help
+      - name: Run BSL Language Server in Docker
         run: |
-          java -jar bsl-language-server.jar --help || true
+          docker run --rm \
+            -v "$PWD:/workspace" \
+            1csyntax/bsl-language-server:latest \
+            --analyze /workspace/UT_Marketplaces.Marketplaces
 
-      - name: Run BSL Language Server analysis
-        run: |
-          java -jar bsl-language-server.jar \
-            --analyze UT_Marketplaces.Marketplaces \
-            --reporter json \
-            --output ./bsl-report.json
-
-      - name: Upload BSL report
+      - name: Upload analysis artifacts if exists
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: bsl-report
-          path: ./bsl-report.json
+          name: bsl-analysis-artifacts
+          path: |
+            ./.bsl
+            ./bsl-report.json
+          if-no-files-found: ignore
