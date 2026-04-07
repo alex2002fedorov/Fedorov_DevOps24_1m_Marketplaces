@@ -35,14 +35,17 @@ jobs:
           ls -lh bsl-language-server.jar
           file bsl-language-server.jar || true
 
-      - name: Show BSL Language Server help
+      - name: Run BSL analysis and generate JSON report
         run: |
-          java -jar bsl-language-server.jar --help
+          mkdir -p bsl-report
+          java -jar bsl-language-server.jar analyze \
+            --srcDir UT_Marketplaces.Marketplaces/src \
+            --outputDir bsl-report \
+            --reporter json
 
-      - name: Show BSL analyze help
-        run: |
-          java -jar bsl-language-server.jar analyze --help
-
-      - name: Run BSL analysis
-        run: |
-          java -jar bsl-language-server.jar analyze UT_Marketplaces.Marketplaces/src
+      - name: Upload BSL report artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bsl-json-report
+          path: bsl-report
