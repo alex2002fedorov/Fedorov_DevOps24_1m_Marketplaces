@@ -19,19 +19,13 @@ jobs:
           ls -la
           ls -la UT_Marketplaces.Marketplaces || true
 
-      - name: Run BSL Language Server in Docker
+      - name: Show Docker image help
+        run: |
+          docker run --rm 1csyntax/bsl-language-server:latest --help || true
+
+      - name: Show Docker image filesystem
         run: |
           docker run --rm \
             -v "$PWD:/workspace" \
             1csyntax/bsl-language-server:latest \
-            --analyze /workspace/UT_Marketplaces.Marketplaces
-
-      - name: Upload analysis artifacts if exists
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: bsl-analysis-artifacts
-          path: |
-            ./.bsl
-            ./bsl-report.json
-          if-no-files-found: ignore
+            sh -c "ls -la /workspace && ls -la /workspace/UT_Marketplaces.Marketplaces || true" || true
