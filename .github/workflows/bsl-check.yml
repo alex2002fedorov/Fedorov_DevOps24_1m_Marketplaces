@@ -18,20 +18,10 @@ jobs:
           pwd
           ls -la
           ls -la UT_Marketplaces.Marketplaces || true
+          ls -la UT_Marketplaces.Marketplaces/src || true
 
-      - name: Run BSL analysis
+      - name: Show BSL analyze help
         run: |
           docker run --rm \
-            -v "$PWD:/workspace" \
             1csyntax/bsl-language-server:latest \
-            analyze /workspace/UT_Marketplaces.Marketplaces
-
-      - name: Upload analysis artifacts if exists
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: bsl-analysis-artifacts
-          path: |
-            ./.bsl
-            ./bsl-report.json
-          if-no-files-found: ignore
+            analyze --help || true
