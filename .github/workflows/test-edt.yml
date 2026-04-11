@@ -7,8 +7,9 @@ jobs:
   test:
     runs-on: self-hosted
     steps:
-      - name: Test via bat file
+      - name: Check user
         shell: cmd
         run: |
-          C:\test_edt.cmd
-          echo Exit code: %ERRORLEVEL%
+          whoami
+          echo.
+          set
