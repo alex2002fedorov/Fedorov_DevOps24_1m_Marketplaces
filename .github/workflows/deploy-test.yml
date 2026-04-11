@@ -108,7 +108,9 @@ jobs:
           mkdir "%BUILD_DIR%"
           mkdir "%XML_DIR%"
           mkdir "%BUILD_DIR%\logs"
-          if not exist "%EDT_WS%" mkdir "%EDT_WS%"
+          REM Полная очистка EDT workspace для сброса кэша
+          if exist "%EDT_WS%" rmdir /s /q "%EDT_WS%"
+          mkdir "%EDT_WS%"
           echo Folders ready
 
       - name: "🔄 Конвертация EDT → XML"
@@ -410,6 +412,7 @@ jobs:
             /Out "%CD%\%BUILD_DIR%\logs\rollback_update_ext.log"
 
           echo Rollback ext update exit: %ERRORLEVEL%
+          if exist "%BUILD_DIR%\logs\rollback_update_ext.log" type "%BUILD_DIR%\logs\rollback_update_ext.log"
 
           START /WAIT "" "%V8_PATH%\1cv8.exe" DESIGNER ^
             /IBConnectionString "Srvr=%SERVER%;Ref=%BASE%" ^
