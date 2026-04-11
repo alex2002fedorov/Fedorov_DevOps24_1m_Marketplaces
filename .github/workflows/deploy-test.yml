@@ -45,7 +45,7 @@ jobs:
           ref: develop
           fetch-depth: 0
 
-       - name: "🔍 Проверка наличия изменений"
+      - name: "🔍 Проверка наличия изменений"
         id: changes
         shell: powershell
         run: |
