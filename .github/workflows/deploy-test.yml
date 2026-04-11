@@ -32,7 +32,6 @@ jobs:
       SOURCE_DIR: "UT_Marketplaces.Marketplaces"
       BUILD_DIR: "build"
       XML_DIR: "build\\xml_output"
-      WORKSPACE_DIR: "build\\edt_workspace"
       LOCK_DELAY: ${{ github.event.inputs.lock_delay_minutes || '30' }}
       LOCK_DURATION: ${{ github.event.inputs.lock_duration_minutes || '30' }}
 
@@ -101,8 +100,12 @@ jobs:
           if exist "%BUILD_DIR%" rmdir /s /q "%BUILD_DIR%"
           mkdir "%BUILD_DIR%"
           mkdir "%XML_DIR%"
-          mkdir "%WORKSPACE_DIR%"
           mkdir "%BUILD_DIR%\logs"
+
+          REM Создаём workspace для EDT в фиксированной папке
+          if exist "C:\EDT_Workspace_CI" rmdir /s /q "C:\EDT_Workspace_CI"
+          mkdir "C:\EDT_Workspace_CI"
+          echo Folders created
 
       - name: "🔄 Конвертация EDT → XML"
         if: steps.changes.outputs.has_changes == 'true'
@@ -115,7 +118,7 @@ jobs:
           echo ========================================
 
           "%EDT_CLI%\1cedtcli.exe" ^
-            -data "%CD%\%WORKSPACE_DIR%" ^
+            -data "C:\EDT_Workspace_CI" ^
             -timeout 600 ^
             -vmargs -Xmx4g ^
             -command export ^
@@ -439,7 +442,7 @@ jobs:
         if: always()
         shell: cmd
         run: |
-          if exist "%WORKSPACE_DIR%" rmdir /s /q "%WORKSPACE_DIR%"
+          if exist "C:\EDT_Workspace_CI" rmdir /s /q "C:\EDT_Workspace_CI"
           if exist "%XML_DIR%" rmdir /s /q "%XML_DIR%"
           echo Cleanup completed
 
