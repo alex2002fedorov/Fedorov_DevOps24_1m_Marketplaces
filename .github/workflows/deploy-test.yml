@@ -33,6 +33,7 @@ jobs:
       BUILD_DIR: "build"
       XML_DIR: "build\\xml_output"
       EDT_WS: "C:\\EDT_Workspace_CI"
+      EDT_CLI: ${{ vars.EDT_PATH }}
       LOCK_DELAY: ${{ github.event.inputs.lock_delay_minutes || '30' }}
       LOCK_DURATION: ${{ github.event.inputs.lock_duration_minutes || '30' }}
 
@@ -112,8 +113,6 @@ jobs:
       - name: "🔄 Конвертация EDT → XML"
         if: steps.changes.outputs.has_changes == 'true'
         shell: cmd
-        env:
-          EDT_CLI: ${{ secrets.EDT_PATH }}
         run: |
           echo ========================================
           echo   Converting EDT to XML...
