@@ -102,7 +102,7 @@ jobs:
         shell: cmd
         run: |
           taskkill /f /im 1cv8.exe || echo No 1cv8 processes
-          timeout /t 5 /nobreak >nul
+          timeout /t 5 /nobreak
           if exist "%BUILD_DIR%" rmdir /s /q "%BUILD_DIR%"
           mkdir "%BUILD_DIR%"
           mkdir "%XML_DIR%"
@@ -196,6 +196,12 @@ jobs:
             --denied-to="%LOCK_TO%" ^
             --denied-message="Плановое обновление расширения. Блокировка с %FROM_H%:%FROM_M% до %TO_H%:%TO_M%." ^
             localhost:1545
+
+          if %ERRORLEVEL% NEQ 0 (
+            echo ERROR: Failed to set lock
+            echo lock_ok=false >> %GITHUB_OUTPUT%
+            exit /b 1
+          )
 
           echo lock_ok=true >> %GITHUB_OUTPUT%
           echo Waiting %LOCK_DELAY% minutes...
