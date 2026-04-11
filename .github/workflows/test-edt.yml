@@ -6,28 +6,9 @@ on:
 jobs:
   test:
     runs-on: self-hosted
-    env:
-      EDT_CLI: ${{ vars.EDT_PATH }}
     steps:
       - name: Test version
         shell: cmd
         run: |
+          set "EDT_CLI=C:\Users\alfedo\AppData\Local\1C\1cedtstart\installations\1C_EDT 2025.1\1cedt"
           "%EDT_CLI%\1cedtcli.exe" -data "C:\EDT_Workspace_CI" -command version
-
-      - name: Test dir
-        shell: cmd
-        run: |
-          dir "%EDT_CLI%\1cedtcli.exe"
-
-      - name: Test export
-        uses: actions/checkout@v4
-        with:
-          ref: develop
-
-      - name: Run export
-        shell: cmd
-        run: |
-          if exist "build" rmdir /s /q "build"
-          mkdir "build\xml_output"
-          "%EDT_CLI%\1cedtcli.exe" -data "C:\EDT_Workspace_CI" -timeout 600 -vmargs -Xmx4g -command export --project "%CD%\UT_Marketplaces.Marketplaces" --configuration-files "%CD%\build\xml_output"
-          dir "build\xml_output\Configuration.xml"
