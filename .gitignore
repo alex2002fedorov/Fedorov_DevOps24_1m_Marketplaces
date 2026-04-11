@@ -1,33 +1,27 @@
-# Скрытые каталоги IDE
-.metadata/
-.idea/
-.settings/
-.vscode/
-
-# Бинарные артефакты сборки
-*.cf
-*.cfe
-*.dt
-*.thmx
-
-# Локальные настройки 1С
-*.log
-1cv8.log
-*.bak
-
-# Переменные окружения
-.env
-secrets/
-
-# Временные файлы
-tmp/
-temp/
+# Build artifacts
 build/
-dist/
+*.cfe
+*.cf
+*.log
 
-# ОС файлы
-.DS_Store
+# Temporary files
+*.bak
+*.tmp
+~*
+
+# IDE
+.idea/
+*.iml
+
+# Windows
 Thumbs.db
-*.swp
-*.swo
-*~
+Desktop.ini
+
+# 1C temporary
+*.dt
+*.epf
+*.erf
+
+# Local settings (never commit)
+local-settings.json
+env-settings.cmd

@@ -1,0 +1,258 @@
+name: Deploy Extension to Test
+
+on:
+  schedule:
+    - cron: '0 19 * * *'
+  
+  workflow_dispatch:
+    inputs:
+      force_deploy:
+        description: 'Принудительное развёртывание'
+        required: false
+        default: 'false'
+        type: boolean
+
+jobs:
+  deploy-to-test:
+    runs-on: self-hosted
+
+    env:
+      SOURCE_DIR: "UT_Marketplaces.Marketplaces"
+      BUILD_DIR: "build"
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: develop
+
+      - name: Display build info
+        shell: cmd
+        run: |
+          echo ========================================
+          echo Build Information
+          echo ========================================
+          echo Branch: develop
+          echo Commit: %GITHUB_SHA%
+          echo Runner: %COMPUTERNAME%
+          echo Date: %DATE% %TIME%
+          echo ========================================
+
+      - name: Verify project structure
+        shell: cmd
+        run: |
+          echo Checking project structure...
+          if not exist "%SOURCE_DIR%\src" (
+            echo ERROR: Source directory not found: %SOURCE_DIR%\src
+            exit /b 1
+          )
+          echo Source directory found
+          dir /b "%SOURCE_DIR%\src"
+
+      - name: Create build directory
+        shell: cmd
+        run: |
+          if exist "%BUILD_DIR%\tempbase" rmdir /s /q "%BUILD_DIR%\tempbase"
+          if not exist "%BUILD_DIR%" mkdir "%BUILD_DIR%"
+
+      - name: Create temporary infobase
+        shell: cmd
+        env:
+          V8_PATH: ${{ secrets.V8_PATH }}
+        run: |
+          echo Creating temporary infobase...
+          
+          "%V8_PATH%\1cv8.exe" CREATEINFOBASE ^
+            File="%BUILD_DIR%\tempbase" ^
+            /DisableStartupDialogs ^
+            /Out "%BUILD_DIR%\create_base.log"
+          
+          if %ERRORLEVEL% NEQ 0 (
+            echo ERROR: Failed to create temp base
+            if exist "%BUILD_DIR%\create_base.log" type "%BUILD_DIR%\create_base.log"
+            exit /b 1
+          )
+          
+          echo Temporary infobase created
+
+      - name: Load extension source into temp base
+        shell: cmd
+        env:
+          V8_PATH: ${{ secrets.V8_PATH }}
+          EXT_NAME: ${{ secrets.EXTENSION_NAME }}
+        run: |
+          echo Loading extension from EDT sources...
+          
+          "%V8_PATH%\1cv8.exe" DESIGNER ^
+            /IBConnectionString "File=%BUILD_DIR%\tempbase" ^
+            /DisableStartupDialogs ^
+            /LoadConfigFromFiles "%SOURCE_DIR%" ^
+            -Extension "%EXT_NAME%" ^
+            /Out "%BUILD_DIR%\load_config.log"
+          
+          if %ERRORLEVEL% NEQ 0 (
+            echo ERROR: Failed to load config from files
+            if exist "%BUILD_DIR%\load_config.log" type "%BUILD_DIR%\load_config.log"
+            exit /b 1
+          )
+          
+          echo Extension sources loaded
+
+      - name: Compile extension to .cfe file
+        shell: cmd
+        env:
+          V8_PATH: ${{ secrets.V8_PATH }}
+          EXT_NAME: ${{ secrets.EXTENSION_NAME }}
+        run: |
+          echo Compiling .cfe file...
+          
+          "%V8_PATH%\1cv8.exe" DESIGNER ^
+            /IBConnectionString "File=%BUILD_DIR%\tempbase" ^
+            /DisableStartupDialogs ^
+            /DumpCfg "%BUILD_DIR%\%EXT_NAME%.cfe" ^
+            -Extension "%EXT_NAME%" ^
+            /Out "%BUILD_DIR%\dump_cfe.log"
+          
+          if %ERRORLEVEL% NEQ 0 (
+            echo ERROR: Failed to compile .cfe
+            if exist "%BUILD_DIR%\dump_cfe.log" type "%BUILD_DIR%\dump_cfe.log"
+            exit /b 1
+          )
+          
+          echo ========================================
+          echo Extension compiled successfully!
+          echo ========================================
+          dir "%BUILD_DIR%\%EXT_NAME%.cfe"
+
+      - name: Lock test database sessions
+        shell: cmd
+        env:
+          V8_PATH: ${{ secrets.V8_PATH }}
+          SERVER: ${{ secrets.TEST_SERVER }}
+          BASE: ${{ secrets.TEST_BASE }}
+          USER: ${{ secrets.DB_USER }}
+          PWD: ${{ secrets.DB_PASSWORD }}
+          EXT_NAME: ${{ secrets.EXTENSION_NAME }}
+        run: |
+          echo Locking sessions on test database...
+          
+          REM Убираем пробел если пароль пустой
+          set "CLEAN_PWD=%PWD%"
+          if "%CLEAN_PWD%"==" " set "CLEAN_PWD="
+          
+          "%V8_PATH%\1cv8.exe" DESIGNER ^
+            /S "%SERVER%\%BASE%" ^
+            /N "%USER%" /P "%CLEAN_PWD%" ^
+            /UC "UpdateExt" ^
+            /DisableStartupDialogs ^
+            /SetSessionLock ^
+            /PermissionCode "UpdateExt" ^
+            /LockMessage "Обновление расширения. Попробуйте позже." ^
+            /Out "%BUILD_DIR%\lock.log"
+          
+          if %ERRORLEVEL% NEQ 0 (
+            echo WARNING: Could not lock sessions
+            if exist "%BUILD_DIR%\lock.log" type "%BUILD_DIR%\lock.log"
+          ) else (
+            echo Sessions locked
+          )
+
+      - name: Load extension into test database
+        shell: cmd
+        env:
+          V8_PATH: ${{ secrets.V8_PATH }}
+          SERVER: ${{ secrets.TEST_SERVER }}
+          BASE: ${{ secrets.TEST_BASE }}
+          USER: ${{ secrets.DB_USER }}
+          PWD: ${{ secrets.DB_PASSWORD }}
+          EXT_NAME: ${{ secrets.EXTENSION_NAME }}
+        run: |
+          echo ========================================
+          echo Loading extension to test database...
+          echo ========================================
+          
+          set "CLEAN_PWD=%PWD%"
+          if "%CLEAN_PWD%"==" " set "CLEAN_PWD="
+          
+          "%V8_PATH%\1cv8.exe" DESIGNER ^
+            /S "%SERVER%\%BASE%" ^
+            /N "%USER%" /P "%CLEAN_PWD%" ^
+            /UC "UpdateExt" ^
+            /DisableStartupDialogs ^
+            /LoadCfg "%BUILD_DIR%\%EXT_NAME%.cfe" ^
+            -Extension "%EXT_NAME%" ^
+            /Out "%BUILD_DIR%\load_ext.log"
+          
+          if %ERRORLEVEL% NEQ 0 (
+            echo ERROR: Failed to load extension
+            if exist "%BUILD_DIR%\load_ext.log" type "%BUILD_DIR%\load_ext.log"
+            exit /b 1
+          )
+          
+          echo Extension loaded, updating database...
+          
+          "%V8_PATH%\1cv8.exe" DESIGNER ^
+            /S "%SERVER%\%BASE%" ^
+            /N "%USER%" /P "%CLEAN_PWD%" ^
+            /UC "UpdateExt" ^
+            /DisableStartupDialogs ^
+            /UpdateDBCfg ^
+            -Extension "%EXT_NAME%" ^
+            /Out "%BUILD_DIR%\update_db.log"
+          
+          if %ERRORLEVEL% NEQ 0 (
+            echo ERROR: Failed to update database
+            if exist "%BUILD_DIR%\update_db.log" type "%BUILD_DIR%\update_db.log"
+            exit /b 1
+          )
+          
+          echo ========================================
+          echo Extension deployed to test successfully!
+          echo ========================================
+
+      - name: Unlock test database sessions
+        shell: cmd
+        if: always()
+        env:
+          V8_PATH: ${{ secrets.V8_PATH }}
+          SERVER: ${{ secrets.TEST_SERVER }}
+          BASE: ${{ secrets.TEST_BASE }}
+          USER: ${{ secrets.DB_USER }}
+          PWD: ${{ secrets.DB_PASSWORD }}
+        run: |
+          echo Removing session lock...
+          
+          set "CLEAN_PWD=%PWD%"
+          if "%CLEAN_PWD%"==" " set "CLEAN_PWD="
+          
+          "%V8_PATH%\1cv8.exe" DESIGNER ^
+            /S "%SERVER%\%BASE%" ^
+            /N "%USER%" /P "%CLEAN_PWD%" ^
+            /UC "UpdateExt" ^
+            /DisableStartupDialogs ^
+            /RemoveSessionLock ^
+            /Out "%BUILD_DIR%\unlock.log"
+          
+          if %ERRORLEVEL% NEQ 0 (
+            echo WARNING: Could not unlock sessions
+            if exist "%BUILD_DIR%\unlock.log" type "%BUILD_DIR%\unlock.log"
+          ) else (
+            echo Sessions unlocked
+          )
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: extension-test-build-${{ github.run_number }}
+          path: |
+            build/*.cfe
+            build/*.log
+          retention-days: 30
+
+      - name: Cleanup temp base
+        shell: cmd
+        if: always()
+        run: |
+          if exist "%BUILD_DIR%\tempbase" rmdir /s /q "%BUILD_DIR%\tempbase"
+          echo Cleanup completed
