@@ -7,8 +7,8 @@ jobs:
   test:
     runs-on: self-hosted
     steps:
-      - name: Test version
+      - name: Test via bat file
         shell: cmd
         run: |
-          set "EDT_CLI=C:\Users\alfedo\AppData\Local\1C\1cedtstart\installations\1C_EDT 2025.1\1cedt"
-          "%EDT_CLI%\1cedtcli.exe" -data "C:\EDT_Workspace_CI" -command version
+          C:\test_edt.cmd
+          echo Exit code: %ERRORLEVEL%
