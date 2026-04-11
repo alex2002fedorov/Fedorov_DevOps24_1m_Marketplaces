@@ -320,6 +320,7 @@ jobs:
           BASE: ${{ secrets.TEST_BASE }}
           USER: ${{ secrets.DB_USER }}
           PWD: ${{ secrets.DB_PASSWORD }}
+          EXT_NAME: ${{ secrets.EXTENSION_NAME }}
         run: |
           echo ========================================
           echo   Applying changes...
@@ -328,6 +329,20 @@ jobs:
           set "CLEAN_PWD=%PWD%"
           if "%CLEAN_PWD%"==" " set "CLEAN_PWD="
 
+          echo Step 1: UpdateDBCfg for extension...
+          START /WAIT "" "%V8_PATH%\1cv8.exe" DESIGNER ^
+            /IBConnectionString "Srvr=%SERVER%;Ref=%BASE%" ^
+            /N "%USER%" /P "%CLEAN_PWD%" ^
+            /UC UpdateExtCI ^
+            /DisableStartupDialogs /DisableStartupMessages ^
+            /UpdateDBCfg -Extension %EXT_NAME% ^
+            /Out "%CD%\%BUILD_DIR%\logs\updatedb_ext.log"
+
+          set UPDATE_EXT_EXIT=%ERRORLEVEL%
+          echo UpdateDBCfg Extension exit code: %UPDATE_EXT_EXIT%
+          if exist "%BUILD_DIR%\logs\updatedb_ext.log" type "%BUILD_DIR%\logs\updatedb_ext.log"
+
+          echo Step 2: UpdateDBCfg for main configuration...
           START /WAIT "" "%V8_PATH%\1cv8.exe" DESIGNER ^
             /IBConnectionString "Srvr=%SERVER%;Ref=%BASE%" ^
             /N "%USER%" /P "%CLEAN_PWD%" ^
@@ -340,12 +355,17 @@ jobs:
           echo UpdateDBCfg exit code: %UPDATE_EXIT%
           if exist "%BUILD_DIR%\logs\updatedb.log" type "%BUILD_DIR%\logs\updatedb.log"
 
-          if %UPDATE_EXIT% EQU 0 (
-            echo update_ok=true>> %GITHUB_OUTPUT%
-            echo Update successful
+          if %UPDATE_EXT_EXIT% EQU 0 (
+            if %UPDATE_EXIT% EQU 0 (
+              echo update_ok=true>> %GITHUB_OUTPUT%
+              echo Update successful
+            ) else (
+              echo update_ok=false>> %GITHUB_OUTPUT%
+              echo ERROR: Main config update failed
+            )
           ) else (
             echo update_ok=false>> %GITHUB_OUTPUT%
-            echo ERROR: Update failed
+            echo ERROR: Extension update failed
           )
 
       - name: "⚠️ ОТКАТ: восстановление предыдущей версии"
@@ -380,6 +400,16 @@ jobs:
 
           echo Rollback load exit: %ERRORLEVEL%
           if exist "%BUILD_DIR%\logs\rollback_load.log" type "%BUILD_DIR%\logs\rollback_load.log"
+
+          START /WAIT "" "%V8_PATH%\1cv8.exe" DESIGNER ^
+            /IBConnectionString "Srvr=%SERVER%;Ref=%BASE%" ^
+            /N "%USER%" /P "%CLEAN_PWD%" ^
+            /UC UpdateExtCI ^
+            /DisableStartupDialogs /DisableStartupMessages ^
+            /UpdateDBCfg -Extension %EXT_NAME% ^
+            /Out "%CD%\%BUILD_DIR%\logs\rollback_update_ext.log"
+
+          echo Rollback ext update exit: %ERRORLEVEL%
 
           START /WAIT "" "%V8_PATH%\1cv8.exe" DESIGNER ^
             /IBConnectionString "Srvr=%SERVER%;Ref=%BASE%" ^
