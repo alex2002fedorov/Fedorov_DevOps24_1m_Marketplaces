@@ -9,12 +9,10 @@ jobs:
     steps:
       - name: Test EDT path
         shell: cmd
-        env:
-          EDT_CLI: ${{ secrets.EDT_PATH }}
         run: |
-          echo EDT_CLI=%EDT_CLI%
+          echo EDT_CLI=${{ vars.EDT_PATH }}
           echo.
-          dir "%EDT_CLI%\1cedtcli.exe"
+          dir "${{ vars.EDT_PATH }}\1cedtcli.exe"
           echo.
           echo Testing launch...
-          "%EDT_CLI%\1cedtcli.exe" -data "C:\EDT_Workspace_CI" -command version
+          "${{ vars.EDT_PATH }}\1cedtcli.exe" -data "C:\EDT_Workspace_CI" -command version
