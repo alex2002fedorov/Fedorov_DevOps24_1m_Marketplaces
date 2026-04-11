@@ -45,28 +45,29 @@ jobs:
           ref: develop
           fetch-depth: 0
 
-      - name: "🔍 Проверка наличия изменений"
+       - name: "🔍 Проверка наличия изменений"
         id: changes
-        shell: cmd
+        shell: powershell
         run: |
-          if "${{ github.event.inputs.skip_check }}" == "true" (
-            echo has_changes=true >> %GITHUB_OUTPUT%
-            echo Forced deploy - skipping change check
-            exit /b 0
-          )
-
-          for /f %%i in ('git log --oneline --since="12 hours ago" -- %SOURCE_DIR%/ ^| find /c /v ""') do set COUNT=%%i
-
-          echo Commits in last 12 hours: %COUNT%
-
-          if %COUNT% GTR 0 (
-            echo has_changes=true >> %GITHUB_OUTPUT%
-            echo Changes found:
-            git log --oneline --since="12 hours ago" -- %SOURCE_DIR%/
-          ) else (
-            echo has_changes=false >> %GITHUB_OUTPUT%
-            echo No changes - skipping deploy
-          )
+          $skipCheck = "${{ github.event.inputs.skip_check }}"
+          
+          if ($skipCheck -eq "true") {
+            echo "has_changes=true" >> $env:GITHUB_OUTPUT
+            Write-Host "Forced deploy - skipping change check"
+            exit 0
+          }
+          
+          $count = (git log --oneline --since="12 hours ago" -- $env:SOURCE_DIR/).Count
+          Write-Host "Commits in last 12 hours: $count"
+          
+          if ($count -gt 0) {
+            echo "has_changes=true" >> $env:GITHUB_OUTPUT
+            Write-Host "Changes found:"
+            git log --oneline --since="12 hours ago" -- $env:SOURCE_DIR/
+          } else {
+            echo "has_changes=false" >> $env:GITHUB_OUTPUT
+            Write-Host "No changes - skipping deploy"
+          }
 
       - name: "⏹️ Пропуск — нет изменений"
         if: steps.changes.outputs.has_changes != 'true'
