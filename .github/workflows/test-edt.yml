@@ -6,10 +6,12 @@ on:
 jobs:
   test:
     runs-on: self-hosted
+    env:
+      EDT_CLI: ${{ vars.EDT_PATH }}
     steps:
-      - name: Check user
+      - name: Test EDT version
         shell: cmd
         run: |
-          whoami
-          echo.
-          set
+          echo User: %USERNAME%
+          echo EDT: %EDT_CLI%
+          "%EDT_CLI%\1cedtcli.exe" -data "C:\EDT_Workspace_CI" -command version
