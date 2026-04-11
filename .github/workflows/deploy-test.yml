@@ -2,9 +2,7 @@ name: Deploy Extension to Test
 
 on:
   schedule:
-    # 01:00 МСК = 22:00 UTC
     - cron: '0 22 * * *'
-    # 13:00 МСК = 10:00 UTC
     - cron: '0 10 * * *'
 
   workflow_dispatch:
@@ -50,22 +48,24 @@ jobs:
         shell: powershell
         run: |
           $skipCheck = "${{ github.event.inputs.skip_check }}"
-          
+
           if ($skipCheck -eq "true") {
-            echo "has_changes=true" >> $env:GITHUB_OUTPUT
+            "has_changes=true" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
             Write-Host "Forced deploy - skipping change check"
             exit 0
           }
-          
-          $count = (git log --oneline --since="12 hours ago" -- $env:SOURCE_DIR/).Count
+
+          $result = git log --oneline --since="12 hours ago" -- $env:SOURCE_DIR
+          $count = ($result | Measure-Object -Line).Lines
+
           Write-Host "Commits in last 12 hours: $count"
-          
+
           if ($count -gt 0) {
-            echo "has_changes=true" >> $env:GITHUB_OUTPUT
+            "has_changes=true" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
             Write-Host "Changes found:"
-            git log --oneline --since="12 hours ago" -- $env:SOURCE_DIR/
+            $result
           } else {
-            echo "has_changes=false" >> $env:GITHUB_OUTPUT
+            "has_changes=false" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
             Write-Host "No changes - skipping deploy"
           }
 
@@ -104,76 +104,6 @@ jobs:
           mkdir "%WORKSPACE_DIR%"
           mkdir "%BUILD_DIR%\logs"
 
-      - name: "💾 Резервная копия текущего расширения"
-        id: backup
-        if: steps.changes.outputs.has_changes == 'true'
-        shell: cmd
-        env:
-          V8_PATH: ${{ secrets.V8_PATH }}
-          SERVER: ${{ secrets.TEST_SERVER }}
-          BASE: ${{ secrets.TEST_BASE }}
-          USER: ${{ secrets.DB_USER }}
-          PWD: ${{ secrets.DB_PASSWORD }}
-          EXT_NAME: ${{ secrets.EXTENSION_NAME }}
-          BACKUP_PATH: ${{ secrets.BACKUP_PATH }}
-        run: |
-          echo ========================================
-          echo   Backup current extension...
-          echo ========================================
-
-          set "CLEAN_PWD=%PWD%"
-          if "%CLEAN_PWD%"==" " set "CLEAN_PWD="
-
-          if not exist "%BACKUP_PATH%" mkdir "%BACKUP_PATH%"
-
-          REM Формируем имя файла с датой и временем
-          for /f "tokens=1-3 delims=." %%a in ("%DATE:~0,10%") do (
-            set "DAY=%%a"
-            set "MONTH=%%b"
-            set "YEAR=%%c"
-          )
-          for /f "tokens=1-2 delims=:." %%a in ("%TIME: =0%") do (
-            set "HOUR=%%a"
-            set "MINUTE=%%b"
-          )
-
-          set "BACKUP_FILE=%BACKUP_PATH%\%EXT_NAME%_%YEAR%%MONTH%%DAY%_%HOUR%%MINUTE%.cfe"
-          echo Backup file: %BACKUP_FILE%
-
-          START /WAIT "" "%V8_PATH%\1cv8.exe" DESIGNER ^
-            /IBConnectionString "Srvr=%SERVER%;Ref=%BASE%" ^
-            /N "%USER%" /P "%CLEAN_PWD%" ^
-            /DisableStartupDialogs /DisableStartupMessages ^
-            /DumpCfg "%BACKUP_FILE%" ^
-            -Extension %EXT_NAME% ^
-            /Out "%CD%\%BUILD_DIR%\logs\backup.log"
-
-          echo Backup exit code: %ERRORLEVEL%
-          if exist "%BUILD_DIR%\logs\backup.log" type "%BUILD_DIR%\logs\backup.log"
-
-          if exist "%BACKUP_FILE%" (
-            for %%A in ("%BACKUP_FILE%") do (
-              if %%~zA GTR 100 (
-                echo backup_ok=true >> %GITHUB_OUTPUT%
-                echo backup_file=%BACKUP_FILE% >> %GITHUB_OUTPUT%
-                echo Backup OK: %%~zA bytes
-              ) else (
-                echo backup_ok=false >> %GITHUB_OUTPUT%
-                echo WARNING: Backup too small %%~zA bytes
-              )
-            )
-          ) else (
-            echo backup_ok=false >> %GITHUB_OUTPUT%
-            echo WARNING: Backup not created
-          )
-
-          REM Удаляем старые бэкапы, оставляем последние 10
-          echo Cleaning old backups...
-          for /f "skip=10 delims=" %%F in ('dir /b /o-d "%BACKUP_PATH%\%EXT_NAME%_*.cfe" 2^>nul') do (
-            echo Deleting old backup: %%F
-            del "%BACKUP_PATH%\%%F"
-          )
-
       - name: "🔄 Конвертация EDT → XML"
         if: steps.changes.outputs.has_changes == 'true'
         shell: cmd
@@ -198,48 +128,9 @@ jobs:
           )
           echo Conversion successful
 
-      - name: "📦 Загрузка нового расширения в конфигурацию"
-        id: load
-        if: steps.changes.outputs.has_changes == 'true'
-        shell: cmd
-        env:
-          V8_PATH: ${{ secrets.V8_PATH }}
-          SERVER: ${{ secrets.TEST_SERVER }}
-          BASE: ${{ secrets.TEST_BASE }}
-          USER: ${{ secrets.DB_USER }}
-          PWD: ${{ secrets.DB_PASSWORD }}
-          EXT_NAME: ${{ secrets.EXTENSION_NAME }}
-        run: |
-          echo ========================================
-          echo   Loading new extension...
-          echo ========================================
-
-          set "CLEAN_PWD=%PWD%"
-          if "%CLEAN_PWD%"==" " set "CLEAN_PWD="
-
-          START /WAIT "" "%V8_PATH%\1cv8.exe" DESIGNER ^
-            /IBConnectionString "Srvr=%SERVER%;Ref=%BASE%" ^
-            /N "%USER%" /P "%CLEAN_PWD%" ^
-            /DisableStartupDialogs /DisableStartupMessages ^
-            /LoadConfigFromFiles "%CD%\%XML_DIR%" ^
-            -Extension %EXT_NAME% ^
-            /Out "%CD%\%BUILD_DIR%\logs\load.log"
-
-          set LOAD_EXIT=%ERRORLEVEL%
-          echo Load exit code: %LOAD_EXIT%
-          if exist "%BUILD_DIR%\logs\load.log" type "%BUILD_DIR%\logs\load.log"
-
-          if %LOAD_EXIT% EQU 0 (
-            echo load_ok=true >> %GITHUB_OUTPUT%
-          ) else if %LOAD_EXIT% EQU 1 (
-            echo load_ok=true >> %GITHUB_OUTPUT%
-          ) else (
-            echo load_ok=false >> %GITHUB_OUTPUT%
-            exit /b 1
-          )
-
       - name: "⏳ Установка блокировки и ожидание"
-        if: steps.changes.outputs.has_changes == 'true' && steps.load.outputs.load_ok == 'true'
+        id: lock
+        if: steps.changes.outputs.has_changes == 'true'
         shell: cmd
         env:
           RAC_PATH: ${{ secrets.V8_PATH }}
@@ -251,6 +142,7 @@ jobs:
           set "CLEAN_PWD=%PWD%"
           if "%CLEAN_PWD%"==" " set "CLEAN_PWD="
 
+          REM Вычисляем время начала и окончания блокировки
           for /f "tokens=1-3 delims=:." %%a in ("%TIME: =0%") do (
             set /a "CUR_H=%%a"
             set /a "CUR_M=%%b"
@@ -287,7 +179,8 @@ jobs:
           set "LOCK_TO=%YEAR%-%MONTH%-%DAY%T%TO_H%:%TO_M%:00"
 
           echo ========================================
-          echo   Lock: %FROM_H%:%FROM_M% - %TO_H%:%TO_M%
+          echo   Уведомление пользователей
+          echo   Блокировка: %FROM_H%:%FROM_M% - %TO_H%:%TO_M%
           echo ========================================
 
           "%RAC_PATH%\rac.exe" infobase update ^
@@ -299,15 +192,132 @@ jobs:
             --permission-code=UpdateExtCI ^
             --denied-from="%LOCK_FROM%" ^
             --denied-to="%LOCK_TO%" ^
-            --denied-message="Плановое обновление расширения. Блокировка с %FROM_H%:%FROM_M% до %TO_H%:%TO_M%." ^
+            --denied-message="Плановое обновление расширения маркетплейсов. Блокировка с %FROM_H%:%FROM_M% до %TO_H%:%TO_M%." ^
             localhost:1545
 
-          echo Waiting %LOCK_DELAY% minutes...
+          if %ERRORLEVEL% NEQ 0 (
+            echo ERROR: Failed to set lock
+            echo lock_ok=false >> %GITHUB_OUTPUT%
+            exit /b 1
+          )
+
+          echo lock_ok=true >> %GITHUB_OUTPUT%
+          echo Waiting %LOCK_DELAY% minutes for users to finish...
           set /a WAIT_SEC=%LOCK_DELAY%*60
           timeout /t %WAIT_SEC% /nobreak
 
-          echo Lock active. Waiting 3 min for sessions...
+          echo Lock is now active. Waiting 3 min for sessions to close...
           timeout /t 180 /nobreak
+
+      - name: "💾 Резервная копия текущего расширения"
+        id: backup
+        if: steps.changes.outputs.has_changes == 'true' && steps.lock.outputs.lock_ok == 'true'
+        shell: cmd
+        env:
+          V8_PATH: ${{ secrets.V8_PATH }}
+          SERVER: ${{ secrets.TEST_SERVER }}
+          BASE: ${{ secrets.TEST_BASE }}
+          USER: ${{ secrets.DB_USER }}
+          PWD: ${{ secrets.DB_PASSWORD }}
+          EXT_NAME: ${{ secrets.EXTENSION_NAME }}
+          BACKUP_PATH: ${{ secrets.BACKUP_PATH }}
+        run: |
+          echo ========================================
+          echo   Backup current extension...
+          echo ========================================
+
+          set "CLEAN_PWD=%PWD%"
+          if "%CLEAN_PWD%"==" " set "CLEAN_PWD="
+
+          if not exist "%BACKUP_PATH%" mkdir "%BACKUP_PATH%"
+
+          for /f "tokens=1-3 delims=." %%a in ("%DATE:~0,10%") do (
+            set "DAY=%%a"
+            set "MONTH=%%b"
+            set "YEAR=%%c"
+          )
+          for /f "tokens=1-2 delims=:." %%a in ("%TIME: =0%") do (
+            set "HOUR=%%a"
+            set "MINUTE=%%b"
+          )
+
+          set "BACKUP_FILE=%BACKUP_PATH%\%EXT_NAME%_%YEAR%%MONTH%%DAY%_%HOUR%%MINUTE%.cfe"
+          echo Backup file: %BACKUP_FILE%
+
+          START /WAIT "" "%V8_PATH%\1cv8.exe" DESIGNER ^
+            /IBConnectionString "Srvr=%SERVER%;Ref=%BASE%" ^
+            /N "%USER%" /P "%CLEAN_PWD%" ^
+            /UC UpdateExtCI ^
+            /DisableStartupDialogs /DisableStartupMessages ^
+            /DumpCfg "%BACKUP_FILE%" ^
+            -Extension %EXT_NAME% ^
+            /Out "%CD%\%BUILD_DIR%\logs\backup.log"
+
+          echo Backup exit code: %ERRORLEVEL%
+          if exist "%BUILD_DIR%\logs\backup.log" type "%BUILD_DIR%\logs\backup.log"
+
+          if exist "%BACKUP_FILE%" (
+            for %%A in ("%BACKUP_FILE%") do (
+              if %%~zA GTR 100 (
+                echo backup_ok=true >> %GITHUB_OUTPUT%
+                echo backup_file=%BACKUP_FILE% >> %GITHUB_OUTPUT%
+                echo Backup OK: %%~zA bytes
+              ) else (
+                echo backup_ok=false >> %GITHUB_OUTPUT%
+                echo WARNING: Backup too small
+              )
+            )
+          ) else (
+            echo backup_ok=false >> %GITHUB_OUTPUT%
+            echo WARNING: Backup not created
+          )
+
+          REM Удаляем старые бэкапы, оставляем последние 10
+          for /f "skip=10 delims=" %%F in ('dir /b /o-d "%BACKUP_PATH%\%EXT_NAME%_*.cfe" 2^>nul') do (
+            echo Deleting: %%F
+            del "%BACKUP_PATH%\%%F"
+          )
+
+      - name: "📦 Загрузка нового расширения в конфигурацию"
+        id: load
+        if: steps.changes.outputs.has_changes == 'true' && steps.lock.outputs.lock_ok == 'true'
+        shell: cmd
+        env:
+          V8_PATH: ${{ secrets.V8_PATH }}
+          SERVER: ${{ secrets.TEST_SERVER }}
+          BASE: ${{ secrets.TEST_BASE }}
+          USER: ${{ secrets.DB_USER }}
+          PWD: ${{ secrets.DB_PASSWORD }}
+          EXT_NAME: ${{ secrets.EXTENSION_NAME }}
+        run: |
+          echo ========================================
+          echo   Loading new extension...
+          echo ========================================
+
+          set "CLEAN_PWD=%PWD%"
+          if "%CLEAN_PWD%"==" " set "CLEAN_PWD="
+
+          START /WAIT "" "%V8_PATH%\1cv8.exe" DESIGNER ^
+            /IBConnectionString "Srvr=%SERVER%;Ref=%BASE%" ^
+            /N "%USER%" /P "%CLEAN_PWD%" ^
+            /UC UpdateExtCI ^
+            /DisableStartupDialogs /DisableStartupMessages ^
+            /LoadConfigFromFiles "%CD%\%XML_DIR%" ^
+            -Extension %EXT_NAME% ^
+            /Out "%CD%\%BUILD_DIR%\logs\load.log"
+
+          set LOAD_EXIT=%ERRORLEVEL%
+          echo Load exit code: %LOAD_EXIT%
+          if exist "%BUILD_DIR%\logs\load.log" type "%BUILD_DIR%\logs\load.log"
+
+          if %LOAD_EXIT% EQU 0 (
+            echo load_ok=true >> %GITHUB_OUTPUT%
+          ) else if %LOAD_EXIT% EQU 1 (
+            echo load_ok=true >> %GITHUB_OUTPUT%
+          ) else (
+            echo load_ok=false >> %GITHUB_OUTPUT%
+            exit /b 1
+          )
 
       - name: "🚀 Применение изменений"
         id: update
@@ -364,8 +374,6 @@ jobs:
 
           set "CLEAN_PWD=%PWD%"
           if "%CLEAN_PWD%"==" " set "CLEAN_PWD="
-
-          echo Loading backup: ${{ steps.backup.outputs.backup_file }}
 
           START /WAIT "" "%V8_PATH%\1cv8.exe" DESIGNER ^
             /IBConnectionString "Srvr=%SERVER%;Ref=%BASE%" ^
