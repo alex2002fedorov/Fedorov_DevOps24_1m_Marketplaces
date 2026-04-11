@@ -38,6 +38,7 @@ jobs:
       LOCK_DURATION: ${{ github.event.inputs.lock_duration_minutes || '30' }}
 
     steps:
+
       - name: "📥 Получение кода из develop"
         uses: actions/checkout@v4
         with:
@@ -135,7 +136,7 @@ jobs:
       - name: "⏳ Установка блокировки и ожидание"
         id: lock
         if: steps.changes.outputs.has_changes == 'true'
-        shell: cmd
+        shell: powershell
         env:
           RAC_PATH: ${{ secrets.V8_PATH }}
           CLUSTER: ${{ secrets.CLUSTER_ID }}
@@ -143,78 +144,60 @@ jobs:
           USER: ${{ secrets.DB_USER }}
           PWD: ${{ secrets.DB_PASSWORD }}
         run: |
-          set "CLEAN_PWD=%PWD%"
-          if "%CLEAN_PWD%"==" " set "CLEAN_PWD="
+          $cleanPwd = $env:PWD
+          if ($cleanPwd -eq " ") { $cleanPwd = "" }
 
-          for /f "tokens=1-3 delims=:." %%a in ("%TIME: =0%") do (
-            set /a "CUR_H=%%a"
-            set /a "CUR_M=%%b"
+          $now = Get-Date
+          $lockFrom = $now.AddMinutes([int]$env:LOCK_DELAY)
+          $lockTo = $lockFrom.AddMinutes([int]$env:LOCK_DURATION)
+
+          $lockFromStr = $lockFrom.ToString("yyyy-MM-ddTHH:mm:00")
+          $lockToStr = $lockTo.ToString("yyyy-MM-ddTHH:mm:00")
+          $fromDisp = $lockFrom.ToString("HH:mm")
+          $toDisp = $lockTo.ToString("HH:mm")
+
+          Write-Host "========================================"
+          Write-Host "  Блокировка: $fromDisp - $toDisp"
+          Write-Host "========================================"
+
+          $racArgs = @(
+            "infobase", "update",
+            "--cluster=$($env:CLUSTER)",
+            "--infobase=$($env:IB_ID)",
+            "--infobase-user=$($env:USER)",
+            "--infobase-pwd=$cleanPwd",
+            "--sessions-deny=on",
+            "--permission-code=UpdateExtCI",
+            "--denied-from=$lockFromStr",
+            "--denied-to=$lockToStr",
+            "--denied-message=Плановое обновление расширения. Блокировка с $fromDisp до $toDisp.",
+            "localhost:1545"
           )
 
-          set /a "FROM_M=%CUR_M% + %LOCK_DELAY%"
-          set /a "FROM_H=%CUR_H%"
-          if %FROM_M% GEQ 60 (
-            set /a "FROM_M=%FROM_M% - 60"
-            set /a "FROM_H=%FROM_H% + 1"
-          )
-          if %FROM_H% GEQ 24 set /a "FROM_H=%FROM_H% - 24"
+          & "$($env:RAC_PATH)\rac.exe" @racArgs
 
-          set /a "TO_M=%FROM_M% + %LOCK_DURATION%"
-          set /a "TO_H=%FROM_H%"
-          if %TO_M% GEQ 60 (
-            set /a "TO_M=%TO_M% - 60"
-            set /a "TO_H=%TO_H% + 1"
-          )
-          if %TO_H% GEQ 24 set /a "TO_H=%TO_H% - 24"
+          if ($LASTEXITCODE -ne 0) {
+            Write-Host "ERROR: Failed to set lock"
+            "lock_ok=false" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+            exit 1
+          }
 
-          if %FROM_M% LSS 10 set "FROM_M=0%FROM_M%"
-          if %FROM_H% LSS 10 set "FROM_H=0%FROM_H%"
-          if %TO_M% LSS 10 set "TO_M=0%TO_M%"
-          if %TO_H% LSS 10 set "TO_H=0%TO_H%"
+          "lock_ok=true" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+          Write-Host "Lock set successfully"
 
-          for /f "tokens=1-3 delims=." %%a in ("%DATE:~0,10%") do (
-            set "DAY=%%a"
-            set "MONTH=%%b"
-            set "YEAR=%%c"
-          )
+          Write-Host "Waiting $($env:LOCK_DELAY) minutes for users to finish..."
+          Start-Sleep -Seconds ([int]$env:LOCK_DELAY * 60)
 
-          set "LOCK_FROM=%YEAR%-%MONTH%-%DAY%T%FROM_H%:%FROM_M%:00"
-          set "LOCK_TO=%YEAR%-%MONTH%-%DAY%T%TO_H%:%TO_M%:00"
+          Write-Host "Lock active. Waiting 3 min for sessions to close..."
+          Start-Sleep -Seconds 180
 
-          echo ========================================
-          echo   Блокировка: %FROM_H%:%FROM_M% - %TO_H%:%TO_M%
-          echo ========================================
-
-          "%RAC_PATH%\rac.exe" infobase update ^
-            --cluster=%CLUSTER% ^
-            --infobase=%IB_ID% ^
-            --infobase-user=%USER% ^
-            --infobase-pwd=%CLEAN_PWD% ^
-            --sessions-deny=on ^
-            --permission-code=UpdateExtCI ^
-            --denied-from="%LOCK_FROM%" ^
-            --denied-to="%LOCK_TO%" ^
-            --denied-message="Плановое обновление расширения. Блокировка с %FROM_H%:%FROM_M% до %TO_H%:%TO_M%." ^
-            localhost:1545
-
-          if %ERRORLEVEL% NEQ 0 (
-            echo ERROR: Failed to set lock
-            echo lock_ok=false >> %GITHUB_OUTPUT%
-            exit /b 1
-          )
-
-          echo lock_ok=true >> %GITHUB_OUTPUT%
-
-          echo Waiting %LOCK_DELAY% minutes for users to finish...
-          set /a WAIT_SEC=%LOCK_DELAY%*60+1
-          ping -n %WAIT_SEC% 127.0.0.1 > nul
-
-          echo Lock active. Waiting 3 min for sessions to close...
-          ping -n 181 127.0.0.1 > nul
+          Write-Host "Wait completed"
 
       - name: "💾 Резервная копия текущего расширения"
         id: backup
-        if: steps.changes.outputs.has_changes == 'true' && steps.lock.outputs.lock_ok == 'true'
+        if: >
+          steps.changes.outputs.has_changes == 'true' &&
+          steps.lock.outputs.lock_ok == 'true'
         shell: cmd
         env:
           V8_PATH: ${{ secrets.V8_PATH }}
@@ -262,16 +245,16 @@ jobs:
           if exist "%BACKUP_FILE%" (
             for %%A in ("%BACKUP_FILE%") do (
               if %%~zA GTR 100 (
-                echo backup_ok=true >> %GITHUB_OUTPUT%
-                echo backup_file=%BACKUP_FILE% >> %GITHUB_OUTPUT%
+                echo backup_ok=true>> %GITHUB_OUTPUT%
+                echo backup_file=%BACKUP_FILE%>> %GITHUB_OUTPUT%
                 echo Backup OK: %%~zA bytes
               ) else (
-                echo backup_ok=false >> %GITHUB_OUTPUT%
+                echo backup_ok=false>> %GITHUB_OUTPUT%
                 echo WARNING: Backup too small
               )
             )
           ) else (
-            echo backup_ok=false >> %GITHUB_OUTPUT%
+            echo backup_ok=false>> %GITHUB_OUTPUT%
             echo WARNING: Backup not created
           )
 
@@ -282,7 +265,9 @@ jobs:
 
       - name: "📦 Загрузка нового расширения"
         id: load
-        if: steps.changes.outputs.has_changes == 'true' && steps.lock.outputs.lock_ok == 'true'
+        if: >
+          steps.changes.outputs.has_changes == 'true' &&
+          steps.lock.outputs.lock_ok == 'true'
         shell: cmd
         env:
           V8_PATH: ${{ secrets.V8_PATH }}
@@ -313,17 +298,19 @@ jobs:
           if exist "%BUILD_DIR%\logs\load.log" type "%BUILD_DIR%\logs\load.log"
 
           if %LOAD_EXIT% EQU 0 (
-            echo load_ok=true >> %GITHUB_OUTPUT%
+            echo load_ok=true>> %GITHUB_OUTPUT%
           ) else if %LOAD_EXIT% EQU 1 (
-            echo load_ok=true >> %GITHUB_OUTPUT%
+            echo load_ok=true>> %GITHUB_OUTPUT%
           ) else (
-            echo load_ok=false >> %GITHUB_OUTPUT%
+            echo load_ok=false>> %GITHUB_OUTPUT%
             exit /b 1
           )
 
       - name: "🚀 Применение изменений"
         id: update
-        if: steps.changes.outputs.has_changes == 'true' && steps.load.outputs.load_ok == 'true'
+        if: >
+          steps.changes.outputs.has_changes == 'true' &&
+          steps.load.outputs.load_ok == 'true'
         shell: cmd
         env:
           V8_PATH: ${{ secrets.V8_PATH }}
@@ -352,15 +339,18 @@ jobs:
           if exist "%BUILD_DIR%\logs\updatedb.log" type "%BUILD_DIR%\logs\updatedb.log"
 
           if %UPDATE_EXIT% EQU 0 (
-            echo update_ok=true >> %GITHUB_OUTPUT%
+            echo update_ok=true>> %GITHUB_OUTPUT%
             echo Update successful
           ) else (
-            echo update_ok=false >> %GITHUB_OUTPUT%
+            echo update_ok=false>> %GITHUB_OUTPUT%
             echo ERROR: Update failed
           )
 
       - name: "⚠️ ОТКАТ: восстановление предыдущей версии"
-        if: steps.changes.outputs.has_changes == 'true' && steps.update.outputs.update_ok == 'false' && steps.backup.outputs.backup_ok == 'true'
+        if: >
+          steps.changes.outputs.has_changes == 'true' &&
+          steps.update.outputs.update_ok == 'false' &&
+          steps.backup.outputs.backup_ok == 'true'
         shell: cmd
         env:
           V8_PATH: ${{ secrets.V8_PATH }}
@@ -403,7 +393,7 @@ jobs:
           echo ROLLBACK COMPLETED
 
       - name: "🔓 Снятие блокировки"
-        if: always() && steps.changes.outputs.has_changes == 'true'
+        if: always()
         shell: cmd
         env:
           RAC_PATH: ${{ secrets.V8_PATH }}
@@ -431,7 +421,7 @@ jobs:
 
       - name: "📤 Сохранение логов"
         uses: actions/upload-artifact@v4
-        if: always() && steps.changes.outputs.has_changes == 'true'
+        if: always()
         with:
           name: deploy-test-logs-${{ github.run_number }}
           path: build/logs/*.log
@@ -445,7 +435,9 @@ jobs:
           echo Cleanup completed
 
       - name: "❌ Ошибка обновления"
-        if: steps.changes.outputs.has_changes == 'true' && steps.update.outputs.update_ok == 'false'
+        if: >
+          steps.changes.outputs.has_changes == 'true' &&
+          steps.update.outputs.update_ok == 'false'
         shell: cmd
         run: |
           echo ========================================
