@@ -2,129 +2,110 @@ name: Deploy Extension to Test
 
 on:
   schedule:
-    - cron: '0 19 * * *'
-  
+    # 01:00 МСК = 22:00 UTC
+    - cron: '0 22 * * *'
+    # 13:00 МСК = 10:00 UTC
+    - cron: '0 10 * * *'
+
   workflow_dispatch:
     inputs:
-      force_deploy:
-        description: 'Принудительное развёртывание'
+      skip_check:
+        description: 'Обновить даже без изменений'
         required: false
         default: 'false'
         type: boolean
+      lock_delay_minutes:
+        description: 'Через сколько минут заблокировать базу'
+        required: false
+        default: '30'
+        type: string
+      lock_duration_minutes:
+        description: 'Длительность окна обновления (минут)'
+        required: false
+        default: '30'
+        type: string
 
 jobs:
-  deploy-to-test:
+  deploy:
+    name: "Обновление расширения на тестовой базе"
     runs-on: self-hosted
 
     env:
       SOURCE_DIR: "UT_Marketplaces.Marketplaces"
       BUILD_DIR: "build"
+      XML_DIR: "build\\xml_output"
+      WORKSPACE_DIR: "build\\edt_workspace"
+      LOCK_DELAY: ${{ github.event.inputs.lock_delay_minutes || '30' }}
+      LOCK_DURATION: ${{ github.event.inputs.lock_duration_minutes || '30' }}
 
     steps:
-      - name: Checkout repository
+      - name: "📥 Получение кода из develop"
         uses: actions/checkout@v4
         with:
           ref: develop
+          fetch-depth: 0
 
-      - name: Display build info
+      - name: "🔍 Проверка наличия изменений"
+        id: changes
+        shell: cmd
+        run: |
+          if "${{ github.event.inputs.skip_check }}" == "true" (
+            echo has_changes=true >> %GITHUB_OUTPUT%
+            echo Forced deploy - skipping change check
+            exit /b 0
+          )
+
+          for /f %%i in ('git log --oneline --since="12 hours ago" -- %SOURCE_DIR%/ ^| find /c /v ""') do set COUNT=%%i
+
+          echo Commits in last 12 hours: %COUNT%
+
+          if %COUNT% GTR 0 (
+            echo has_changes=true >> %GITHUB_OUTPUT%
+            echo Changes found:
+            git log --oneline --since="12 hours ago" -- %SOURCE_DIR%/
+          ) else (
+            echo has_changes=false >> %GITHUB_OUTPUT%
+            echo No changes - skipping deploy
+          )
+
+      - name: "⏹️ Пропуск — нет изменений"
+        if: steps.changes.outputs.has_changes != 'true'
         shell: cmd
         run: |
           echo ========================================
-          echo Build Information
+          echo   No changes detected. Skipping deploy.
+          echo ========================================
+
+      - name: "📋 Информация о сборке"
+        if: steps.changes.outputs.has_changes == 'true'
+        shell: cmd
+        run: |
+          echo ========================================
+          echo   Deploy Extension to Test
           echo ========================================
           echo Branch: develop
           echo Commit: %GITHUB_SHA%
-          echo Runner: %COMPUTERNAME%
           echo Date: %DATE% %TIME%
+          echo Trigger: ${{ github.event_name }}
+          echo Lock delay: %LOCK_DELAY% min
+          echo Lock duration: %LOCK_DURATION% min
           echo ========================================
 
-      - name: Verify project structure
+      - name: "🧹 Подготовка"
+        if: steps.changes.outputs.has_changes == 'true'
         shell: cmd
         run: |
-          echo Checking project structure...
-          if not exist "%SOURCE_DIR%\src" (
-            echo ERROR: Source directory not found: %SOURCE_DIR%\src
-            exit /b 1
-          )
-          echo Source directory found
-          dir /b "%SOURCE_DIR%\src"
+          taskkill /f /im 1cv8.exe 2>nul
+          timeout /t 5 /nobreak >nul
+          if exist "%BUILD_DIR%" rmdir /s /q "%BUILD_DIR%"
+          mkdir "%BUILD_DIR%"
+          mkdir "%XML_DIR%"
+          mkdir "%WORKSPACE_DIR%"
+          mkdir "%BUILD_DIR%\logs"
 
-      - name: Create build directory
-        shell: cmd
-        run: |
-          if exist "%BUILD_DIR%\tempbase" rmdir /s /q "%BUILD_DIR%\tempbase"
-          if not exist "%BUILD_DIR%" mkdir "%BUILD_DIR%"
-
-      - name: Create temporary infobase
-        shell: cmd
-        env:
-          V8_PATH: ${{ secrets.V8_PATH }}
-        run: |
-          echo Creating temporary infobase...
-          
-          "%V8_PATH%\1cv8.exe" CREATEINFOBASE ^
-            File="%BUILD_DIR%\tempbase" ^
-            /DisableStartupDialogs ^
-            /Out "%BUILD_DIR%\create_base.log"
-          
-          if %ERRORLEVEL% NEQ 0 (
-            echo ERROR: Failed to create temp base
-            if exist "%BUILD_DIR%\create_base.log" type "%BUILD_DIR%\create_base.log"
-            exit /b 1
-          )
-          
-          echo Temporary infobase created
-
-      - name: Load extension source into temp base
-        shell: cmd
-        env:
-          V8_PATH: ${{ secrets.V8_PATH }}
-          EXT_NAME: ${{ secrets.EXTENSION_NAME }}
-        run: |
-          echo Loading extension from EDT sources...
-          
-          "%V8_PATH%\1cv8.exe" DESIGNER ^
-            /IBConnectionString "File=%BUILD_DIR%\tempbase" ^
-            /DisableStartupDialogs ^
-            /LoadConfigFromFiles "%SOURCE_DIR%" ^
-            -Extension "%EXT_NAME%" ^
-            /Out "%BUILD_DIR%\load_config.log"
-          
-          if %ERRORLEVEL% NEQ 0 (
-            echo ERROR: Failed to load config from files
-            if exist "%BUILD_DIR%\load_config.log" type "%BUILD_DIR%\load_config.log"
-            exit /b 1
-          )
-          
-          echo Extension sources loaded
-
-      - name: Compile extension to .cfe file
-        shell: cmd
-        env:
-          V8_PATH: ${{ secrets.V8_PATH }}
-          EXT_NAME: ${{ secrets.EXTENSION_NAME }}
-        run: |
-          echo Compiling .cfe file...
-          
-          "%V8_PATH%\1cv8.exe" DESIGNER ^
-            /IBConnectionString "File=%BUILD_DIR%\tempbase" ^
-            /DisableStartupDialogs ^
-            /DumpCfg "%BUILD_DIR%\%EXT_NAME%.cfe" ^
-            -Extension "%EXT_NAME%" ^
-            /Out "%BUILD_DIR%\dump_cfe.log"
-          
-          if %ERRORLEVEL% NEQ 0 (
-            echo ERROR: Failed to compile .cfe
-            if exist "%BUILD_DIR%\dump_cfe.log" type "%BUILD_DIR%\dump_cfe.log"
-            exit /b 1
-          )
-          
-          echo ========================================
-          echo Extension compiled successfully!
-          echo ========================================
-          dir "%BUILD_DIR%\%EXT_NAME%.cfe"
-
-      - name: Lock test database sessions
+      - name: "💾 Резервная копия текущего расширения"
+        id: backup
+        if: steps.changes.outputs.has_changes == 'true'
         shell: cmd
         env:
           V8_PATH: ${{ secrets.V8_PATH }}
@@ -133,31 +114,92 @@ jobs:
           USER: ${{ secrets.DB_USER }}
           PWD: ${{ secrets.DB_PASSWORD }}
           EXT_NAME: ${{ secrets.EXTENSION_NAME }}
+          BACKUP_PATH: ${{ secrets.BACKUP_PATH }}
         run: |
-          echo Locking sessions on test database...
-          
-          REM Убираем пробел если пароль пустой
+          echo ========================================
+          echo   Backup current extension...
+          echo ========================================
+
           set "CLEAN_PWD=%PWD%"
           if "%CLEAN_PWD%"==" " set "CLEAN_PWD="
-          
-          "%V8_PATH%\1cv8.exe" DESIGNER ^
-            /S "%SERVER%\%BASE%" ^
+
+          if not exist "%BACKUP_PATH%" mkdir "%BACKUP_PATH%"
+
+          REM Формируем имя файла с датой и временем
+          for /f "tokens=1-3 delims=." %%a in ("%DATE:~0,10%") do (
+            set "DAY=%%a"
+            set "MONTH=%%b"
+            set "YEAR=%%c"
+          )
+          for /f "tokens=1-2 delims=:." %%a in ("%TIME: =0%") do (
+            set "HOUR=%%a"
+            set "MINUTE=%%b"
+          )
+
+          set "BACKUP_FILE=%BACKUP_PATH%\%EXT_NAME%_%YEAR%%MONTH%%DAY%_%HOUR%%MINUTE%.cfe"
+          echo Backup file: %BACKUP_FILE%
+
+          START /WAIT "" "%V8_PATH%\1cv8.exe" DESIGNER ^
+            /IBConnectionString "Srvr=%SERVER%;Ref=%BASE%" ^
             /N "%USER%" /P "%CLEAN_PWD%" ^
-            /UC "UpdateExt" ^
-            /DisableStartupDialogs ^
-            /SetSessionLock ^
-            /PermissionCode "UpdateExt" ^
-            /LockMessage "Обновление расширения. Попробуйте позже." ^
-            /Out "%BUILD_DIR%\lock.log"
-          
-          if %ERRORLEVEL% NEQ 0 (
-            echo WARNING: Could not lock sessions
-            if exist "%BUILD_DIR%\lock.log" type "%BUILD_DIR%\lock.log"
+            /DisableStartupDialogs /DisableStartupMessages ^
+            /DumpCfg "%BACKUP_FILE%" ^
+            -Extension %EXT_NAME% ^
+            /Out "%CD%\%BUILD_DIR%\logs\backup.log"
+
+          echo Backup exit code: %ERRORLEVEL%
+          if exist "%BUILD_DIR%\logs\backup.log" type "%BUILD_DIR%\logs\backup.log"
+
+          if exist "%BACKUP_FILE%" (
+            for %%A in ("%BACKUP_FILE%") do (
+              if %%~zA GTR 100 (
+                echo backup_ok=true >> %GITHUB_OUTPUT%
+                echo backup_file=%BACKUP_FILE% >> %GITHUB_OUTPUT%
+                echo Backup OK: %%~zA bytes
+              ) else (
+                echo backup_ok=false >> %GITHUB_OUTPUT%
+                echo WARNING: Backup too small %%~zA bytes
+              )
+            )
           ) else (
-            echo Sessions locked
+            echo backup_ok=false >> %GITHUB_OUTPUT%
+            echo WARNING: Backup not created
           )
 
-      - name: Load extension into test database
+          REM Удаляем старые бэкапы, оставляем последние 10
+          echo Cleaning old backups...
+          for /f "skip=10 delims=" %%F in ('dir /b /o-d "%BACKUP_PATH%\%EXT_NAME%_*.cfe" 2^>nul') do (
+            echo Deleting old backup: %%F
+            del "%BACKUP_PATH%\%%F"
+          )
+
+      - name: "🔄 Конвертация EDT → XML"
+        if: steps.changes.outputs.has_changes == 'true'
+        shell: cmd
+        env:
+          EDT_CLI: ${{ secrets.EDT_PATH }}
+        run: |
+          echo ========================================
+          echo   Converting EDT to XML...
+          echo ========================================
+
+          "%EDT_CLI%\1cedtcli.exe" ^
+            -data "%CD%\%WORKSPACE_DIR%" ^
+            -timeout 600 ^
+            -vmargs -Xmx4g ^
+            -command export ^
+            --project "%CD%\%SOURCE_DIR%" ^
+            --configuration-files "%CD%\%XML_DIR%"
+
+          if not exist "%XML_DIR%\Configuration.xml" (
+            echo ERROR: Conversion failed
+            exit /b 1
+          )
+          echo Conversion successful
+
+      - name: "📦 Загрузка нового расширения в конфигурацию"
+        id: load
+        if: steps.changes.outputs.has_changes == 'true'
         shell: cmd
         env:
           V8_PATH: ${{ secrets.V8_PATH }}
@@ -168,91 +210,237 @@ jobs:
           EXT_NAME: ${{ secrets.EXTENSION_NAME }}
         run: |
           echo ========================================
-          echo Loading extension to test database...
+          echo   Loading new extension...
           echo ========================================
-          
+
           set "CLEAN_PWD=%PWD%"
           if "%CLEAN_PWD%"==" " set "CLEAN_PWD="
-          
-          "%V8_PATH%\1cv8.exe" DESIGNER ^
-            /S "%SERVER%\%BASE%" ^
+
+          START /WAIT "" "%V8_PATH%\1cv8.exe" DESIGNER ^
+            /IBConnectionString "Srvr=%SERVER%;Ref=%BASE%" ^
             /N "%USER%" /P "%CLEAN_PWD%" ^
-            /UC "UpdateExt" ^
-            /DisableStartupDialogs ^
-            /LoadCfg "%BUILD_DIR%\%EXT_NAME%.cfe" ^
-            -Extension "%EXT_NAME%" ^
-            /Out "%BUILD_DIR%\load_ext.log"
-          
-          if %ERRORLEVEL% NEQ 0 (
-            echo ERROR: Failed to load extension
-            if exist "%BUILD_DIR%\load_ext.log" type "%BUILD_DIR%\load_ext.log"
+            /DisableStartupDialogs /DisableStartupMessages ^
+            /LoadConfigFromFiles "%CD%\%XML_DIR%" ^
+            -Extension %EXT_NAME% ^
+            /Out "%CD%\%BUILD_DIR%\logs\load.log"
+
+          set LOAD_EXIT=%ERRORLEVEL%
+          echo Load exit code: %LOAD_EXIT%
+          if exist "%BUILD_DIR%\logs\load.log" type "%BUILD_DIR%\logs\load.log"
+
+          if %LOAD_EXIT% EQU 0 (
+            echo load_ok=true >> %GITHUB_OUTPUT%
+          ) else if %LOAD_EXIT% EQU 1 (
+            echo load_ok=true >> %GITHUB_OUTPUT%
+          ) else (
+            echo load_ok=false >> %GITHUB_OUTPUT%
             exit /b 1
           )
-          
-          echo Extension loaded, updating database...
-          
-          "%V8_PATH%\1cv8.exe" DESIGNER ^
-            /S "%SERVER%\%BASE%" ^
+
+      - name: "⏳ Установка блокировки и ожидание"
+        if: steps.changes.outputs.has_changes == 'true' && steps.load.outputs.load_ok == 'true'
+        shell: cmd
+        env:
+          RAC_PATH: ${{ secrets.V8_PATH }}
+          CLUSTER: ${{ secrets.CLUSTER_ID }}
+          IB_ID: ${{ secrets.TEST_INFOBASE_ID }}
+          USER: ${{ secrets.DB_USER }}
+          PWD: ${{ secrets.DB_PASSWORD }}
+        run: |
+          set "CLEAN_PWD=%PWD%"
+          if "%CLEAN_PWD%"==" " set "CLEAN_PWD="
+
+          for /f "tokens=1-3 delims=:." %%a in ("%TIME: =0%") do (
+            set /a "CUR_H=%%a"
+            set /a "CUR_M=%%b"
+          )
+
+          set /a "FROM_M=%CUR_M% + %LOCK_DELAY%"
+          set /a "FROM_H=%CUR_H%"
+          if %FROM_M% GEQ 60 (
+            set /a "FROM_M=%FROM_M% - 60"
+            set /a "FROM_H=%FROM_H% + 1"
+          )
+          if %FROM_H% GEQ 24 set /a "FROM_H=%FROM_H% - 24"
+
+          set /a "TO_M=%FROM_M% + %LOCK_DURATION%"
+          set /a "TO_H=%FROM_H%"
+          if %TO_M% GEQ 60 (
+            set /a "TO_M=%TO_M% - 60"
+            set /a "TO_H=%TO_H% + 1"
+          )
+          if %TO_H% GEQ 24 set /a "TO_H=%TO_H% - 24"
+
+          if %FROM_M% LSS 10 set "FROM_M=0%FROM_M%"
+          if %FROM_H% LSS 10 set "FROM_H=0%FROM_H%"
+          if %TO_M% LSS 10 set "TO_M=0%TO_M%"
+          if %TO_H% LSS 10 set "TO_H=0%TO_H%"
+
+          for /f "tokens=1-3 delims=." %%a in ("%DATE:~0,10%") do (
+            set "DAY=%%a"
+            set "MONTH=%%b"
+            set "YEAR=%%c"
+          )
+
+          set "LOCK_FROM=%YEAR%-%MONTH%-%DAY%T%FROM_H%:%FROM_M%:00"
+          set "LOCK_TO=%YEAR%-%MONTH%-%DAY%T%TO_H%:%TO_M%:00"
+
+          echo ========================================
+          echo   Lock: %FROM_H%:%FROM_M% - %TO_H%:%TO_M%
+          echo ========================================
+
+          "%RAC_PATH%\rac.exe" infobase update ^
+            --cluster=%CLUSTER% ^
+            --infobase=%IB_ID% ^
+            --infobase-user=%USER% ^
+            --infobase-pwd=%CLEAN_PWD% ^
+            --sessions-deny=on ^
+            --permission-code=UpdateExtCI ^
+            --denied-from="%LOCK_FROM%" ^
+            --denied-to="%LOCK_TO%" ^
+            --denied-message="Плановое обновление расширения. Блокировка с %FROM_H%:%FROM_M% до %TO_H%:%TO_M%." ^
+            localhost:1545
+
+          echo Waiting %LOCK_DELAY% minutes...
+          set /a WAIT_SEC=%LOCK_DELAY%*60
+          timeout /t %WAIT_SEC% /nobreak
+
+          echo Lock active. Waiting 3 min for sessions...
+          timeout /t 180 /nobreak
+
+      - name: "🚀 Применение изменений"
+        id: update
+        if: steps.changes.outputs.has_changes == 'true' && steps.load.outputs.load_ok == 'true'
+        shell: cmd
+        env:
+          V8_PATH: ${{ secrets.V8_PATH }}
+          SERVER: ${{ secrets.TEST_SERVER }}
+          BASE: ${{ secrets.TEST_BASE }}
+          USER: ${{ secrets.DB_USER }}
+          PWD: ${{ secrets.DB_PASSWORD }}
+        run: |
+          echo ========================================
+          echo   Applying changes...
+          echo ========================================
+
+          set "CLEAN_PWD=%PWD%"
+          if "%CLEAN_PWD%"==" " set "CLEAN_PWD="
+
+          START /WAIT "" "%V8_PATH%\1cv8.exe" DESIGNER ^
+            /IBConnectionString "Srvr=%SERVER%;Ref=%BASE%" ^
             /N "%USER%" /P "%CLEAN_PWD%" ^
-            /UC "UpdateExt" ^
-            /DisableStartupDialogs ^
+            /UC UpdateExtCI ^
+            /DisableStartupDialogs /DisableStartupMessages ^
             /UpdateDBCfg ^
-            -Extension "%EXT_NAME%" ^
-            /Out "%BUILD_DIR%\update_db.log"
-          
-          if %ERRORLEVEL% NEQ 0 (
-            echo ERROR: Failed to update database
-            if exist "%BUILD_DIR%\update_db.log" type "%BUILD_DIR%\update_db.log"
-            exit /b 1
-          )
-          
-          echo ========================================
-          echo Extension deployed to test successfully!
-          echo ========================================
+            /Out "%CD%\%BUILD_DIR%\logs\updatedb.log"
 
-      - name: Unlock test database sessions
+          set UPDATE_EXIT=%ERRORLEVEL%
+          echo UpdateDBCfg exit code: %UPDATE_EXIT%
+          if exist "%BUILD_DIR%\logs\updatedb.log" type "%BUILD_DIR%\logs\updatedb.log"
+
+          if %UPDATE_EXIT% EQU 0 (
+            echo update_ok=true >> %GITHUB_OUTPUT%
+            echo Update successful
+          ) else (
+            echo update_ok=false >> %GITHUB_OUTPUT%
+            echo ERROR: Update failed
+          )
+
+      - name: "⚠️ ОТКАТ: восстановление предыдущей версии"
+        if: steps.changes.outputs.has_changes == 'true' && steps.update.outputs.update_ok == 'false' && steps.backup.outputs.backup_ok == 'true'
         shell: cmd
-        if: always()
         env:
           V8_PATH: ${{ secrets.V8_PATH }}
           SERVER: ${{ secrets.TEST_SERVER }}
           BASE: ${{ secrets.TEST_BASE }}
           USER: ${{ secrets.DB_USER }}
           PWD: ${{ secrets.DB_PASSWORD }}
+          EXT_NAME: ${{ secrets.EXTENSION_NAME }}
         run: |
-          echo Removing session lock...
-          
+          echo ========================================
+          echo   ROLLBACK: Restoring previous version
+          echo ========================================
+
           set "CLEAN_PWD=%PWD%"
           if "%CLEAN_PWD%"==" " set "CLEAN_PWD="
-          
-          "%V8_PATH%\1cv8.exe" DESIGNER ^
-            /S "%SERVER%\%BASE%" ^
-            /N "%USER%" /P "%CLEAN_PWD%" ^
-            /UC "UpdateExt" ^
-            /DisableStartupDialogs ^
-            /RemoveSessionLock ^
-            /Out "%BUILD_DIR%\unlock.log"
-          
-          if %ERRORLEVEL% NEQ 0 (
-            echo WARNING: Could not unlock sessions
-            if exist "%BUILD_DIR%\unlock.log" type "%BUILD_DIR%\unlock.log"
-          ) else (
-            echo Sessions unlocked
-          )
 
-      - name: Upload artifacts
+          echo Loading backup: ${{ steps.backup.outputs.backup_file }}
+
+          START /WAIT "" "%V8_PATH%\1cv8.exe" DESIGNER ^
+            /IBConnectionString "Srvr=%SERVER%;Ref=%BASE%" ^
+            /N "%USER%" /P "%CLEAN_PWD%" ^
+            /UC UpdateExtCI ^
+            /DisableStartupDialogs /DisableStartupMessages ^
+            /LoadCfg "${{ steps.backup.outputs.backup_file }}" ^
+            -Extension %EXT_NAME% ^
+            /Out "%CD%\%BUILD_DIR%\logs\rollback_load.log"
+
+          echo Rollback load exit: %ERRORLEVEL%
+          if exist "%BUILD_DIR%\logs\rollback_load.log" type "%BUILD_DIR%\logs\rollback_load.log"
+
+          START /WAIT "" "%V8_PATH%\1cv8.exe" DESIGNER ^
+            /IBConnectionString "Srvr=%SERVER%;Ref=%BASE%" ^
+            /N "%USER%" /P "%CLEAN_PWD%" ^
+            /UC UpdateExtCI ^
+            /DisableStartupDialogs /DisableStartupMessages ^
+            /UpdateDBCfg ^
+            /Out "%CD%\%BUILD_DIR%\logs\rollback_update.log"
+
+          echo Rollback update exit: %ERRORLEVEL%
+          if exist "%BUILD_DIR%\logs\rollback_update.log" type "%BUILD_DIR%\logs\rollback_update.log"
+
+          echo ROLLBACK COMPLETED
+
+      - name: "🔓 Снятие блокировки"
+        if: always() && steps.changes.outputs.has_changes == 'true'
+        shell: cmd
+        env:
+          RAC_PATH: ${{ secrets.V8_PATH }}
+          CLUSTER: ${{ secrets.CLUSTER_ID }}
+          IB_ID: ${{ secrets.TEST_INFOBASE_ID }}
+          USER: ${{ secrets.DB_USER }}
+          PWD: ${{ secrets.DB_PASSWORD }}
+        run: |
+          set "CLEAN_PWD=%PWD%"
+          if "%CLEAN_PWD%"==" " set "CLEAN_PWD="
+
+          "%RAC_PATH%\rac.exe" infobase update ^
+            --cluster=%CLUSTER% ^
+            --infobase=%IB_ID% ^
+            --infobase-user=%USER% ^
+            --infobase-pwd=%CLEAN_PWD% ^
+            --sessions-deny=off ^
+            --permission-code= ^
+            --denied-message= ^
+            --denied-from= ^
+            --denied-to= ^
+            localhost:1545
+
+          echo Session lock removed
+
+      - name: "📤 Сохранение логов"
         uses: actions/upload-artifact@v4
-        if: always()
+        if: always() && steps.changes.outputs.has_changes == 'true'
         with:
-          name: extension-test-build-${{ github.run_number }}
-          path: |
-            build/*.cfe
-            build/*.log
+          name: deploy-test-logs-${{ github.run_number }}
+          path: build/logs/*.log
           retention-days: 30
 
-      - name: Cleanup temp base
-        shell: cmd
+      - name: "🧹 Очистка"
         if: always()
+        shell: cmd
         run: |
-          if exist "%BUILD_DIR%\tempbase" rmdir /s /q "%BUILD_DIR%\tempbase"
+          if exist "%WORKSPACE_DIR%" rmdir /s /q "%WORKSPACE_DIR%"
+          if exist "%XML_DIR%" rmdir /s /q "%XML_DIR%"
           echo Cleanup completed
+
+      - name: "❌ Ошибка обновления"
+        if: steps.changes.outputs.has_changes == 'true' && steps.update.outputs.update_ok == 'false'
+        shell: cmd
+        run: |
+          echo ========================================
+          echo   UPDATE FAILED
+          echo   Previous version restored from backup
+          echo   Check logs in artifacts
+          echo ========================================
+          exit /b 1
