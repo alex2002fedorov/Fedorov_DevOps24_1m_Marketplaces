@@ -157,8 +157,10 @@ jobs:
           $toDisp = $lockTo.ToString("HH:mm")
 
           Write-Host "========================================"
-          Write-Host "  Блокировка: $fromDisp - $toDisp"
+          Write-Host "  Lock: $fromDisp - $toDisp"
           Write-Host "========================================"
+
+          $deniedMsg = "Planovoe obnovlenie rasshireniya. Blokirovka s $fromDisp do $toDisp."
 
           $racArgs = @(
             "infobase", "update",
@@ -170,7 +172,7 @@ jobs:
             "--permission-code=UpdateExtCI",
             "--denied-from=$lockFromStr",
             "--denied-to=$lockToStr",
-            "--denied-message=Плановое обновление расширения. Блокировка с $fromDisp до $toDisp.",
+            "--denied-message=$deniedMsg",
             "localhost:1545"
           )
 
@@ -188,8 +190,8 @@ jobs:
           Write-Host "Waiting $($env:LOCK_DELAY) minutes for users to finish..."
           Start-Sleep -Seconds ([int]$env:LOCK_DELAY * 60)
 
-          Write-Host "Lock active. Waiting 3 min for sessions to close..."
-          Start-Sleep -Seconds 180
+          Write-Host "Lock active. Waiting 1 min for sessions to close..."
+          Start-Sleep -Seconds 60
 
           Write-Host "Wait completed"
 
@@ -258,10 +260,10 @@ jobs:
             echo WARNING: Backup not created
           )
 
-          for /f "skip=10 delims=" %%F in ('dir /b /o-d "%BACKUP_PATH%\%EXT_NAME%_*.cfe" 2^>nul') do (
-            echo Deleting: %%F
-            del "%BACKUP_PATH%\%%F"
-          )
+          powershell -Command "Get-ChildItem '%BACKUP_PATH%\%EXT_NAME%_*.cfe' | Sort-Object LastWriteTime -Descending | Select-Object -Skip 10 | Remove-Item -Force"
+
+          echo Backup step completed
+          exit /b 0
 
       - name: "📦 Загрузка нового расширения"
         id: load
