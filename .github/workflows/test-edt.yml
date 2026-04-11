@@ -6,13 +6,15 @@ on:
 jobs:
   test:
     runs-on: self-hosted
+    env:
+      EDT_CLI: ${{ vars.EDT_PATH }}
     steps:
       - name: Test EDT path
         shell: cmd
         run: |
-          echo EDT_CLI=${{ vars.EDT_PATH }}
+          echo EDT_CLI=%EDT_CLI%
           echo.
-          dir "${{ vars.EDT_PATH }}\1cedtcli.exe"
+          dir "%EDT_CLI%\1cedtcli.exe"
           echo.
           echo Testing launch...
-          "${{ vars.EDT_PATH }}\1cedtcli.exe" -data "C:\EDT_Workspace_CI" -command version
+          "%EDT_CLI%\1cedtcli.exe" -data "C:\EDT_Workspace_CI" -command version
