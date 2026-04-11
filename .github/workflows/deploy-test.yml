@@ -102,7 +102,7 @@ jobs:
         shell: cmd
         run: |
           taskkill /f /im 1cv8.exe || echo No 1cv8 processes
-          timeout /t 5 /nobreak
+          ping -n 6 127.0.0.1 > nul
           if exist "%BUILD_DIR%" rmdir /s /q "%BUILD_DIR%"
           mkdir "%BUILD_DIR%"
           mkdir "%XML_DIR%"
@@ -204,12 +204,13 @@ jobs:
           )
 
           echo lock_ok=true >> %GITHUB_OUTPUT%
-          echo Waiting %LOCK_DELAY% minutes...
-          set /a WAIT_SEC=%LOCK_DELAY%*60
-          timeout /t %WAIT_SEC% /nobreak
 
-          echo Lock active. Waiting 3 min for sessions...
-          timeout /t 180 /nobreak
+          echo Waiting %LOCK_DELAY% minutes for users to finish...
+          set /a WAIT_SEC=%LOCK_DELAY%*60+1
+          ping -n %WAIT_SEC% 127.0.0.1 > nul
+
+          echo Lock active. Waiting 3 min for sessions to close...
+          ping -n 181 127.0.0.1 > nul
 
       - name: "💾 Резервная копия текущего расширения"
         id: backup
