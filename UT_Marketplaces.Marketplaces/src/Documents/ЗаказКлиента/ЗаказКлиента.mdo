@@ -254,14 +254,6 @@
     <fullTextSearch>Use</fullTextSearch>
     <dataHistory>Use</dataHistory>
   </attributes>
-  <forms uuid="8bbeb628-a62e-4070-98ff-6ad1b96d72ed" extendedConfigurationObject="be5457cf-0707-477b-bd1d-257c85cd70d5">
-    <name>ФормаДокумента</name>
-    <objectBelonging>Adopted</objectBelonging>
-    <extension xsi:type="mdclassExtension:BasicFormExtension">
-      <extendedConfigurationObject>Checked</extendedConfigurationObject>
-      <form>Extended</form>
-    </extension>
-  </forms>
   <forms uuid="4ba0b609-6248-4aab-93ca-f4d10cb22a73" extendedConfigurationObject="4ec9fc24-0398-4c29-8c3f-2e527e72156d">
     <name>ФормаСписка</name>
     <objectBelonging>Adopted</objectBelonging>
@@ -272,6 +264,14 @@
   </forms>
   <forms uuid="122cf2a5-fab5-4045-9fa9-0973205592ee" extendedConfigurationObject="3c9db1a6-b0aa-457d-9163-f4960ad9d6f2">
     <name>ФормаВыбора</name>
+    <objectBelonging>Adopted</objectBelonging>
+    <extension xsi:type="mdclassExtension:BasicFormExtension">
+      <extendedConfigurationObject>Checked</extendedConfigurationObject>
+      <form>Extended</form>
+    </extension>
+  </forms>
+  <forms uuid="ca61ba90-aa8b-4032-9f74-47ec924aa388" extendedConfigurationObject="be5457cf-0707-477b-bd1d-257c85cd70d5">
+    <name>ФормаДокумента</name>
     <objectBelonging>Adopted</objectBelonging>
     <extension xsi:type="mdclassExtension:BasicFormExtension">
       <extendedConfigurationObject>Checked</extendedConfigurationObject>
