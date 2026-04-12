@@ -6,9 +6,12 @@ on:
 jobs:
   test:
     runs-on: self-hosted
+    env:
+      EDT_CLI: ${{ vars.EDT_PATH }}
     steps:
-      - name: Test version
+      - name: Test EDT version
         shell: cmd
         run: |
-          set "EDT_CLI=C:\Users\alfedo\AppData\Local\1C\1cedtstart\installations\1C_EDT 2025.1\1cedt"
+          echo User: %USERNAME%
+          echo EDT: %EDT_CLI%
           "%EDT_CLI%\1cedtcli.exe" -data "C:\EDT_Workspace_CI" -command version
