@@ -12,6 +12,7 @@
   <extension xsi:type="mdclassExtension:DocumentExtension">
     <extendedConfigurationObject>Checked</extendedConfigurationObject>
     <objectModule>Extended</objectModule>
+    <managerModule>Extended</managerModule>
   </extension>
   <attributes uuid="4605bb6e-8be1-4cc4-8281-aa4041ff7970">
     <name>рар_мп_АккаунтМаркетплейса</name>
@@ -253,14 +254,6 @@
     <fullTextSearch>Use</fullTextSearch>
     <dataHistory>Use</dataHistory>
   </attributes>
-  <forms uuid="8bbeb628-a62e-4070-98ff-6ad1b96d72ed" extendedConfigurationObject="be5457cf-0707-477b-bd1d-257c85cd70d5">
-    <name>ФормаДокумента</name>
-    <objectBelonging>Adopted</objectBelonging>
-    <extension xsi:type="mdclassExtension:BasicFormExtension">
-      <extendedConfigurationObject>Checked</extendedConfigurationObject>
-      <form>Extended</form>
-    </extension>
-  </forms>
   <forms uuid="4ba0b609-6248-4aab-93ca-f4d10cb22a73" extendedConfigurationObject="4ec9fc24-0398-4c29-8c3f-2e527e72156d">
     <name>ФормаСписка</name>
     <objectBelonging>Adopted</objectBelonging>
@@ -271,6 +264,14 @@
   </forms>
   <forms uuid="122cf2a5-fab5-4045-9fa9-0973205592ee" extendedConfigurationObject="3c9db1a6-b0aa-457d-9163-f4960ad9d6f2">
     <name>ФормаВыбора</name>
+    <objectBelonging>Adopted</objectBelonging>
+    <extension xsi:type="mdclassExtension:BasicFormExtension">
+      <extendedConfigurationObject>Checked</extendedConfigurationObject>
+      <form>Extended</form>
+    </extension>
+  </forms>
+  <forms uuid="ca61ba90-aa8b-4032-9f74-47ec924aa388" extendedConfigurationObject="be5457cf-0707-477b-bd1d-257c85cd70d5">
+    <name>ФормаДокумента</name>
     <objectBelonging>Adopted</objectBelonging>
     <extension xsi:type="mdclassExtension:BasicFormExtension">
       <extendedConfigurationObject>Checked</extendedConfigurationObject>
@@ -470,61 +471,6 @@
       <maxValue xsi:type="core:UndefinedValue"/>
       <dataHistory>Use</dataHistory>
       <fullTextSearch>Use</fullTextSearch>
-    </attributes>
-  </tabularSections>
-  <tabularSections uuid="a15c1a71-a61a-4d0e-9de5-ca7f8104230c" extendedConfigurationObject="7b526229-3286-418a-920a-ff15a9b3ec48">
-    <producedTypes>
-      <objectType typeId="cfbdf885-1159-42ea-8f87-eb0daaa9eadf" valueTypeId="a75f878f-9680-4b55-9082-42fb9ba3e417"/>
-      <rowType typeId="43d7b846-8414-42bb-b502-80d9d16b8d89" valueTypeId="15493b2a-978d-41f7-b3a3-d07f03b61de0"/>
-    </producedTypes>
-    <name>Товары</name>
-    <objectBelonging>Adopted</objectBelonging>
-    <extension xsi:type="mdclassExtension:MdObjectExtension">
-      <extendedConfigurationObject>Checked</extendedConfigurationObject>
-    </extension>
-    <attributes uuid="a1e98ec0-811e-49db-abaa-dab79ea3eecd" extendedConfigurationObject="da473af6-1960-4683-b941-b8e3988be4fb">
-      <name>Номенклатура</name>
-      <objectBelonging>Adopted</objectBelonging>
-      <extension xsi:type="mdclassExtension:BasicFeatureExtension">
-        <extendedConfigurationObject>Checked</extendedConfigurationObject>
-        <typeExtension>
-          <types>
-            <state>Checked</state>
-            <type>CatalogRef.Номенклатура</type>
-          </types>
-        </typeExtension>
-      </extension>
-    </attributes>
-    <attributes uuid="42e30305-d35a-40ac-aac7-cbfa772e15b7" extendedConfigurationObject="ea68fa0a-5188-4f2e-b04a-9834dbc8adaa">
-      <name>Характеристика</name>
-      <objectBelonging>Adopted</objectBelonging>
-      <extension xsi:type="mdclassExtension:BasicFeatureExtension">
-        <extendedConfigurationObject>Checked</extendedConfigurationObject>
-        <typeExtension>
-          <types>
-            <state>Checked</state>
-            <type>CatalogRef.ХарактеристикиНоменклатуры</type>
-          </types>
-        </typeExtension>
-      </extension>
-    </attributes>
-    <attributes uuid="d109f313-b8ba-40c8-b1b3-2ebbefe04b55" extendedConfigurationObject="89c8c32c-ef8a-46f1-a7b4-75b2e1524d3f">
-      <name>Количество</name>
-      <objectBelonging>Adopted</objectBelonging>
-      <extension xsi:type="mdclassExtension:BasicFeatureExtension">
-        <extendedConfigurationObject>Checked</extendedConfigurationObject>
-        <typeExtension>
-          <types>
-            <state>Checked</state>
-            <type>Number</type>
-          </types>
-          <numberQualifiers>
-            <precision>15</precision>
-            <scale>3</scale>
-            <nonNegative>true</nonNegative>
-          </numberQualifiers>
-        </typeExtension>
-      </extension>
     </attributes>
   </tabularSections>
 </mdclass:Document>
