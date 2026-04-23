@@ -134,6 +134,39 @@ jobs:
             exit /b 1
           )
           echo Conversion successful
+          
+      - name: "🩹 Патч XML: исправление бага EDT со стандартными командами"
+        if: steps.changes.outputs.has_changes == 'true'
+        shell: powershell
+        run: |
+          Write-Host "========================================"
+          Write-Host "  Patching EDT XML files..."
+          Write-Host "========================================"
+
+          # Что ищем и на что меняем
+          $badString = '<CommandName>Form.Item.Товары.StandardCommand.SelectAll</CommandName>'
+          $goodString = '<CommandName>0</CommandName>'
+          
+          # Получаем все XML файлы в папке выгрузки
+          $files = Get-ChildItem -Path $env:XML_DIR -Recurse -Filter *.xml
+          
+          # ВАЖНО: 1С требует кодировку UTF-8 обязательно с BOM!
+          $utf8Bom = New-Object System.Text.UTF8Encoding($true)
+          
+          $patchedCount = 0
+
+          foreach ($file in $files) {
+            $content = [System.IO.File]::ReadAllText($file.FullName)
+            
+            if ($content.Contains($badString)) {
+              $content = $content.Replace($badString, $goodString)
+              [System.IO.File]::WriteAllText($file.FullName, $content, $utf8Bom)
+              Write-Host "✅ Исправлен файл: $($file.Name)"
+              $patchedCount++
+            }
+          }
+
+          Write-Host "Total files patched: $patchedCount"
 
       - name: "⏳ Установка блокировки и ожидание"
         id: lock
