@@ -139,11 +139,6 @@ jobs:
         if: steps.changes.outputs.has_changes == 'true'
         shell: powershell
         run: |
-           
-          echo ========================================
-          echo   Patching EDT XML files...
-          echo ========================================
-          
           $xmlRoot = Join-Path $env:GITHUB_WORKSPACE $env:XML_DIR
           $readEnc = New-Object System.Text.UTF8Encoding($false)
           $writeEnc = New-Object System.Text.UTF8Encoding($true)
