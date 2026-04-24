@@ -135,42 +135,34 @@ jobs:
           )
           echo Conversion successful
           
-      - name: "🩹 Патч XML: исправление SelectAll (строгий UTF-8)"
+      - name: "🩹 Патч XML: исправление бага EDT со стандартными командами"
         if: steps.changes.outputs.has_changes == 'true'
         shell: powershell
         run: |
-          Write-Host '========================================'
-          Write-Host 'Patching EDT XML files'
-          Write-Host '========================================'
-
+           
+          echo ========================================
+          echo   Patching EDT XML files...
+          echo ========================================
+          
           $xmlRoot = Join-Path $env:GITHUB_WORKSPACE $env:XML_DIR
-
-          if (-not (Test-Path -LiteralPath $xmlRoot)) {
-            Write-Host ('ERROR: XML folder not found: ' + $xmlRoot)
-            exit 1
-          }
-
-          $readEncoding = New-Object System.Text.UTF8Encoding($false)
-          $writeEncoding = New-Object System.Text.UTF8Encoding($true)
-
+          $readEnc = New-Object System.Text.UTF8Encoding($false)
+          $writeEnc = New-Object System.Text.UTF8Encoding($true)
           $pattern = '<CommandName>Form\.Item\.[^<]+\.StandardCommand\.SelectAll</CommandName>'
           $replacement = '<CommandName>0</CommandName>'
-
-          $patchedCount = 0
+          $count = 0
           $files = Get-ChildItem -Path $xmlRoot -Recurse -Filter *.xml -File
-
+          Write-Host ('XML root: ' + $xmlRoot)
+          Write-Host ('Files found: ' + $files.Count)
           foreach ($file in $files) {
-            $content = [System.IO.File]::ReadAllText($file.FullName, $readEncoding)
-
+            $content = [System.IO.File]::ReadAllText($file.FullName, $readEnc)
             if ([System.Text.RegularExpressions.Regex]::IsMatch($content, $pattern)) {
-              $newContent = [System.Text.RegularExpressions.Regex]::Replace($content, $pattern, $replacement)
-              [System.IO.File]::WriteAllText($file.FullName, $newContent, $writeEncoding)
-              Write-Host ('Patched: ' + $file.FullName)
-              $patchedCount = $patchedCount + 1
+              $new = [System.Text.RegularExpressions.Regex]::Replace($content, $pattern, $replacement)
+              [System.IO.File]::WriteAllText($file.FullName, $new, $writeEnc)
+              Write-Host ('Patched: ' + $file.Name)
+              $count = $count + 1
             }
           }
-
-          Write-Host ('Total files patched: ' + $patchedCount)
+          Write-Host ('Total patched: ' + $count)
 
       - name: "⏳ Установка блокировки и ожидание"
         id: lock
