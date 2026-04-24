@@ -135,46 +135,48 @@ jobs:
           )
           echo Conversion successful
           
-      - name: "🩹 Патч XML: исправление бага EDT со стандартными командами"
+      - name: "🩹 Патч XML: исправление SelectAll (строгий UTF-8)"
         if: steps.changes.outputs.has_changes == 'true'
         shell: powershell
         run: |
-          Write-Host '========================================'
-          Write-Host 'Patching EDT XML files...'
-          Write-Host '========================================'
+          Write-Host "========================================"
+          Write-Host "  Patching EDT XML files..."
+          Write-Host "========================================"
 
+          # Путь к папке с XML
           $xmlRoot = Join-Path $env:GITHUB_WORKSPACE $env:XML_DIR
-          $badString = '<CommandName>Form.Item.Товары.StandardCommand.SelectAll</CommandName>'
-          $goodString = '<CommandName>0</CommandName>'
-          $utf8Bom = New-Object System.Text.UTF8Encoding($true)
-
-          Write-Host ('XML root: ' + $xmlRoot)
-
           if (!(Test-Path $xmlRoot)) {
-            Write-Host 'ERROR: XML folder not found'
+            Write-Host "ERROR: XML folder not found at $xmlRoot"
             exit 1
           }
 
-          $files = Get-ChildItem -Path $xmlRoot -Recurse -Filter *.xml -File
-          Write-Host ('XML files found: ' + $files.Count)
-
+          # Настраиваем строгий UTF-8 с BOM (для 1С)
+          $utf8Bom = New-Object System.Text.UTF8Encoding($true)
+          
+          # Регулярка: ищет Form.Item.[ЛЮБОЙ ТЕКСТ].StandardCommand.SelectAll
+          $pattern = '<CommandName>Form\.Item\.[^<]+\.StandardCommand\.SelectAll</CommandName>'
+          $replacement = '<CommandName>0</CommandName>'
+          
           $patchedCount = 0
-          $foundCount = 0
+          $files = Get-ChildItem -Path $xmlRoot -Recurse -Filter *.xml -File
 
           foreach ($file in $files) {
-            $content = [System.IO.File]::ReadAllText($file.FullName)
-
-            if ($content.Contains($badString)) {
-              $foundCount++
-              $newContent = $content.Replace($badString, $goodString)
+            # ПРИНУДИТЕЛЬНО читаем файл как UTF-8!
+            $content = [System.IO.File]::ReadAllText($file.FullName, $utf8Bom)
+            
+            # Если находим совпадение
+            if ($content -match $pattern) {
+              # Делаем замену
+              $newContent = $content -replace $pattern, $replacement
+              # Сохраняем обратно в UTF-8 BOM
               [System.IO.File]::WriteAllText($file.FullName, $newContent, $utf8Bom)
-              Write-Host ('Patched: ' + $file.FullName)
+              
+              Write-Host "✅ Исправлен файл: $($file.Name)"
               $patchedCount++
             }
           }
 
-          Write-Host ('Files containing bad string: ' + $foundCount)
-          Write-Host ('Total files patched: ' + $patchedCount)
+          Write-Host "Total files patched: $patchedCount"
 
       - name: "⏳ Установка блокировки и ожидание"
         id: lock
