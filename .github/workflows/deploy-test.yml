@@ -144,8 +144,8 @@ jobs:
           Write-Host '========================================'
 
           $xmlRoot = Join-Path $PWD.Path $env:XML_DIR
-          $badString = '<CommandName>Form.Item.Товары.StandardCommand.SelectAll</CommandName>'
-          $goodString = '<CommandName>0</CommandName>'
+          $pattern = '<CommandName>\s*Form\.Item\.Товары\.StandardCommand\.SelectAll\s*</CommandName>'
+          $replacement = '<CommandName>0</CommandName>'
           $utf8Bom = New-Object System.Text.UTF8Encoding($true)
 
           $patchedCount = 0
@@ -153,9 +153,9 @@ jobs:
 
           foreach ($file in $files) {
             $content = [System.IO.File]::ReadAllText($file.FullName)
+            $newContent = [System.Text.RegularExpressions.Regex]::Replace($content, $pattern, $replacement)
 
-            if ($content.Contains($badString)) {
-              $newContent = $content.Replace($badString, $goodString)
+            if ($newContent -ne $content) {
               [System.IO.File]::WriteAllText($file.FullName, $newContent, $utf8Bom)
               Write-Host ('Patched: ' + $file.FullName)
               $patchedCount++
