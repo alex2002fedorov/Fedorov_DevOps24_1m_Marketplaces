@@ -143,25 +143,37 @@ jobs:
           Write-Host 'Patching EDT XML files...'
           Write-Host '========================================'
 
-          $xmlRoot = Join-Path $PWD.Path $env:XML_DIR
-          $pattern = '<CommandName>\s*Form\.Item\.Товары\.StandardCommand\.SelectAll\s*</CommandName>'
-          $replacement = '<CommandName>0</CommandName>'
+          $xmlRoot = Join-Path $env:GITHUB_WORKSPACE $env:XML_DIR
+          $badString = '<CommandName>Form.Item.Товары.StandardCommand.SelectAll</CommandName>'
+          $goodString = '<CommandName>0</CommandName>'
           $utf8Bom = New-Object System.Text.UTF8Encoding($true)
 
-          $patchedCount = 0
+          Write-Host ('XML root: ' + $xmlRoot)
+
+          if (!(Test-Path $xmlRoot)) {
+            Write-Host 'ERROR: XML folder not found'
+            exit 1
+          }
+
           $files = Get-ChildItem -Path $xmlRoot -Recurse -Filter *.xml -File
+          Write-Host ('XML files found: ' + $files.Count)
+
+          $patchedCount = 0
+          $foundCount = 0
 
           foreach ($file in $files) {
             $content = [System.IO.File]::ReadAllText($file.FullName)
-            $newContent = [System.Text.RegularExpressions.Regex]::Replace($content, $pattern, $replacement)
 
-            if ($newContent -ne $content) {
+            if ($content.Contains($badString)) {
+              $foundCount++
+              $newContent = $content.Replace($badString, $goodString)
               [System.IO.File]::WriteAllText($file.FullName, $newContent, $utf8Bom)
               Write-Host ('Patched: ' + $file.FullName)
               $patchedCount++
             }
           }
 
+          Write-Host ('Files containing bad string: ' + $foundCount)
           Write-Host ('Total files patched: ' + $patchedCount)
 
       - name: "⏳ Установка блокировки и ожидание"
