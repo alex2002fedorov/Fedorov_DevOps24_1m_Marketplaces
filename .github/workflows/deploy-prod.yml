@@ -321,24 +321,23 @@ jobs:
                 echo Backup OK: %%~zA bytes
               ) else (
                 echo backup_ok=false>> %GITHUB_OUTPUT%
-                echo WARNING: Backup too small
+                echo ERROR: Backup too small
+                exit /b 1
               )
             )
           ) else (
             echo backup_ok=false>> %GITHUB_OUTPUT%
-            echo WARNING: Backup not created
+            echo ERROR: Backup not created
+            exit /b 1
           )
 
           powershell -Command "Get-ChildItem '%BACKUP_PATH%\%EXT_NAME%_*.cfe' | Sort-Object LastWriteTime -Descending | Select-Object -Skip 10 | Remove-Item -Force"
 
           echo Backup step completed
-          exit /b 0
 
       - name: "📦 Загрузка нового расширения"
         id: load
-        if: >
-          steps.lock.outputs.lock_ok == 'true' &&
-          steps.backup.outputs.backup_ok == 'true'
+        if: steps.backup.outputs.backup_ok == 'true'
         shell: cmd
         env:
           V8_PATH: ${{ vars.V8_PATH }}
@@ -379,9 +378,7 @@ jobs:
 
       - name: "🚀 Применение изменений"
         id: update
-        if: >
-          steps.load.outputs.load_ok == 'true' &&
-          steps.backup.outputs.backup_ok == 'true'
+        if: steps.load.outputs.load_ok == 'true'
         shell: cmd
         env:
           V8_PATH: ${{ vars.V8_PATH }}
