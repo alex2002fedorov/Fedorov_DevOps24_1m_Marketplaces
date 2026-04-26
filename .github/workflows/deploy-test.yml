@@ -49,7 +49,6 @@ jobs:
         shell: powershell
         run: |
           git config --global --add safe.directory "$env:GITHUB_WORKSPACE"
-          Write-Host "Safe directory added: $env:GITHUB_WORKSPACE"
 
       - name: "🔍 Проверка наличия изменений"
         id: changes
@@ -122,7 +121,6 @@ jobs:
           mkdir "%BUILD_DIR%"
           mkdir "%XML_DIR%"
           mkdir "%BUILD_DIR%\logs"
-          REM Полная очистка EDT workspace для сброса кэша
           if exist "%EDT_WS%" rmdir /s /q "%EDT_WS%"
           mkdir "%EDT_WS%"
           echo Folders ready
@@ -149,7 +147,7 @@ jobs:
           )
           echo Conversion successful
 
-      - name: "🩹 Патч XML: исправление бага EDT со стандартными командами"
+      - name: "🩹 Патч XML: исправление StandardCommand"
         if: steps.changes.outputs.has_changes == 'true'
         shell: powershell
         run: |
@@ -301,24 +299,23 @@ jobs:
                 echo Backup OK: %%~zA bytes
               ) else (
                 echo backup_ok=false>> %GITHUB_OUTPUT%
-                echo WARNING: Backup too small
+                echo ERROR: Backup too small
+                exit /b 1
               )
             )
           ) else (
             echo backup_ok=false>> %GITHUB_OUTPUT%
-            echo WARNING: Backup not created
+            echo ERROR: Backup not created
+            exit /b 1
           )
 
           powershell -Command "Get-ChildItem '%BACKUP_PATH%\%EXT_NAME%_*.cfe' | Sort-Object LastWriteTime -Descending | Select-Object -Skip 10 | Remove-Item -Force"
 
           echo Backup step completed
-          exit /b 0
 
       - name: "📦 Загрузка нового расширения"
         id: load
-        if: >
-          steps.changes.outputs.has_changes == 'true' &&
-          steps.lock.outputs.lock_ok == 'true'
+        if: steps.backup.outputs.backup_ok == 'true'
         shell: cmd
         env:
           V8_PATH: ${{ vars.V8_PATH }}
@@ -359,9 +356,7 @@ jobs:
 
       - name: "🚀 Применение изменений"
         id: update
-        if: >
-          steps.changes.outputs.has_changes == 'true' &&
-          steps.load.outputs.load_ok == 'true'
+        if: steps.load.outputs.load_ok == 'true'
         shell: cmd
         env:
           V8_PATH: ${{ vars.V8_PATH }}
@@ -411,15 +406,17 @@ jobs:
             ) else (
               echo update_ok=false>> %GITHUB_OUTPUT%
               echo ERROR: Main config update failed
+              exit /b 1
             )
           ) else (
             echo update_ok=false>> %GITHUB_OUTPUT%
             echo ERROR: Extension update failed
+            exit /b 1
           )
 
       - name: "⚠️ ОТКАТ: восстановление предыдущей версии"
         if: >
-          steps.changes.outputs.has_changes == 'true' &&
+          always() &&
           steps.update.outputs.update_ok == 'false' &&
           steps.backup.outputs.backup_ok == 'true'
         shell: cmd
@@ -515,16 +512,3 @@ jobs:
         run: |
           if exist "%XML_DIR%" rmdir /s /q "%XML_DIR%"
           echo Cleanup completed
-
-      - name: "❌ Ошибка обновления"
-        if: >
-          steps.changes.outputs.has_changes == 'true' &&
-          steps.update.outputs.update_ok == 'false'
-        shell: cmd
-        run: |
-          echo ========================================
-          echo   UPDATE FAILED
-          echo   Previous version restored from backup
-          echo   Check logs in artifacts
-          echo ========================================
-          exit /b 1
