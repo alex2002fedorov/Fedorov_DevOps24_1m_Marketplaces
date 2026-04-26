@@ -336,7 +336,9 @@ jobs:
 
       - name: "📦 Загрузка нового расширения"
         id: load
-        if: steps.lock.outputs.lock_ok == 'true'
+        if: >
+          steps.lock.outputs.lock_ok == 'true' &&
+          steps.backup.outputs.backup_ok == 'true'
         shell: cmd
         env:
           V8_PATH: ${{ vars.V8_PATH }}
@@ -377,7 +379,9 @@ jobs:
 
       - name: "🚀 Применение изменений"
         id: update
-        if: steps.load.outputs.load_ok == 'true'
+        if: >
+          steps.load.outputs.load_ok == 'true' &&
+          steps.backup.outputs.backup_ok == 'true'
         shell: cmd
         env:
           V8_PATH: ${{ vars.V8_PATH }}
@@ -437,6 +441,7 @@ jobs:
 
       - name: "⚠️ ОТКАТ: восстановление предыдущей версии"
         if: >
+          always() &&
           steps.update.outputs.update_ok == 'false' &&
           steps.backup.outputs.backup_ok == 'true'
         shell: cmd
@@ -534,7 +539,9 @@ jobs:
           echo Cleanup completed
 
       - name: "❌ Ошибка обновления"
-        if: steps.update.outputs.update_ok == 'false'
+        if: >
+          always() &&
+          steps.update.outputs.update_ok == 'false'
         shell: cmd
         run: |
           echo ========================================
