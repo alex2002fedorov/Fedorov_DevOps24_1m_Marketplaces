@@ -534,16 +534,3 @@ jobs:
         run: |
           if exist "%XML_DIR%" rmdir /s /q "%XML_DIR%"
           echo Cleanup completed
-
-      - name: "❌ Ошибка обновления"
-        if: >
-          always() &&
-          steps.update.outputs.update_ok == 'false'
-        shell: cmd
-        run: |
-          echo ========================================
-          echo   PRODUCTION UPDATE FAILED
-          echo   Previous version restored from backup
-          echo   Check logs in artifacts
-          echo ========================================
-          exit /b 1
