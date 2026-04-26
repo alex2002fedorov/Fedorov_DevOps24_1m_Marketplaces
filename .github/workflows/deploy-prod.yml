@@ -9,9 +9,14 @@ on:
         default: '23:00'
         type: string
       lock_before_minutes:
-        description: 'За сколько минут до обновления заблокировать базу'
+        description: 'За сколько минут до обновления закрыть вход в базу'
         required: false
         default: '30'
+        type: string
+      lock_duration_minutes:
+        description: 'Длительность окна обновления (минут)'
+        required: false
+        default: '60'
         type: string
 
 jobs:
@@ -38,7 +43,6 @@ jobs:
         shell: powershell
         run: |
           git config --global --add safe.directory "$env:GITHUB_WORKSPACE"
-          Write-Host "Safe directory added: $env:GITHUB_WORKSPACE"
 
       - name: "📋 Информация о сборке"
         shell: powershell
@@ -46,11 +50,12 @@ jobs:
           Write-Host '========================================'
           Write-Host '  Deploy Extension to PRODUCTION'
           Write-Host '========================================'
-          Write-Host ('Branch:     main')
-          Write-Host ('Commit:     ' + $env:GITHUB_SHA)
-          Write-Host ('Date:       ' + (Get-Date).ToString('yyyy-MM-dd HH:mm:ss'))
-          Write-Host ('Start time: ' + '${{ github.event.inputs.start_time }}')
-          Write-Host ('Lock before:' + ' ' + '${{ github.event.inputs.lock_before_minutes }}' + ' min')
+          Write-Host ('Branch:        main')
+          Write-Host ('Commit:        ' + $env:GITHUB_SHA)
+          Write-Host ('Date:          ' + (Get-Date).ToString('yyyy-MM-dd HH:mm:ss'))
+          Write-Host ('Start time:    ' + '${{ github.event.inputs.start_time }}')
+          Write-Host ('Lock before:   ' + '${{ github.event.inputs.lock_before_minutes }}' + ' min')
+          Write-Host ('Lock duration: ' + '${{ github.event.inputs.lock_duration_minutes }}' + ' min')
           Write-Host '========================================'
 
       - name: "🕐 Расчёт времени и установка блокировки"
@@ -65,6 +70,7 @@ jobs:
         run: |
           $targetTime = '${{ github.event.inputs.start_time }}'
           $lockBefore = [int]'${{ github.event.inputs.lock_before_minutes }}'
+          $lockDuration = [int]'${{ github.event.inputs.lock_duration_minutes }}'
 
           $parts = $targetTime.Split(':')
           if ($parts.Count -ne 2) {
@@ -88,7 +94,7 @@ jobs:
           }
 
           $lockFrom = $updateStart.AddMinutes(-$lockBefore)
-          $lockTo = $updateStart.AddMinutes(60)
+          $lockTo = $lockFrom.AddMinutes($lockDuration)
 
           if ($lockFrom -le $now) {
             Write-Host 'ERROR: lock time is in the past, increase start_time or decrease lock_before_minutes'
@@ -156,11 +162,7 @@ jobs:
           RAC_PATH: ${{ vars.V8_PATH }}
           CLUSTER: ${{ vars.CLUSTER_ID }}
           IB_ID: ${{ vars.PROD_INFOBASE_ID }}
-          USER: ${{ vars.PROD_DB_USER }}
-          PWD: ${{ secrets.PROD_DB_PASSWORD }}
         run: |
-          $cleanPwd = $env:PWD
-          if ($cleanPwd -eq ' ') { $cleanPwd = '' }
           $rac = Join-Path $env:RAC_PATH 'rac.exe'
 
           Write-Host 'Getting active sessions...'
@@ -168,8 +170,6 @@ jobs:
           $sessions = & $rac session list `
             ('--cluster=' + $env:CLUSTER) `
             ('--infobase=' + $env:IB_ID) `
-            ('--infobase-user=' + $env:USER) `
-            ('--infobase-pwd=' + $cleanPwd) `
             'localhost:1545'
 
           $sessionIds = @()
@@ -186,8 +186,6 @@ jobs:
             & $rac session terminate `
               ('--cluster=' + $env:CLUSTER) `
               ('--session=' + $sid) `
-              ('--infobase-user=' + $env:USER) `
-              ('--infobase-pwd=' + $cleanPwd) `
               'localhost:1545'
           }
 
