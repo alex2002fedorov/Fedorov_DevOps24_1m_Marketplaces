@@ -45,6 +45,12 @@ jobs:
           ref: develop
           fetch-depth: 0
 
+      - name: "🔧 Git safe.directory"
+        shell: powershell
+        run: |
+          git config --global --add safe.directory "$env:GITHUB_WORKSPACE"
+          Write-Host "Safe directory added: $env:GITHUB_WORKSPACE"
+
       - name: "🔍 Проверка наличия изменений"
         id: changes
         shell: powershell
@@ -57,7 +63,15 @@ jobs:
             exit 0
           }
 
-          $result = git log --oneline --since="12 hours ago" -- $env:SOURCE_DIR
+          $result = git log --oneline --since="12 hours ago" -- $env:SOURCE_DIR 2>&1
+          $gitExit = $LASTEXITCODE
+
+          if ($gitExit -ne 0) {
+            Write-Host "ERROR: git log failed"
+            Write-Host $result
+            exit 1
+          }
+
           if ($result) {
             $count = ($result | Measure-Object -Line).Lines
           } else {
@@ -134,7 +148,7 @@ jobs:
             exit /b 1
           )
           echo Conversion successful
-          
+
       - name: "🩹 Патч XML: исправление бага EDT со стандартными командами"
         if: steps.changes.outputs.has_changes == 'true'
         shell: powershell
@@ -145,9 +159,17 @@ jobs:
           $pattern = '<CommandName>Form\.Item\.[^<]+\.StandardCommand\.SelectAll</CommandName>'
           $replacement = '<CommandName>0</CommandName>'
           $count = 0
-          $files = Get-ChildItem -Path $xmlRoot -Recurse -Filter *.xml -File
+
           Write-Host ('XML root: ' + $xmlRoot)
+
+          if (-not (Test-Path -LiteralPath $xmlRoot)) {
+            Write-Host ('ERROR: XML folder not found: ' + $xmlRoot)
+            exit 1
+          }
+
+          $files = Get-ChildItem -Path $xmlRoot -Recurse -Filter *.xml -File
           Write-Host ('Files found: ' + $files.Count)
+
           foreach ($file in $files) {
             $content = [System.IO.File]::ReadAllText($file.FullName, $readEnc)
             if ([System.Text.RegularExpressions.Regex]::IsMatch($content, $pattern)) {
@@ -157,6 +179,7 @@ jobs:
               $count = $count + 1
             }
           }
+
           Write-Host ('Total patched: ' + $count)
 
       - name: "⏳ Установка блокировки и ожидание"
@@ -164,10 +187,10 @@ jobs:
         if: steps.changes.outputs.has_changes == 'true'
         shell: powershell
         env:
-          RAC_PATH: ${{ secrets.V8_PATH }}
-          CLUSTER: ${{ secrets.CLUSTER_ID }}
-          IB_ID: ${{ secrets.TEST_INFOBASE_ID }}
-          USER: ${{ secrets.DB_USER }}
+          RAC_PATH: ${{ vars.V8_PATH }}
+          CLUSTER: ${{ vars.CLUSTER_ID }}
+          IB_ID: ${{ vars.TEST_INFOBASE_ID }}
+          USER: ${{ vars.DB_USER }}
           PWD: ${{ secrets.DB_PASSWORD }}
         run: |
           $cleanPwd = $env:PWD
@@ -228,13 +251,13 @@ jobs:
           steps.lock.outputs.lock_ok == 'true'
         shell: cmd
         env:
-          V8_PATH: ${{ secrets.V8_PATH }}
-          SERVER: ${{ secrets.TEST_SERVER }}
-          BASE: ${{ secrets.TEST_BASE }}
-          USER: ${{ secrets.DB_USER }}
+          V8_PATH: ${{ vars.V8_PATH }}
+          SERVER: ${{ vars.TEST_SERVER }}
+          BASE: ${{ vars.TEST_BASE }}
+          USER: ${{ vars.DB_USER }}
           PWD: ${{ secrets.DB_PASSWORD }}
-          EXT_NAME: ${{ secrets.EXTENSION_NAME }}
-          BACKUP_PATH: ${{ secrets.BACKUP_PATH }}
+          EXT_NAME: ${{ vars.EXTENSION_NAME }}
+          BACKUP_PATH: ${{ vars.BACKUP_PATH }}
         run: |
           echo ========================================
           echo   Backup current extension...
@@ -298,12 +321,12 @@ jobs:
           steps.lock.outputs.lock_ok == 'true'
         shell: cmd
         env:
-          V8_PATH: ${{ secrets.V8_PATH }}
-          SERVER: ${{ secrets.TEST_SERVER }}
-          BASE: ${{ secrets.TEST_BASE }}
-          USER: ${{ secrets.DB_USER }}
+          V8_PATH: ${{ vars.V8_PATH }}
+          SERVER: ${{ vars.TEST_SERVER }}
+          BASE: ${{ vars.TEST_BASE }}
+          USER: ${{ vars.DB_USER }}
           PWD: ${{ secrets.DB_PASSWORD }}
-          EXT_NAME: ${{ secrets.EXTENSION_NAME }}
+          EXT_NAME: ${{ vars.EXTENSION_NAME }}
         run: |
           echo ========================================
           echo   Loading new extension...
@@ -341,12 +364,12 @@ jobs:
           steps.load.outputs.load_ok == 'true'
         shell: cmd
         env:
-          V8_PATH: ${{ secrets.V8_PATH }}
-          SERVER: ${{ secrets.TEST_SERVER }}
-          BASE: ${{ secrets.TEST_BASE }}
-          USER: ${{ secrets.DB_USER }}
+          V8_PATH: ${{ vars.V8_PATH }}
+          SERVER: ${{ vars.TEST_SERVER }}
+          BASE: ${{ vars.TEST_BASE }}
+          USER: ${{ vars.DB_USER }}
           PWD: ${{ secrets.DB_PASSWORD }}
-          EXT_NAME: ${{ secrets.EXTENSION_NAME }}
+          EXT_NAME: ${{ vars.EXTENSION_NAME }}
         run: |
           echo ========================================
           echo   Applying changes...
@@ -401,12 +424,12 @@ jobs:
           steps.backup.outputs.backup_ok == 'true'
         shell: cmd
         env:
-          V8_PATH: ${{ secrets.V8_PATH }}
-          SERVER: ${{ secrets.TEST_SERVER }}
-          BASE: ${{ secrets.TEST_BASE }}
-          USER: ${{ secrets.DB_USER }}
+          V8_PATH: ${{ vars.V8_PATH }}
+          SERVER: ${{ vars.TEST_SERVER }}
+          BASE: ${{ vars.TEST_BASE }}
+          USER: ${{ vars.DB_USER }}
           PWD: ${{ secrets.DB_PASSWORD }}
-          EXT_NAME: ${{ secrets.EXTENSION_NAME }}
+          EXT_NAME: ${{ vars.EXTENSION_NAME }}
         run: |
           echo ========================================
           echo   ROLLBACK: Restoring previous version
@@ -455,10 +478,10 @@ jobs:
         if: always()
         shell: cmd
         env:
-          RAC_PATH: ${{ secrets.V8_PATH }}
-          CLUSTER: ${{ secrets.CLUSTER_ID }}
-          IB_ID: ${{ secrets.TEST_INFOBASE_ID }}
-          USER: ${{ secrets.DB_USER }}
+          RAC_PATH: ${{ vars.V8_PATH }}
+          CLUSTER: ${{ vars.CLUSTER_ID }}
+          IB_ID: ${{ vars.TEST_INFOBASE_ID }}
+          USER: ${{ vars.DB_USER }}
           PWD: ${{ secrets.DB_PASSWORD }}
         run: |
           set "CLEAN_PWD=%PWD%"
