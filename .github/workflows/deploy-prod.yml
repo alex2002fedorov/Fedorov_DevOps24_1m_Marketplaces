@@ -190,8 +190,8 @@ jobs:
           }
 
           if ($sessionIds.Count -gt 0) {
-            Write-Host 'Waiting 30 seconds for sessions to close...'
-            Start-Sleep -Seconds 30
+            Write-Host 'Waiting 60 seconds for sessions to fully close...'
+            Start-Sleep -Seconds 60
           }
 
           Write-Host 'All sessions terminated'
@@ -427,10 +427,12 @@ jobs:
             ) else (
               echo update_ok=false>> %GITHUB_OUTPUT%
               echo ERROR: Main config update failed
+              exit /b 1
             )
           ) else (
             echo update_ok=false>> %GITHUB_OUTPUT%
             echo ERROR: Extension update failed
+            exit /b 1
           )
 
       - name: "⚠️ ОТКАТ: восстановление предыдущей версии"
@@ -462,6 +464,9 @@ jobs:
             -Extension %EXT_NAME% ^
             /Out "%CD%\%BUILD_DIR%\logs\rollback_load.log"
 
+          echo Rollback load exit: %ERRORLEVEL%
+          if exist "%BUILD_DIR%\logs\rollback_load.log" type "%BUILD_DIR%\logs\rollback_load.log"
+
           START /WAIT "" "%V8_PATH%\1cv8.exe" DESIGNER ^
             /IBConnectionString "Srvr=%SERVER%;Ref=%BASE%" ^
             /N "%USER%" /P "%CLEAN_PWD%" ^
@@ -470,6 +475,9 @@ jobs:
             /UpdateDBCfg -Extension %EXT_NAME% ^
             /Out "%CD%\%BUILD_DIR%\logs\rollback_update_ext.log"
 
+          echo Rollback ext update exit: %ERRORLEVEL%
+          if exist "%BUILD_DIR%\logs\rollback_update_ext.log" type "%BUILD_DIR%\logs\rollback_update_ext.log"
+
           START /WAIT "" "%V8_PATH%\1cv8.exe" DESIGNER ^
             /IBConnectionString "Srvr=%SERVER%;Ref=%BASE%" ^
             /N "%USER%" /P "%CLEAN_PWD%" ^
@@ -477,6 +485,9 @@ jobs:
             /DisableStartupDialogs /DisableStartupMessages ^
             /UpdateDBCfg ^
             /Out "%CD%\%BUILD_DIR%\logs\rollback_update.log"
+
+          echo Rollback update exit: %ERRORLEVEL%
+          if exist "%BUILD_DIR%\logs\rollback_update.log" type "%BUILD_DIR%\logs\rollback_update.log"
 
           echo ROLLBACK COMPLETED
 
