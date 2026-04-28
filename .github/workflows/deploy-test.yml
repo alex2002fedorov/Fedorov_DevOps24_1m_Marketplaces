@@ -241,6 +241,47 @@ jobs:
           Start-Sleep -Seconds 60
 
           Write-Host "Wait completed"
+          
+      - name: "🚫 Завершение активных сеансов"
+        if: steps.lock.outputs.lock_ok == 'true'
+        shell: powershell
+        env:
+          RAC_PATH: ${{ vars.V8_PATH }}
+          CLUSTER: ${{ vars.CLUSTER_ID }}
+          IB_ID: ${{ vars.TEST_INFOBASE_ID }}
+        run: |
+          $rac = Join-Path $env:RAC_PATH 'rac.exe'
+
+          Write-Host 'Getting active sessions...'
+
+          $sessions = & $rac session list `
+            ('--cluster=' + $env:CLUSTER) `
+            ('--infobase=' + $env:IB_ID) `
+            'localhost:1545'
+
+          $sessionIds = @()
+          foreach ($line in $sessions) {
+            if ($line -match '^session\s*:\s*(.+)$') {
+              $sessionIds += $matches[1].Trim()
+            }
+          }
+
+          Write-Host ('Active sessions found: ' + $sessionIds.Count)
+
+          foreach ($sid in $sessionIds) {
+            Write-Host ('Terminating session: ' + $sid)
+            & $rac session terminate `
+              ('--cluster=' + $env:CLUSTER) `
+              ('--session=' + $sid) `
+              'localhost:1545'
+          }
+
+          if ($sessionIds.Count -gt 0) {
+            Write-Host 'Waiting 60 seconds for sessions to fully close...'
+            Start-Sleep -Seconds 60
+          }
+
+          Write-Host 'All sessions terminated'
 
       - name: "💾 Резервная копия текущего расширения"
         id: backup
