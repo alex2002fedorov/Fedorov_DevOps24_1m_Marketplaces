@@ -157,7 +157,7 @@
   </items>
   <items xsi:type="form:Button">
     <name>ТестоваяКнопка</name>
-    <id>230</id>
+    <id>232</id>
     <visible>true</visible>
     <enabled>true</enabled>
     <userVisible>
@@ -165,7 +165,7 @@
     </userVisible>
     <extendedTooltip>
       <name>ТестоваяКнопкаРасширеннаяПодсказка</name>
-      <id>231</id>
+      <id>233</id>
       <type>Label</type>
       <autoMaxWidth>true</autoMaxWidth>
       <autoMaxHeight>true</autoMaxHeight>
@@ -2266,7 +2266,7 @@
       <key>ru</key>
       <value>Тестовая кнопка</value>
     </title>
-    <id>1</id>
+    <id>2</id>
     <use>
       <common>true</common>
     </use>
