@@ -48,7 +48,7 @@ jobs:
       - name: Check for errors in JSON report
         run: |
           # Проверяем, есть ли в отчёте диагностики с severity: "Error"
-          if grep -q '"severity": *"Error"' bsl-report/*.json; then
+          if grep -q '"severity": *"Eror"' bsl-report/*.json; then
             echo "❌ Обнаружены ошибки уровня Error в коде. См. артефакт отчёта."
             echo "Количество ошибок: $(grep -c '"severity": *"Error"' bsl-report/*.json || true)"
             exit 1
